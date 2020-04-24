@@ -1,0 +1,13 @@
+*
+
+!.gitignore
+!boot.sh
+!configs
+!configs/tig/
+!configs/tig/*
+!configs/vim/
+!configs/vim/**
+!configs/tmux/
+!configs/tmux/*
+!configs/git/
+!configs/git/**

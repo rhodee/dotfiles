@@ -1,0 +1,69 @@
+" ----------------------------------------------------------------------------
+" Load Plugins
+" ----------------------------------------------------------------------------
+packadd minpac
+
+if !exists('*minpac#init')
+  " minpac is not available.
+
+  " Settings for plugin-less environment.
+  " ...
+else
+  " minpac is available.
+  " init with verbosity 3 to see minpac work
+  call minpac#init({'verbose': 3})
+  call minpac#add('k-takata/minpac', {'type': 'opt'})
+
+  " Additional plugins here.
+  call minpac#add('fatih/vim-go')
+
+  call minpac#add('jelera/vim-javascript-syntax')
+  call minpac#add('HerringtonDarkholme/yats.vim')
+  call minpac#add('leafgarland/typescript-vim')
+  call minpac#add('jremmen/vim-ripgrep')
+  call minpac#add('junegunn/fzf')
+  call minpac#add('junegunn/goyo.vim')
+  call minpac#add('junegunn/limelight.vim')
+  call minpac#add('junegunn/vim-peekaboo')
+  call minpac#add('junegunn/vim-easy-align')
+  call minpac#add('airblade/vim-gitgutter')
+  call minpac#add('airblade/vim-rooter')
+  call minpac#add('tpope/vim-commentary')
+  call minpac#add('tpope/vim-fugitive')
+  call minpac#add('tpope/vim-repeat')
+  call minpac#add('tpope/vim-surround')
+  call minpac#add('tpope/vim-markdown')
+  call minpac#add('xuyuanp/nerdtree-git-plugin')
+  call minpac#add('tpope/vim-vinegar')
+  call minpac#add('tpope/vim-speeddating')
+  call minpac#add('scrooloose/nerdtree')
+  call minpac#add('scrooloose/nerdcommenter')
+  call minpac#add('jlanzarotta/bufexplorer')
+  call minpac#add('nathanaelkane/vim-indent-guides')
+  call minpac#add('mxw/vim-jsx')
+  call minpac#add('peitalin/vim-jsx-typescript')
+  call minpac#add('sjl/gundo.vim')
+  call minpac#add('dense-analysis/ale')
+  call minpac#add('jiangmiao/auto-pairs')
+	call minpac#add('weirongxu/plantuml-previewer.vim')
+	call minpac#add('aklt/plantuml-syntax')
+	call minpac#add('mbbill/undotree')
+  call minpac#add('RRethy/vim-illuminate')
+  call minpac#add('ycm-core/YouCompleteMe')
+  call minpac#add('itchyny/lightline.vim')
+  call minpac#add('jparise/vim-graphql')
+  call minpac#add('tmux-plugins/vim-tmux-focus-events')
+
+  " Themes
+  call minpac#add('rakr/vim-one')
+  call minpac#add('altercation/vim-colors-solarized')
+
+  " minpac utility commands
+  command! PackUpdate call minpac#update()
+  command! PackClean call minpac#clean()
+  command! PackStatus call minpac#status()
+
+  " Plugin settings here.
+endif
+
+syntax enable "required

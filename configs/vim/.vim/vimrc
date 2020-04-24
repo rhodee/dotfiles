@@ -1,0 +1,352 @@
+" ----------------------------------------------------------------------------
+" SETTINGS
+" :options for a more full list of what you can mod.
+
+let mapleader="\<space>"
+let maplocalleader="\<space>"
+
+" ----------------------------------------------------------------------------
+" Load VIM Plugins
+" ----------------------------------------------------------------------------
+if filereadable(expand("~/.vim/vim_bundles"))
+  silent! source ~/.vim/vim_bundles
+endif
+
+" ----------------------------------------------------------------------------
+" Plugin: Vinegar
+" ----------------------------------------------------------------------------
+let NERDTreeHijackNetrw = 0
+" ----------------------------------------------------------------------------
+" Plugin: UndoTree
+" ----------------------------------------------------------------------------
+let g:undotree_SetFocusWhenToggle=1
+" ----------------------------------------------------------------------------
+" Plugin: NERDTree
+" ----------------------------------------------------------------------------
+autocmd StdinReadPre * let s:std_in=1
+
+" open a NERDTree automatically when vim starts up if no files were specified
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+" close vim if the only window left open is a NERDTree?
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+let g:NERDTreeWinPos               = "right"
+let NERDTreeWinSize                = 25
+let NERDTreeShowHidden             = 1
+let NERDTreeHijackNetrw            = 1
+let NERDTreeRespectWildIgnore      = 1
+let NERDTreeQuitOnOpen             = 1
+let NERDTreeIgnore                 = ['\.pyc$', '\~$','\.DS_Store','\.rbc$', '\.log']
+let g:NERDTreeChDirMode            = 2
+let g:NERDTreeSortOrder            = ['^__\.py$', '\/$', '*', '\.swp$', '\.bak$', '\~$']
+let g:NERDTreeShowBookmarks        = 1
+let g:nerdtree_tabs_focus_on_files = 1
+let g:NERDTreeDirArrowExpandable   = '▸'
+let g:NERDTreeDirArrowCollapsible  = '▾'
+let g:NERDTreeMinimalUI            = 1
+" ----------------------------------------------------------------------------
+" Plugin: NerdTree Git Plugin
+" ----------------------------------------------------------------------------
+let g:NERDTreeIndicatorMapCustom = {
+  \ 'Modified'  : '~',
+  \ 'Staged'    : '+',
+  \ 'Untracked' : '≠',
+  \ 'Renamed'   : '→',
+  \ 'Unmerged'  : '=',
+  \ 'Deleted'   : '×',
+  \ 'Dirty'     : '~',
+  \ 'Clean'     : '√',
+  \ 'Unknown'   : '?'
+  \ }
+hi def link NERDTreeOpenable Title
+hi def link NERDTreeClosable Title
+" ----------------------------------------------------------------------------
+" Plugin: GIT GUTTER
+" ----------------------------------------------------------------------------
+let g:gitgutter_enabled           = 1    " start git gutter when editor opened
+let g:gitgutter_highlight_lines   = 0    " start git gutter when editor opened
+let g:gitgutter_highlight_linenrs = 1    " start git gutter when editor opened
+let g:gitgutter_max_signs         = 1000 " default value
+let g:gitgutter_sign_priority     = 0    " do not clobber other values in the gutter
+hi GitGutterAdd    ctermfg=2 ctermbg=236
+hi GitGutterChange ctermfg=3 ctermbg=236
+hi GitGutterDelete ctermfg=1 ctermbg=236
+" ----------------------------------------------------------------------------
+" Plugin: Auto Pairs
+" ----------------------------------------------------------------------------
+let g:AutoPairsFlyMode = 1
+" ----------------------------------------------------------------------------
+" Plugin: ALE
+" ----------------------------------------------------------------------------
+
+let g:ale_linters={'go': ['golanglint-ci', 'go vet', 'staticcheck']}
+let g:ale_fixers={'go': ['gofmt', 'goimports']}
+let g:ale_go_gofmt_options='-s'   " simplify code
+let g:ale_lint_on_enter=0
+let g:ale_fix_on_save=1
+let g:ale_lint_on_text_changed='never'
+let g:ale_go_langserver_executable='gopls'
+let g:ale_sign_error = '⤫'
+let g:ale_sign_warning = '⚠'
+" ----------------------------------------------------------------------------
+" Load Theme
+" ----------------------------------------------------------------------------
+set termguicolors
+set background=dark
+colorscheme one
+" ----------------------------------------------------------------------------
+" Load Common Configuration
+" ----------------------------------------------------------------------------
+set nocompatible
+
+filetype plugin indent on
+
+" prevent vim from adding line at the end of every file
+set noeol
+set binary
+set hidden                              " enable hidden buffers
+set backspace=eol,start,indent
+set directory-=.
+
+set showcmd                             "show incomplete cmds down the bottom
+set showmode                            "show current mode down the bottom
+
+" Reading/Writing
+set ttimeout
+set ttimeoutlen=10
+set number
+set numberwidth=5
+set relativenumber
+set noautowrite
+set noautowriteall
+set autoread
+au FocusGained,BufEnter * checktime
+set modeline
+set modelines=0
+set ffs=unix,dos,mac
+set nobackup
+set nowritebackup
+set noswapfile
+set history=1000
+
+if has("persistent_undo")
+  silent !mkdir ~/.vim/undo > /dev/null 2>&1
+  set undolevels=10000
+  set undodir=~/.vim/undo " Allow undoes to persist even after a file is closed
+  set undofile
+  set undoreload=10000    " maximum number lines to save for undo on a buffer reload
+endif
+
+autocmd FocusLost * silent! wa " Automatically save file
+
+" Moving Around/Editing
+set cmdheight=2
+set cursorline
+set ruler
+set nostartofline
+set virtualedit=all
+set scrolloff=3
+set sidescrolloff=7
+set sidescroll=1
+set whichwrap+=<,>,h,l
+set showmatch
+set nowrap
+set linebreak
+set autoindent
+set smartindent
+set smarttab
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+set expandtab
+set shiftround
+set scrolljump=8
+set splitbelow
+set splitright
+" ----------------------------------------------------------------------------
+" SEARCH
+" ----------------------------------------------------------------------------
+set ignorecase
+set hlsearch
+set incsearch
+set smartcase
+set gdefault "no need to add g at end of substitute / replace commands
+" ----------------------------------------------------------------------------
+"  INDENT SUPPORT
+" ----------------------------------------------------------------------------
+let g:indent_guides_auto_colors = 0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
+" ----------------------------------------------------------------------------
+" UI CONFIG
+" ----------------------------------------------------------------------------
+set laststatus=2
+set statusline=
+set background=dark
+set guioptions-=m " remove menu bar
+set guioptions-=T " remove toolbar
+set guioptions-=r " remove right-hand scroll bar
+set guioptions-=R
+set guioptions-=l
+set guioptions-=L " remove left-hand scroll bar
+set t_Co=256
+
+" Folding
+set foldenable        " Auto fold code
+set foldmethod=syntax " Fold are defined by syntax highlighting
+set foldcolumn=3
+set foldlevel=1
+
+" Allow color schemes to do bright colors without forcing bold.
+if &t_Co == 8 && $TERM !~# '^linux'
+  set t_Co=16
+endif
+
+set nocursorline
+set nocursorcolumn
+set lazyredraw
+set title
+set cul           "highlight current line
+set showmatch     "Show matching brackets.
+set mat=5         "Bracket blinking.
+set tabpagemax=5
+set magic         " For regular expressions turn magic on
+
+set noerrorbells
+set novisualbell
+set t_vb=
+set tm=500
+" ----------------------------------------------------------------------------
+" Syntax
+" ----------------------------------------------------------------------------
+" Set syntax highlighting for specific file types
+autocmd BufRead,BufNewFile *.md set filetype=markdown
+autocmd BufRead,BufNewFile .{jscs,jshint,eslint}rc set filetype=json
+autocmd BufRead,BufNewFile gitconfig.local set filetype=gitconfig
+autocmd BufRead,BufNewFile vimrc,vimrc.local set filetype=vim
+" ----------------------------------------------------------------------------
+" FORMATTING
+" ----------------------------------------------------------------------------
+set title
+set showbreak=↪⋯⋯
+set signcolumn=yes
+set list
+set listchars=tab:»·,trail:·,eol:¬,nbsp:·,extends:❯,precedes:❮
+
+" Encoding
+set encoding=utf-8
+set termencoding=utf-8
+set fileencoding=utf-8
+
+set textwidth=120
+set colorcolumn=+1
+set nojoinspaces              " Use one space, not two, after punctuation.
+
+set printoptions:paper:letter,header:0,syntax:n
+set printfont:Arial
+
+" Wrapping
+set formatoptions-=t          " Keep my textwidth setting
+set textwidth=0               " Word wrap without line break
+set wrapmargin=0              " Word wrap without line break
+set whichwrap=b,s,h,l,<,>,[,] " Backspace and cursor keys wrap too
+set wrap linebreak            " Set wrapping with soft wrap (set wm=2 => hard wrap)
+
+if exists('+colorcolumn')
+  let &colorcolumn="-1,".join(range(120,999),",")
+  set colorcolumn=-1
+  highlight ColorColumn ctermbg=red
+endif
+set formatoptions=qrn1
+set diffopt+=vertical " Always use vertical diffs
+" ----------------------------------------------------------------------------
+" Plugin: Vim-Go
+" ----------------------------------------------------------------------------
+let g:go_decls_mode              = 'fzf'
+let g:go_fmt_command             = 'goimports'
+let g:go_rename_command          = 'gopls'
+let g:go_term_mode               = 'vsplit'
+let g:go_list_type               = 'quickfix'
+let g:go_def_mode                = 'gopls'
+let g:go_info_mode               = 'gopls'
+let g:go_fmt_fail_silently       = 1
+let g:go_code_completion_enabled = 0
+let g:go_statusline_duration     = 10000
+let g:go_auto_sameids            = 1
+let g:go_auto_type_info          = 1
+let g:go_def_mapping_enabled     = 0
+
+let g:go_highlight_types                     = 1
+let g:go_highlight_fields                    = 1
+let g:go_highlight_functions                 = 1
+let g:go_highlight_methods                   = 1
+let g:go_highlight_build_constraints         = 1
+let g:go_highlight_structs                   = 1
+let g:go_highlight_generate_tags             = 1
+let g:go_highlight_extra_types               = 1
+let g:go_highlight_operators                 = 0
+let g:go_highlight_space_tab_error           = 0
+let g:go_highlight_array_whitespace_error    = 0
+let g:go_highlight_trailing_whitespace_error = 0
+" ----------------------------------------------------------------------------
+" Plugin: Goyo
+" ----------------------------------------------------------------------------
+let g:goyo_width         = 100
+let g:goyo_margin_top    = 3
+let g:goyo_margin_bottom = 3
+let g:goyo_linenr        = 1
+" ----------------------------------------------------------------------------
+" Goyo + Limelight
+" ----------------------------------------------------------------------------
+if has("autocmd")
+  autocmd User GoyoEnter Limelight
+  autocmd User GoyoLeave Limelight!
+  let g:limelight_paragraph_span = 1
+endif
+" ----------------------------------------------------------------------------
+" FZF
+let g:fzf_preview_window = 'right:40%'
+" Escape inside a FZF terminal window should exit the terminal window
+" rather than going into the terminal's normal mode.
+autocmd FileType fzf tnoremap <buffer> <Esc> <Esc>
+" let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --follow --glob "!.git/*"'
+" ----------------------------------------------------------------------------
+" Spell checking
+" ----------------------------------------------------------------------------
+if has("spell")
+  set spell spelllang=en_us "check spelling (z= suggestions, zg add good word, zb bad)
+  set complete+=kspell
+  syntax spell notoplevel
+endif
+" ----------------------------------------------------------------------------
+" Spelling Highlighting
+" ----------------------------------------------------------------------------
+syntax on " Enable syntax highlighting
+
+hi clear SpellBad
+hi SpellBad cterm=underline,bold ctermfg=white
+" ----------------------------------------------------------------------------
+" Autocompletion
+" ----------------------------------------------------------------------------
+set wildmenu                                     " Enable enhanced tab autocomplete.
+set wildmode=list:longest,full                   " Complete till longest string, then open the wildmenu.
+set wildignore+=.hg,.git,.svn                    " Version control
+set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg   " binary images
+set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest " compiled object files
+set wildignore+=*.spl                            " compiled spelling word lists
+set wildignore+=*.sw?                            " Vim swap files
+set wildignore+=*.DS_Store                       " OSX
+set wildignore+=go/pkg                           " Go static files
+set wildignore+=go/bin                           " Go bin files
+set wildignore+=*.orig                           " Merge resolution files
+
+" Config Python used by Neovim
+let g:loaded_python_provider = 1
+let g:python3_host_prog = '/usr/bin/python3'
+" ----------------------------------------------------------------------------
+" Load Local Configuration
+" ----------------------------------------------------------------------------
+if filereadable(expand("~/.config/nvim/nvimrc.local"))
+  silent! source ~/.config/nvim/nvimrc.local
+endif

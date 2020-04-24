@@ -1,0 +1,119 @@
+[user]
+  name = <NAME>
+  email = <EMAIL ADDRESS>
+[help]
+  autocorrect = 5
+[url "git@github.com:<USERNAME>/"]
+  insteadOf = "me:"
+[url "ssh://git@github.com/<USERNAME>/"]
+  insteadOf = https://github.com/<USERNAME>/
+[color]
+  ui = auto
+[color "branch"]
+  current = cyan reverse
+  local = yellow
+  remote = green
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old = red bold
+  new = green bold
+[advice]
+  statusHints = false
+[color "status"]
+  added = yellow
+  changed = green
+  untracked = cyan
+[alias]
+  co = checkout
+  ci = commit
+  cl = clone
+  po = push origin
+  pro = pull --rebase origin
+  fo = fetch origin
+  pom = push origin master
+  rem = remote -v
+  rshow = remote show origin
+  st = status --short --branch --ignore-submodules
+  br = branch
+  cp = cherry-pick
+  merff = merge --ff-only
+  tag = tag -a
+  aa = add --all
+  au = add -u
+  ap = add --patch
+  # stash operations
+  sl = stash list
+  sa = stash apply
+  ss = stash save
+  # show diff in working tree since last commit, including new files
+  ds = diff --color-words --ignore-all-space --cached
+  dc = diff --cached
+  dlc = diff --cached HEAD^
+  di = diff HEAD --color-words --ignore-all-space
+  # find git tracked-files
+  f = "!git ls-files | grep -i"
+  get = grep --color=auto --break --ignore-case -Ii --untracked --before-context 1 --after-context 2 -e
+  # view logs
+  l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+  hist ="!git l --pretty=format:\"%h -- %s [%cd, %cn, %cr]\" --stat -42 --graph --date=short"
+  lg ="!git l -C --stat --decorate"
+  lgp ="!git l -C --stat -p --decorate"
+  rlg = reflog show
+  up = remote update --prune
+  shit = "!gitk --all $( git fsck --no-reflog | awk '/dangling commit/ {print $3}' )"
+  oops = reset --soft "HEAD^"
+  unstage = reset HEAD
+  sup = submodule update
+  code-review = difftool origin/master...
+  ign = ls-files -o -i --exclude-standard
+[commit]
+  template = ~/.gitmessage.txt
+[core]
+  pager = diff-so-fancy | less --tabs=4 -RFX
+  editor = vim
+  excludesfile = ~/.gitignore_global
+  quotepath = false
+  # Do not consider trailing space change as a cause for merge
+  whitespace = -trailing-space,space-before-tab
+  autocrlf = false
+  legacyheaders = false
+[receive]
+  denyNonFastForwards = true
+[push]
+  # 'git push' only work on current branch
+  default = current
+  # When pushing, also push tags whose commit-ishs are now reachable upstream
+  followTags = true
+[rerere]
+  # Enable the recording of resolved conflicts
+  # So identical hunks can be resolved automatically in future
+  enabled = true
+[status]
+  # Recursively through untracked directories to display all contents
+  showUntrackedFiles = all
+[grep]
+  extendedRegexp = true
+  lineNumber = true
+[branch]
+ # always setup 'git pull' to rebase instead of merge
+  autosetuprebase = always
+  autosetupmerge = true
+[merge]
+  tool = vimdiff
+[mergetool]
+  prompt = true
+[diff]
+  mnemonicprefix = true
+  tool = vimdiff
+[difftool]
+  prompt = true
+[color "diff-highlight"]
+  oldNormal = red bold
+  oldHighlight = red bold 52
+  newNormal = green bold
+  newHighlight = green bold 22
+[github]
+  user = rhodee
+[credential "https://source.developers.google.com"]
+  helper = gcloud.sh
