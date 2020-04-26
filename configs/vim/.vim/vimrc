@@ -1,86 +1,6 @@
 " ----------------------------------------------------------------------------
-" SETTINGS
-" :options for a more full list of what you can mod.
-
-let mapleader="\<space>"
-let maplocalleader="\<space>"
-
-" ----------------------------------------------------------------------------
-" Load VIM Plugins
-" ----------------------------------------------------------------------------
-if filereadable(expand("~/.vim/vim_bundles"))
-  silent! source ~/.vim/vim_bundles
-endif
-
-" ----------------------------------------------------------------------------
-" Plugin: Vinegar
-" ----------------------------------------------------------------------------
-let NERDTreeHijackNetrw = 0
-" ----------------------------------------------------------------------------
-" Plugin: UndoTree
-" ----------------------------------------------------------------------------
-let g:undotree_SetFocusWhenToggle=1
-" ----------------------------------------------------------------------------
-" Plugin: NERDTree
-" ----------------------------------------------------------------------------
-autocmd StdinReadPre * let s:std_in=1
-
-" open a NERDTree automatically when vim starts up if no files were specified
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-
-" close vim if the only window left open is a NERDTree?
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
-let g:NERDTreeWinPos               = "right"
-let NERDTreeWinSize                = 25
-let NERDTreeShowHidden             = 1
-let NERDTreeHijackNetrw            = 1
-let NERDTreeRespectWildIgnore      = 1
-let NERDTreeQuitOnOpen             = 1
-let NERDTreeIgnore                 = ['\.pyc$', '\~$','\.DS_Store','\.rbc$', '\.log']
-let g:NERDTreeChDirMode            = 2
-let g:NERDTreeSortOrder            = ['^__\.py$', '\/$', '*', '\.swp$', '\.bak$', '\~$']
-let g:NERDTreeShowBookmarks        = 1
-let g:nerdtree_tabs_focus_on_files = 1
-let g:NERDTreeDirArrowExpandable   = '▸'
-let g:NERDTreeDirArrowCollapsible  = '▾'
-let g:NERDTreeMinimalUI            = 1
-" ----------------------------------------------------------------------------
-" Plugin: GIT GUTTER
-" ----------------------------------------------------------------------------
-let g:gitgutter_enabled           = 1    " start git gutter when editor opened
-let g:gitgutter_highlight_lines   = 0    " start git gutter when editor opened
-let g:gitgutter_highlight_linenrs = 1    " start git gutter when editor opened
-let g:gitgutter_max_signs         = 1000 " default value
-let g:gitgutter_sign_priority     = 0    " do not clobber other values in the gutter
-hi GitGutterAdd    ctermfg=2 ctermbg=236
-hi GitGutterChange ctermfg=3 ctermbg=236
-hi GitGutterDelete ctermfg=1 ctermbg=236
-" ----------------------------------------------------------------------------
-" Plugin: Auto Pairs
-" ----------------------------------------------------------------------------
-let g:AutoPairsFlyMode = 1
-" ----------------------------------------------------------------------------
-" Plugin: ALE
-" ----------------------------------------------------------------------------
-
-let g:ale_linters={'go': ['golanglint-ci', 'go vet', 'staticcheck']}
-let g:ale_fixers={'go': ['gofmt', 'goimports']}
-let g:ale_go_gofmt_options='-s'   " simplify code
-let g:ale_lint_on_enter=0
-let g:ale_fix_on_save=1
-let g:ale_lint_on_text_changed='never'
-let g:ale_go_langserver_executable='gopls'
-let g:ale_sign_error = '⤫'
-let g:ale_sign_warning = '⚠'
-" ----------------------------------------------------------------------------
-" Load Theme
-" ----------------------------------------------------------------------------
-set termguicolors
-set background=dark
-colorscheme one
-" ----------------------------------------------------------------------------
 " Load Common Configuration
+" :options for full list.
 " ----------------------------------------------------------------------------
 set nocompatible
 
@@ -93,9 +13,12 @@ set hidden                              " enable hidden buffers
 set backspace=eol,start,indent
 set directory-=.
 
-set showcmd                             "show incomplete cmds down the bottom
-set showmode                            "show current mode down the bottom
+set showcmd  " show incomplete cmds down the bottom
+set showmode " show current mode down the bottom
 
+" Config Python used by Neovim
+let g:loaded_python_provider = 1
+let g:python3_host_prog = '/usr/bin/python3'
 " Reading/Writing
 set ttimeout
 set ttimeoutlen=10
@@ -140,10 +63,13 @@ set linebreak
 set autoindent
 set smartindent
 set smarttab
+
+" spaces > tabs
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
 set expandtab
+
 set shiftround
 set scrolljump=8
 set splitbelow
@@ -156,12 +82,6 @@ set hlsearch
 set incsearch
 set smartcase
 set gdefault "no need to add g at end of substitute / replace commands
-" ----------------------------------------------------------------------------
-"  INDENT SUPPORT
-" ----------------------------------------------------------------------------
-let g:indent_guides_auto_colors = 0
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
 " ----------------------------------------------------------------------------
 " UI CONFIG
 " ----------------------------------------------------------------------------
@@ -236,14 +156,125 @@ set textwidth=0               " Word wrap without line break
 set wrapmargin=0              " Word wrap without line break
 set whichwrap=b,s,h,l,<,>,[,] " Backspace and cursor keys wrap too
 set wrap linebreak            " Set wrapping with soft wrap (set wm=2 => hard wrap)
+" ----------------------------------------------------------------------------
+" Autocompletion
+" ----------------------------------------------------------------------------
+set wildmenu                                     " Enable enhanced tab autocomplete.
+set wildmode=list:longest,full                   " Complete till longest string, then open the wildmenu.
+set wildignore+=.hg,.git,.svn                    " Version control
+set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg   " binary images
+set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest " compiled object files
+set wildignore+=*.spl                            " compiled spelling word lists
+set wildignore+=*.sw?                            " Vim swap files
+set wildignore+=*.DS_Store                       " OSX
+set wildignore+=go/pkg                           " Go static files
+set wildignore+=go/bin                           " Go bin files
+set wildignore+=*.orig                           " Merge resolution files
+" ----------------------------------------------------------------------------
+" Load Local Configuration
+" ----------------------------------------------------------------------------
+if filereadable(expand("~/.config/nvim/nvimrc.local"))
+  silent! source ~/.config/nvim/nvimrc.local
+endif
+" ----------------------------------------------------------------------------
+" Spell checking
+" ----------------------------------------------------------------------------
+if has("spell")
+  set spell spelllang=en_us "check spelling (z= suggestions, zg add good word, zb bad)
+  set complete+=kspell
+  syntax spell notoplevel
+endif
+" ----------------------------------------------------------------------------
+" Spelling Highlighting
+" ----------------------------------------------------------------------------
+syntax on " Enable syntax highlighting
 
+hi clear SpellBad
+hi SpellBad cterm=underline,bold ctermfg=white
+" ----------------------------------------------------------------------------
+" Color Column Theme
+" ----------------------------------------------------------------------------
 if exists('+colorcolumn')
   let &colorcolumn="-1,".join(range(120,999),",")
   set colorcolumn=-1
   highlight ColorColumn ctermbg=red
 endif
+
 set formatoptions=qrn1
 set diffopt+=vertical " Always use vertical diffs
+" ----------------------------------------------------------------------------
+" Load Theme
+" ----------------------------------------------------------------------------
+set termguicolors
+set background=dark
+colorscheme one
+" ----------------------------------------------------------------------------
+" PLUGINS
+" see '$VIMRC/vim_bundles' for full list.
+" ----------------------------------------------------------------------------
+if filereadable(expand("~/.vim/vim_bundles"))
+  silent! source ~/.vim/vim_bundles
+endif
+" ----------------------------------------------------------------------------
+" Plugin: Vinegar
+" ----------------------------------------------------------------------------
+let NERDTreeHijackNetrw = 0
+" ----------------------------------------------------------------------------
+" Plugin: UndoTree
+" ----------------------------------------------------------------------------
+let g:undotree_SetFocusWhenToggle=1
+" ----------------------------------------------------------------------------
+" Plugin: NERDTree
+" ----------------------------------------------------------------------------
+autocmd StdinReadPre * let s:std_in=1
+
+" open a NERDTree automatically when vim starts up if no files were specified
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+" close vim if the only window left open is a NERDTree?
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+let g:NERDTreeWinPos               = "right"
+let NERDTreeWinSize                = 25
+let NERDTreeShowHidden             = 1
+let NERDTreeHijackNetrw            = 1
+let NERDTreeRespectWildIgnore      = 1
+let NERDTreeQuitOnOpen             = 1
+let NERDTreeIgnore                 = ['\.pyc$', '\~$','\.DS_Store','\.rbc$', '\.log']
+let g:NERDTreeChDirMode            = 2
+let g:NERDTreeSortOrder            = ['^__\.py$', '\/$', '*', '\.swp$', '\.bak$', '\~$']
+let g:NERDTreeShowBookmarks        = 1
+let g:nerdtree_tabs_focus_on_files = 1
+let g:NERDTreeDirArrowExpandable   = '▸'
+let g:NERDTreeDirArrowCollapsible  = '▾'
+let g:NERDTreeMinimalUI            = 1
+" ----------------------------------------------------------------------------
+" Plugin: GIT GUTTER
+" ----------------------------------------------------------------------------
+let g:gitgutter_enabled           = 1    " start git gutter when editor opened
+let g:gitgutter_highlight_lines   = 0    " start git gutter when editor opened
+let g:gitgutter_highlight_linenrs = 1    " start git gutter when editor opened
+let g:gitgutter_max_signs         = 1000 " default value
+let g:gitgutter_sign_priority     = 0    " do not clobber other values in the gutter
+hi GitGutterAdd    ctermfg=2 ctermbg=236
+hi GitGutterChange ctermfg=3 ctermbg=236
+hi GitGutterDelete ctermfg=1 ctermbg=236
+" ----------------------------------------------------------------------------
+" Plugin: Auto Pairs
+" ----------------------------------------------------------------------------
+let g:AutoPairsFlyMode = 1
+" ----------------------------------------------------------------------------
+" Plugin: ALE
+" ----------------------------------------------------------------------------
+let g:ale_linters={'go': ['golanglint-ci', 'go vet', 'staticcheck']}
+let g:ale_fixers={'go': ['gofmt', 'goimports']}
+let g:ale_go_gofmt_options='-s'   " simplify code
+let g:ale_lint_on_enter=0
+let g:ale_fix_on_save=1
+let g:ale_lint_on_text_changed='never'
+let g:ale_go_langserver_executable='gopls'
+let g:ale_sign_error = '⤫'
+let g:ale_sign_warning = '⚠'
 " ----------------------------------------------------------------------------
 " Plugin: Vim-Go
 " ----------------------------------------------------------------------------
@@ -261,13 +292,13 @@ let g:go_auto_sameids            = 1
 let g:go_auto_type_info          = 1
 let g:go_def_mapping_enabled     = 0
 
-let g:go_highlight_types                     = 1
-let g:go_highlight_fields                    = 1
-let g:go_highlight_functions                 = 1
-let g:go_highlight_methods                   = 1
+let g:go_highlight_types                     = 0
+let g:go_highlight_fields                    = 0
+let g:go_highlight_functions                 = 0
+let g:go_highlight_methods                   = 0
 let g:go_highlight_build_constraints         = 1
 let g:go_highlight_structs                   = 1
-let g:go_highlight_generate_tags             = 1
+let g:go_highlight_generate_tags             = 0
 let g:go_highlight_extra_types               = 1
 let g:go_highlight_operators                 = 0
 let g:go_highlight_space_tab_error           = 0
@@ -289,48 +320,10 @@ if has("autocmd")
   let g:limelight_paragraph_span = 1
 endif
 " ----------------------------------------------------------------------------
-" FZF
+" Plugin: FZF
+" ----------------------------------------------------------------------------
 let g:fzf_preview_window = 'right:40%'
 " Escape inside a FZF terminal window should exit the terminal window
 " rather than going into the terminal's normal mode.
 autocmd FileType fzf tnoremap <buffer> <Esc> <Esc>
 " let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --follow --glob "!.git/*"'
-" ----------------------------------------------------------------------------
-" Spell checking
-" ----------------------------------------------------------------------------
-if has("spell")
-  set spell spelllang=en_us "check spelling (z= suggestions, zg add good word, zb bad)
-  set complete+=kspell
-  syntax spell notoplevel
-endif
-" ----------------------------------------------------------------------------
-" Spelling Highlighting
-" ----------------------------------------------------------------------------
-syntax on " Enable syntax highlighting
-
-hi clear SpellBad
-hi SpellBad cterm=underline,bold ctermfg=white
-" ----------------------------------------------------------------------------
-" Autocompletion
-" ----------------------------------------------------------------------------
-set wildmenu                                     " Enable enhanced tab autocomplete.
-set wildmode=list:longest,full                   " Complete till longest string, then open the wildmenu.
-set wildignore+=.hg,.git,.svn                    " Version control
-set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg   " binary images
-set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest " compiled object files
-set wildignore+=*.spl                            " compiled spelling word lists
-set wildignore+=*.sw?                            " Vim swap files
-set wildignore+=*.DS_Store                       " OSX
-set wildignore+=go/pkg                           " Go static files
-set wildignore+=go/bin                           " Go bin files
-set wildignore+=*.orig                           " Merge resolution files
-
-" Config Python used by Neovim
-let g:loaded_python_provider = 1
-let g:python3_host_prog = '/usr/bin/python3'
-" ----------------------------------------------------------------------------
-" Load Local Configuration
-" ----------------------------------------------------------------------------
-if filereadable(expand("~/.config/nvim/nvimrc.local"))
-  silent! source ~/.config/nvim/nvimrc.local
-endif
