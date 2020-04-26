@@ -34,20 +34,6 @@ nnoremap <silent> <Leader>fi :Rg<space>
 
 " Plugin: Undotree
 map <Leader>u :UndotreeToggle<CR>
-
-" Plugin: GIT
-noremap <Leader>gc :Gcommit<CR>
-noremap <Leader>gsh :Gpush<CR>
-noremap <Leader>gll :Gpull<CR>
-noremap <Leader>gs :Gstatus<CR>
-noremap <Leader>gr :Gremove<CR>
-noremap <Leader>ga :Git add -A<CR>
-noremap <Leader>gd :Gdiff<CR>
-noremap <Leader>gl :Glog<CR>
-noremap <Leader>gp :Gpush<CR>
-noremap <Leader>gr :Gread<CR>
-noremap <Leader>gw :Gwrite<CR>
-noremap <Leader>ge :Gedit<CR>
 " ----------------------------------------------------------------------------
 " GENERAL KEY MAP
 " ----------------------------------------------------------------------------

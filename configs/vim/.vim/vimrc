@@ -46,22 +46,6 @@ let g:NERDTreeDirArrowExpandable   = '▸'
 let g:NERDTreeDirArrowCollapsible  = '▾'
 let g:NERDTreeMinimalUI            = 1
 " ----------------------------------------------------------------------------
-" Plugin: NerdTree Git Plugin
-" ----------------------------------------------------------------------------
-let g:NERDTreeIndicatorMapCustom = {
-  \ 'Modified'  : '~',
-  \ 'Staged'    : '+',
-  \ 'Untracked' : '≠',
-  \ 'Renamed'   : '→',
-  \ 'Unmerged'  : '=',
-  \ 'Deleted'   : '×',
-  \ 'Dirty'     : '~',
-  \ 'Clean'     : '√',
-  \ 'Unknown'   : '?'
-  \ }
-hi def link NERDTreeOpenable Title
-hi def link NERDTreeClosable Title
-" ----------------------------------------------------------------------------
 " Plugin: GIT GUTTER
 " ----------------------------------------------------------------------------
 let g:gitgutter_enabled           = 1    " start git gutter when editor opened
