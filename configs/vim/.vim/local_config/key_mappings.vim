@@ -22,6 +22,12 @@ nnoremap <Leader><Leader> <C-^>
 " Fast saving
 nmap <silent> <Leader>w :w!<cr>
 
+"move between buffer
+noremap <Leader>h <C-W>h
+noremap <Leader>l <C-W>l
+noremap <Leader>k <C-W>k
+noremap <Leader>j <C-W>j
+
 " narrower window
 map - <C-W><
 " wider window
