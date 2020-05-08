@@ -5,6 +5,11 @@
 runtime! local_config/functions.vim
 runtime! local_config/key_mappings.vim
 
+" Change cursor by mode
+set guicursor=n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20
+"enable live substitution previews
+set inccommand=nosplit
+
 iab Acheive Achieve
 iab acheive achieve
 iab Alos Also

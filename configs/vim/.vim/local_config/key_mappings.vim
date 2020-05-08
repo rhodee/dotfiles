@@ -48,6 +48,14 @@ nmap <Leader>[ <<
 vmap <Leader>[ <gv
 vmap <Leader>] >gv
 
+" Navigation
+nnoremap gf :vertical wincmd f<CR>
+" Buffer Switching with tab
+nnoremap <Leader><Tab> :buffer<Space><Tab>
+nnoremap <Leader>o :e **/*
+nnoremap <Leader>v :vsplit **/*
+nnoremap <Leader>s :split **/*
+
 " Tabs
 "
 " opens a new tab with the current buffer's path
@@ -74,6 +82,7 @@ nmap <Leader>p ]p
 
 command! Qall qall
 command! Q q " Bind :Q to :q
+noremap <C-q> :confirm qall<CR>
 map Q <Nop>  " Disable Ex mode
 map K <Nop>  " Disable K looking stuff up
 
@@ -106,11 +115,6 @@ xmap ga :EasyAlign
 
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga :EasyAlign
-
-" Plugin: NERDTree
-map <Leader>n :NERDTreeToggle<cr>
-map <Leader>nb :NERDTreeFromBookmark<cr>
-map <Leader>nf :NERDTreeFind<cr>
 
 " Plugin: ALE
 nnoremap <Leader>a <Plug>(ale_next_wrap)

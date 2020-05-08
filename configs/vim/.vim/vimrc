@@ -16,9 +16,6 @@ set directory-=.
 set showcmd  " show incomplete cmds down the bottom
 set showmode " show current mode down the bottom
 
-" Config Python used by Neovim
-let g:loaded_python_provider = 1
-let g:python3_host_prog = '/usr/bin/python3'
 " Reading/Writing
 set ttimeout
 set ttimeoutlen=10
@@ -27,7 +24,13 @@ set numberwidth=5
 set relativenumber
 set noautowrite
 set noautowriteall
+
 set autoread
+augroup autoRead
+    autocmd!
+    autocmd CursorHold * silent! checktime
+augroup END
+
 au FocusGained,BufEnter * checktime
 set modeline
 set modelines=0
@@ -36,6 +39,13 @@ set nobackup
 set nowritebackup
 set noswapfile
 set history=1000
+
+" Speed up scroll perf for certain filetypes
+augroup syntaxSyncMinLines
+  autocmd!
+  autocmd Syntax * syntax sync minlines=2000
+augroup END
+
 
 if has("persistent_undo")
   silent !mkdir ~/.vim/undo > /dev/null 2>&1
@@ -74,10 +84,16 @@ set shiftround
 set scrolljump=8
 set splitbelow
 set splitright
+
+" Improve wrapping
+set breakindent
+set breakindentopt=shift:2
+set showbreak=↳
 " ----------------------------------------------------------------------------
 " SEARCH
 " ----------------------------------------------------------------------------
 set ignorecase
+set infercase
 set hlsearch
 set incsearch
 set smartcase
@@ -150,12 +166,23 @@ set nojoinspaces              " Use one space, not two, after punctuation.
 set printoptions:paper:letter,header:0,syntax:n
 set printfont:Arial
 
+" ----------------------------------------------------------------------------
+" Navigation
+" ----------------------------------------------------------------------------
+set autochdir " Set the working directory to wherever the open file lives
+
 " Wrapping
 set formatoptions-=t          " Keep my textwidth setting
 set textwidth=0               " Word wrap without line break
 set wrapmargin=0              " Word wrap without line break
 set whichwrap=b,s,h,l,<,>,[,] " Backspace and cursor keys wrap too
 set wrap linebreak            " Set wrapping with soft wrap (set wm=2 => hard wrap)
+" ----------------------------------------------------------------------------
+" <TAB> Completion
+" ----------------------------------------------------------------------------
+set wildmenu        " Enable enhanced tab autocomplete.
+set wildmode=full   " Complete till longest string, then open the wildmenu.
+set wildcharm=<Tab>
 " ----------------------------------------------------------------------------
 " Autocompletion
 " ----------------------------------------------------------------------------
@@ -201,7 +228,7 @@ if exists('+colorcolumn')
 endif
 
 set formatoptions=qrn1
-set diffopt+=vertical " Always use vertical diffs
+set diffopt=filler,internal,algorithm:histogram,indent-heuristic
 " ----------------------------------------------------------------------------
 " Load Theme
 " ----------------------------------------------------------------------------
@@ -216,38 +243,9 @@ if filereadable(expand("~/.vim/vim_bundles"))
   silent! source ~/.vim/vim_bundles
 endif
 " ----------------------------------------------------------------------------
-" Plugin: Vinegar
-" ----------------------------------------------------------------------------
-let NERDTreeHijackNetrw = 0
-" ----------------------------------------------------------------------------
 " Plugin: UndoTree
 " ----------------------------------------------------------------------------
 let g:undotree_SetFocusWhenToggle=1
-" ----------------------------------------------------------------------------
-" Plugin: NERDTree
-" ----------------------------------------------------------------------------
-autocmd StdinReadPre * let s:std_in=1
-
-" open a NERDTree automatically when vim starts up if no files were specified
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-
-" close vim if the only window left open is a NERDTree?
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
-let g:NERDTreeWinPos               = "right"
-let NERDTreeWinSize                = 25
-let NERDTreeShowHidden             = 1
-let NERDTreeHijackNetrw            = 1
-let NERDTreeRespectWildIgnore      = 1
-let NERDTreeQuitOnOpen             = 1
-let NERDTreeIgnore                 = ['\.pyc$', '\~$','\.DS_Store','\.rbc$', '\.log']
-let g:NERDTreeChDirMode            = 2
-let g:NERDTreeSortOrder            = ['^__\.py$', '\/$', '*', '\.swp$', '\.bak$', '\~$']
-let g:NERDTreeShowBookmarks        = 1
-let g:nerdtree_tabs_focus_on_files = 1
-let g:NERDTreeDirArrowExpandable   = '▸'
-let g:NERDTreeDirArrowCollapsible  = '▾'
-let g:NERDTreeMinimalUI            = 1
 " ----------------------------------------------------------------------------
 " Plugin: GIT GUTTER
 " ----------------------------------------------------------------------------
@@ -311,6 +309,19 @@ let g:goyo_width         = 100
 let g:goyo_margin_top    = 3
 let g:goyo_margin_bottom = 3
 let g:goyo_linenr        = 1
+" ----------------------------------------------------------------------------
+" Plugin: Vim-Markdown
+" ----------------------------------------------------------------------------
+let g:vim_markdown_conceal = 2
+let g:vim_markdown_conceal_code_blocks = 0
+let g:vim_markdown_math = 1
+let g:vim_markdown_toml_frontmatter = 1
+let g:vim_markdown_frontmatter = 1
+let g:vim_markdown_strikethrough = 1
+let g:vim_markdown_autowrite = 1
+let g:vim_markdown_edit_url_in = 'tab'
+let g:vim_markdown_follow_anchor = 1
+
 " ----------------------------------------------------------------------------
 " Goyo + Limelight
 " ----------------------------------------------------------------------------
