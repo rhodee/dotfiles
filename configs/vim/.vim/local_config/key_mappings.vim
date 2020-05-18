@@ -53,19 +53,20 @@ nnoremap gf :vertical wincmd f<CR>
 " Buffer Switching with tab
 nnoremap <Leader><Tab> :buffer<Space><Tab>
 nnoremap <Leader>o :e **/*
-nnoremap <Leader>v :vsplit **/*
+nnoremap <Leader>n :vsplit **/*
 nnoremap <Leader>s :split **/*
+nnoremap <Leader>n :Vexplore<CR>
 
 " Tabs
 "
 " opens a new tab with the current buffer's path
-map <Leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
-map <Leader>to :tabonly<cr>
-map <Leader>tc :tabclose<cr>
-map <Leader>tm :tabmove<cr>
-map <Leader>tn :tabnext<cr>
-map <Leader>tp :tabprevious<cr>
-map <Leader><Leader>t :tabnew<cr>
+map <Leader>te :tabedit <c-r>=expand("%:p:h")<CR>/
+map <Leader>to :tabonly<CR>
+map <Leader>tc :tabclose<CR>
+map <Leader>tm :tabmove<CR>
+map <Leader>tn :tabnext<CR>
+map <Leader>tp :tabprevious<CR>
+map <Leader><Leader>t :tabnew<CR>
 map <Leader>ev :tabedit $MYVIMRC<CR>
 
 " Buffer
@@ -87,7 +88,7 @@ map Q <Nop>  " Disable Ex mode
 map K <Nop>  " Disable K looking stuff up
 
 " toggle and untoggle spell checking
-map <Leader>ss :setlocal spell!<cr>
+map <Leader>ss :setlocal spell!<CR>
 
 " <F9> toggles word wrap
 map <F9> :set wrap!<CR>
@@ -120,17 +121,17 @@ nmap ga :EasyAlign
 nnoremap <Leader>a <Plug>(ale_next_wrap)
 
 " Plugin: GOYO
-nnoremap <silent> <Leader>z :Goyo<cr>
+nnoremap <silent> <Leader>z :Goyo<CR>
 
 " Plugin: GIT GUTTER
-nnoremap <silent> <Leader>d :GitGutterToggle<cr>
+nnoremap <silent> <Leader>d :GitGutterToggle<CR>
 
 " Plugin: BufExplorer
 " "Back to last position
 map <Leader>b :BufExplorer<CR>
 
 " Plugin: FZF
-map <silent> <Leader>ff :FZF<cr>
+map <silent> <Leader>ff :FZF<CR>
 
 " Plugin: Rg
 nnoremap <silent> <Leader>fi :Rg<space>

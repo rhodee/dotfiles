@@ -331,6 +331,14 @@ if has("autocmd")
   let g:limelight_paragraph_span = 1
 endif
 " ----------------------------------------------------------------------------
+" Plugin: netrw + vim-vinegar
+" ----------------------------------------------------------------------------
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 4
+let g:netrw_altv = 1
+let g:netrw_winsize = 25
+" ----------------------------------------------------------------------------
 " Plugin: FZF
 " ----------------------------------------------------------------------------
 let g:fzf_preview_window = 'right:40%'
