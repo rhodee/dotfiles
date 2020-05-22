@@ -34,3 +34,9 @@ iab Taht That
 iab taht that
 iab Teh The
 iab teh the
+" ----------------------------------------------------------------------------
+" Load Theme
+" ----------------------------------------------------------------------------
+" set termguicolors
+" set background=dark
+" colorscheme nord

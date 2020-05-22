@@ -198,12 +198,6 @@ set wildignore+=go/pkg                           " Go static files
 set wildignore+=go/bin                           " Go bin files
 set wildignore+=*.orig                           " Merge resolution files
 " ----------------------------------------------------------------------------
-" Load Local Configuration
-" ----------------------------------------------------------------------------
-if filereadable(expand("~/.config/nvim/nvimrc.local"))
-  silent! source ~/.config/nvim/nvimrc.local
-endif
-" ----------------------------------------------------------------------------
 " Spell checking
 " ----------------------------------------------------------------------------
 if has("spell")
@@ -229,12 +223,6 @@ endif
 
 set formatoptions=qrn1
 set diffopt=filler,internal,algorithm:histogram,indent-heuristic
-" ----------------------------------------------------------------------------
-" Load Theme
-" ----------------------------------------------------------------------------
-set termguicolors
-set background=dark
-colorscheme one
 " ----------------------------------------------------------------------------
 " PLUGINS
 " see '$VIMRC/vim_bundles' for full list.
@@ -346,3 +334,9 @@ let g:fzf_preview_window = 'right:40%'
 " rather than going into the terminal's normal mode.
 autocmd FileType fzf tnoremap <buffer> <Esc> <Esc>
 " let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --follow --glob "!.git/*"'
+" ----------------------------------------------------------------------------
+" Load Local Configuration
+" ----------------------------------------------------------------------------
+if filereadable(expand("~/.config/nvim/nvimrc.local"))
+  silent! source ~/.config/nvim/nvimrc.local
+endif

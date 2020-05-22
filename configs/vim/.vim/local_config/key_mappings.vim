@@ -50,11 +50,10 @@ vmap <Leader>] >gv
 
 " Navigation
 nnoremap gf :vertical wincmd f<CR>
+
 " Buffer Switching with tab
 nnoremap <Leader><Tab> :buffer<Space><Tab>
 nnoremap <Leader>o :e **/*
-nnoremap <Leader>n :vsplit **/*
-nnoremap <Leader>s :split **/*
 nnoremap <Leader>n :Vexplore<CR>
 
 " Tabs

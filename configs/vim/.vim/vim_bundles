@@ -39,9 +39,9 @@ else
   call minpac#add('sjl/gundo.vim')
   call minpac#add('dense-analysis/ale')
   call minpac#add('jiangmiao/auto-pairs')
-	call minpac#add('weirongxu/plantuml-previewer.vim')
-	call minpac#add('aklt/plantuml-syntax')
-	call minpac#add('mbbill/undotree')
+  call minpac#add('weirongxu/plantuml-previewer.vim')
+  call minpac#add('aklt/plantuml-syntax')
+  call minpac#add('mbbill/undotree')
   call minpac#add('RRethy/vim-illuminate')
   call minpac#add('ycm-core/YouCompleteMe')
   call minpac#add('itchyny/lightline.vim')
@@ -50,6 +50,7 @@ else
 
   " Themes
   call minpac#add('rakr/vim-one')
+  call minpac#add('arcticicestudio/nord-vim')
   call minpac#add('altercation/vim-colors-solarized')
 
   " minpac utility commands
