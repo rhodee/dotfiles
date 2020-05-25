@@ -169,7 +169,7 @@ set printfont:Arial
 " ----------------------------------------------------------------------------
 " Navigation
 " ----------------------------------------------------------------------------
-set autochdir " Set the working directory to wherever the open file lives
+set autochdir " Set the working directory to the current buffer
 
 " Wrapping
 set formatoptions-=t          " Keep my textwidth setting
@@ -321,11 +321,12 @@ endif
 " ----------------------------------------------------------------------------
 " Plugin: netrw + vim-vinegar
 " ----------------------------------------------------------------------------
-let g:netrw_banner = 0
-let g:netrw_liststyle = 3
+let g:netrw_banner       = 0
+let g:netrw_liststyle    = 3
 let g:netrw_browse_split = 4
-let g:netrw_altv = 1
-let g:netrw_winsize = 25
+let g:netrw_altv         = 1
+let g:netrw_winsize      = 25
+let g:netrw_keepdir      = 1
 " ----------------------------------------------------------------------------
 " Plugin: FZF
 " ----------------------------------------------------------------------------

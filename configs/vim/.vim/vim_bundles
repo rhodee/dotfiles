@@ -24,7 +24,6 @@ else
   call minpac#add('junegunn/fzf')
   call minpac#add('junegunn/goyo.vim')
   call minpac#add('junegunn/limelight.vim')
-  call minpac#add('junegunn/vim-peekaboo')
   call minpac#add('junegunn/vim-easy-align')
   call minpac#add('airblade/vim-gitgutter')
   call minpac#add('airblade/vim-rooter')
