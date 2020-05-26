@@ -54,7 +54,7 @@ nnoremap gf :vertical wincmd f<CR>
 " Buffer Switching with tab
 nnoremap <Leader><Tab> :buffer<Space><Tab>
 nnoremap <Leader>o :e **/*
-nnoremap <Leader>n :Vexplore<CR>
+nnoremap <Leader>n :NERDTreeToggle<CR>
 
 " Tabs
 "

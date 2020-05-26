@@ -37,6 +37,6 @@ iab teh the
 " ----------------------------------------------------------------------------
 " Load Theme
 " ----------------------------------------------------------------------------
+" Turn these on to start NORD
 " set termguicolors
-" set background=dark
 " colorscheme nord
