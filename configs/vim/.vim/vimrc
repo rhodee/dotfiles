@@ -343,11 +343,12 @@ let g:netrw_winsize      = 25
 " ----------------------------------------------------------------------------
 " Plugin: FZF
 " ----------------------------------------------------------------------------
-let g:fzf_preview_window = 'right:40%'
+" let g:fzf_preview_window = 'right:40%'
 " Escape inside a FZF terminal window should exit the terminal window
 " rather than going into the terminal's normal mode.
-autocmd FileType fzf tnoremap <buffer> <Esc> <Esc>
+" autocmd FileType fzf tnoremap <buffer> <Esc> <Esc>
 " let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --follow --glob "!.git/*"'
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 " ----------------------------------------------------------------------------
 " Load Local Configuration
 " ----------------------------------------------------------------------------

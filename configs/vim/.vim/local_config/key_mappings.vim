@@ -107,6 +107,14 @@ vnoremap <left> <nop>
 vnoremap <right> <nop>
 
 " ----------------------------------------------------------------------------
+"  SEARCH x FZF x RIPGREP
+" ----------------------------------------------------------------------------
+nnoremap <silent> <Leader>fb :Buffers<CR>
+nnoremap <silent> <Leader>ff :Files<CR>
+nnoremap <silent> <Leader>fl :Lines<CR>
+nnoremap <silent> <Leader>fi :Rg<CR>
+
+" ----------------------------------------------------------------------------
 "  PLUGIN KEY MAP
 " ----------------------------------------------------------------------------
 " Plugin: EasyAlign
@@ -128,12 +136,6 @@ nnoremap <silent> <Leader>d :GitGutterToggle<CR>
 " Plugin: BufExplorer
 " "Back to last position
 map <Leader>b :BufExplorer<CR>
-
-" Plugin: FZF
-map <silent> <Leader>ff :FZF<CR>
-
-" Plugin: Rg
-nnoremap <silent> <Leader>fi :Rg<space>
 
 " Plugin: Undotree
 map <Leader>u :UndotreeToggle<CR>
