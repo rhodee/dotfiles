@@ -46,6 +46,7 @@ else
   call minpac#add('itchyny/lightline.vim')
   call minpac#add('jparise/vim-graphql')
   call minpac#add('tmux-plugins/vim-tmux-focus-events')
+  call minpac#add('preservim/nerdtree')
 
   " Themes
   call minpac#add('rakr/vim-one')

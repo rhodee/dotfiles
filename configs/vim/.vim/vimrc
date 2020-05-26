@@ -319,6 +319,20 @@ if has("autocmd")
   let g:limelight_paragraph_span = 1
 endif
 " ----------------------------------------------------------------------------
+" Plugin: NERDTree
+" ----------------------------------------------------------------------------
+let g:NERDTreeDirArrowExpandable   = ''
+let g:NERDTreeDirArrowCollapsible  = ''
+let NERDTreeShowHidden             = 1
+let NERDTreeHijackNetrw            = 1
+let NERDTreeRespectWildIgnore      = 1
+let g:NERDTreeChDirMode            = 2
+let g:NERDTreeShowBookmarks        = 0
+let g:nerdtree_tabs_focus_on_files = 1
+let g:NERDTreeMinimalUI            = 1
+
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" ----------------------------------------------------------------------------
 " Plugin: netrw + vim-vinegar
 " ----------------------------------------------------------------------------
 let g:netrw_banner       = 0
@@ -326,7 +340,6 @@ let g:netrw_liststyle    = 3
 let g:netrw_browse_split = 4
 let g:netrw_altv         = 1
 let g:netrw_winsize      = 25
-let g:netrw_keepdir      = 1
 " ----------------------------------------------------------------------------
 " Plugin: FZF
 " ----------------------------------------------------------------------------
