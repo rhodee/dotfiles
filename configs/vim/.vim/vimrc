@@ -350,6 +350,11 @@ let g:netrw_winsize      = 25
 " let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --follow --glob "!.git/*"'
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 " ----------------------------------------------------------------------------
+" Plugin: Snippets
+" ----------------------------------------------------------------------------
+let g:UltiSnipsSnippetsDirectores=[ "UltiSnips" ] " add more paths at $VIM
+
+" ----------------------------------------------------------------------------
 " Load Local Configuration
 " ----------------------------------------------------------------------------
 if filereadable(expand("~/.config/nvim/nvimrc.local"))

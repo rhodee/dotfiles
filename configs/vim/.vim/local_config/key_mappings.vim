@@ -139,3 +139,6 @@ map <Leader>b :BufExplorer<CR>
 
 " Plugin: Undotree
 map <Leader>u :UndotreeToggle<CR>
+
+" Plugin: Snippets
+let g:UltiSnipsExpandTrigger="<c-j>"

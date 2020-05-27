@@ -48,6 +48,8 @@ else
   call minpac#add('jparise/vim-graphql')
   call minpac#add('tmux-plugins/vim-tmux-focus-events')
   call minpac#add('preservim/nerdtree')
+  call minpac#add('SirVer/ultisnips')
+  call minpac#add('honza/vim-snippets')
 
   " Themes
   call minpac#add('rakr/vim-one')
