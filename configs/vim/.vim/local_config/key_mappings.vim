@@ -93,18 +93,23 @@ map <Leader>ss :setlocal spell!<CR>
 map <F9> :set wrap!<CR>
 map <F9> <ESC>:set wrap!<CR>
 
-nnoremap <up> <nop>
-nnoremap <down> <nop>
-nnoremap <left> <nop>
-nnoremap <right> <nop>
-inoremap <up> <nop>
-inoremap <down> <nop>
-inoremap <left> <nop>
-inoremap <right> <nop>
-vnoremap <up> <nop>
-vnoremap <down> <nop>
-vnoremap <left> <nop>
-vnoremap <right> <nop>
+" Remove crutches in Insert Mode
+inoremap <Down> <Nop>
+inoremap <Left> <Nop>
+inoremap <Right> <Nop>
+inoremap <Up> <Nop>
+
+" Remove crutches in Normal Mode
+nnoremap <Down> <Nop>
+nnoremap <Left> <Nop>
+nnoremap <Right> <Nop>
+nnoremap <Up> <Nop>
+
+" Remove crutches in Visual Mode
+vnoremap <Down> <Nop>
+vnoremap <Left> <Nop>
+vnoremap <Right> <Nop>
+vnoremap <Up> <Nop>
 
 " ----------------------------------------------------------------------------
 "  SEARCH x FZF x RIPGREP
