@@ -19,7 +19,6 @@ else
   call minpac#add('RRethy/vim-illuminate')
   call minpac#add('airblade/vim-gitgutter')
   call minpac#add('airblade/vim-rooter')
-  call minpac#add('aklt/plantuml-syntax')
   call minpac#add('dense-analysis/ale')
   call minpac#add('itchyny/lightline.vim')
   call minpac#add('jiangmiao/auto-pairs')
@@ -38,13 +37,14 @@ else
   call minpac#add('tpope/vim-repeat')
   call minpac#add('tpope/vim-surround')
   call minpac#add('tpope/vim-vinegar')
-  call minpac#add('weirongxu/plantuml-previewer.vim')
 
   " Writing
   call minpac#add('rhysd/vim-grammarous')
   call minpac#add('junegunn/goyo.vim')
   call minpac#add('junegunn/limelight.vim')
-
+  call minpac#add('aklt/plantuml-syntax')
+  call minpac#add('tyru/open-browser.vim')
+  call minpac#add('weirongxu/plantuml-previewer.vim')
 
   " Search / Snippets
   call minpac#add('SirVer/ultisnips')
