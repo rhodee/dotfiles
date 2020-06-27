@@ -43,8 +43,7 @@ else
   call minpac#add('junegunn/goyo.vim')
   call minpac#add('junegunn/limelight.vim')
   call minpac#add('aklt/plantuml-syntax')
-  call minpac#add('tyru/open-browser.vim')
-  call minpac#add('weirongxu/plantuml-previewer.vim')
+  call minpac#add('scrooloose/vim-slumlord')
 
   " Search / Snippets
   call minpac#add('SirVer/ultisnips')
