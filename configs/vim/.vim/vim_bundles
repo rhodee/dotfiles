@@ -65,6 +65,7 @@ else
   call minpac#add('rust-lang/rust.vim')
   call minpac#add('stephpy/vim-yaml')
   call minpac#add('tpope/vim-markdown')
+  call minpac#add('voldikss/vim-floaterm')
 
   " Themes
   call minpac#add('rakr/vim-one')

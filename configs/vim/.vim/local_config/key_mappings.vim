@@ -163,3 +163,16 @@ function! s:check_back_space() abort
 endfunction
 
 let g:coc_snippet_next = '<tab>'
+
+" Plugin: Floaterm
+nnoremap <silent> <Leader>t :FloatermNew<CR>
+tnoremap <silent> <F7> <C-\><C-n>:FloatermNew<CR>
+
+nnoremap <silent> <F8> :FloatermPrev<CR>
+tnoremap <silent> <F8> <C-\><C-n>:FloatermPrev<CR>
+
+nnoremap <silent> <F9> :FloatermNext<CR>
+tnoremap <silent> <F9> <C-\><C-n>:FloatermNext<CR>
+
+nnoremap <silent> <F12> :FloatermToggle<CR>
+tnoremap <silent> <F12> <C-\><C-n>:FloatermToggle<CR>
