@@ -66,6 +66,10 @@ else
   call minpac#add('stephpy/vim-yaml')
   call minpac#add('tpope/vim-markdown')
   call minpac#add('voldikss/vim-floaterm')
+  call minpac#add('dart-lang/dart-vim-plugin')
+  call minpac#add('natebosch/vim-lsc')
+  call minpac#add('natebosch/vim-lsc-dart')
+
 
   " Themes
   call minpac#add('rakr/vim-one')
