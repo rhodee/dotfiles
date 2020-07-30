@@ -55,6 +55,7 @@ nnoremap gf :vertical wincmd f<CR>
 nnoremap <Leader><Tab> :buffer<Space><Tab>
 nnoremap <Leader>o :e **/*
 nnoremap <Leader>n :NERDTreeToggle<CR>
+nnoremap <Leader>nn :Ranger<CR>
 
 " Tabs
 "
