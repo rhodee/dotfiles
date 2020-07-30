@@ -20,7 +20,7 @@ else
   call minpac#add('airblade/vim-gitgutter')
   call minpac#add('airblade/vim-rooter')
   call minpac#add('dense-analysis/ale')
-  call minpac#add('liuchengxu/eleline.vim')
+  call minpac#add('vim-airline/vim-airline')
   call minpac#add('jiangmiao/auto-pairs')
   call minpac#add('jlanzarotta/bufexplorer')
   call minpac#add('jremmen/vim-ripgrep')
@@ -80,6 +80,7 @@ else
   call minpac#add('rakr/vim-one')
   call minpac#add('arcticicestudio/nord-vim')
   call minpac#add('altercation/vim-colors-solarized')
+  call minpac#add('Rigellute/shades-of-purple.vim')
 
   " minpac utility commands
   command! PackUpdate call minpac#update()

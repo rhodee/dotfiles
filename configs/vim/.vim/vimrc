@@ -305,6 +305,7 @@ endif
 " Plugin: Ranger
 " ----------------------------------------------------------------------------
 let g:ranger_map_keys         = 0 " Use custom key map
+" let g:NERDTreeHijackNetrw     = 0
 let g:ranger_replace_netrw    = 1
 let g:ranger_command_override = 'ranger --cmd "set show_hidden=true"'
 
@@ -344,9 +345,9 @@ let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 " ----------------------------------------------------------------------------
 let g:UltiSnipsSnippetsDirectores=[ "UltiSnips" ] " add more paths at $VIM
 " ----------------------------------------------------------------------------
-" Plugin: Eleline
+" Plugin: Airline
 " ----------------------------------------------------------------------------
-let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts  = 1
  " ----------------------------------------------------------------------------
 " Plugin: CoC
 " ----------------------------------------------------------------------------
