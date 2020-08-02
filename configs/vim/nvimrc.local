@@ -34,14 +34,5 @@ iab Taht That
 iab taht that
 iab Teh The
 iab teh the
-" ----------------------------------------------------------------------------
-" Load Theme
-" ----------------------------------------------------------------------------
-" Turn these on to start NORD
-" set termguicolors
-" colorscheme nord
-" Turn these on to start Shades of Purple
-colorscheme shades_of_purple
-let g:shades_of_purple_airline = 1
-let g:airline_theme='shades_of_purple'
 
+let g:python3_host_prog = /usr/local/bin/python3

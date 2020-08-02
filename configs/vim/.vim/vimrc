@@ -346,7 +346,7 @@ let g:UltiSnipsSnippetsDirectores=[ "UltiSnips" ] " add more paths at $VIM
 " Plugin: Airline
 " ----------------------------------------------------------------------------
 let g:airline_powerline_fonts  = 1
- " ----------------------------------------------------------------------------
+" ----------------------------------------------------------------------------
 " Plugin: CoC
 " ----------------------------------------------------------------------------
 let g:coc_global_extensions = [
@@ -365,4 +365,8 @@ let g:coc_global_extensions = [
 " ----------------------------------------------------------------------------
 if filereadable(expand("~/.config/nvim/nvimrc.local"))
   silent! source ~/.config/nvim/nvimrc.local
+endif
+
+if filereadable(expand("~/.config/nvim/nvimrc.local"))
+  silent! source ~/.config/nvim/theme.local
 endif

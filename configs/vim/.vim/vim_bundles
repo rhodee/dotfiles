@@ -20,7 +20,6 @@ else
   call minpac#add('airblade/vim-gitgutter')
   call minpac#add('airblade/vim-rooter')
   call minpac#add('dense-analysis/ale')
-  call minpac#add('vim-airline/vim-airline')
   call minpac#add('jiangmiao/auto-pairs')
   call minpac#add('jlanzarotta/bufexplorer')
   call minpac#add('jremmen/vim-ripgrep')
@@ -30,7 +29,6 @@ else
   call minpac#add('leafgarland/typescript-vim')
   call minpac#add('machakann/vim-highlightedyank')
   call minpac#add('mbbill/undotree')
-  call minpac#add('preservim/nerdtree')
   call minpac#add('sjl/gundo.vim')
   call minpac#add('tmux-plugins/vim-tmux-focus-events')
   call minpac#add('tpope/vim-commentary')
@@ -40,7 +38,6 @@ else
   call minpac#add('tpope/vim-fugitive')
   call minpac#add('mhinz/vim-startify')
 
-
   " Writing
   call minpac#add('rhysd/vim-grammarous')
   call minpac#add('junegunn/goyo.vim')
@@ -49,11 +46,11 @@ else
   call minpac#add('scrooloose/vim-slumlord')
 
   " Search / Snippets
+  call minpac#add('preservim/nerdtree')
   call minpac#add('honza/vim-snippets')
   call minpac#add('neoclide/coc.nvim', {'branch': 'release'})
   call minpac#add('francoiscabrol/ranger.vim')
   call minpac#add('rbgrouleff/bclose.vim')
-
 
   " Syntactic language support
   call minpac#add('ap/vim-css-color')
@@ -75,12 +72,11 @@ else
   call minpac#add('natebosch/vim-lsc')
   call minpac#add('natebosch/vim-lsc-dart')
 
-
   " Themes
-  call minpac#add('rakr/vim-one')
   call minpac#add('arcticicestudio/nord-vim')
-  call minpac#add('altercation/vim-colors-solarized')
-  call minpac#add('Rigellute/shades-of-purple.vim')
+  call minpac#add('morhetz/gruvbox')
+  call minpac#add('vim-airline/vim-airline')
+  call minpac#add('vim-airline/vim-airline-themes')
 
   " minpac utility commands
   command! PackUpdate call minpac#update()

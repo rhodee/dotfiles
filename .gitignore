@@ -11,3 +11,5 @@
 !configs/tmux/*
 !configs/git/
 !configs/git/**
+!configs/alacritty/
+!configs/alacritty/**

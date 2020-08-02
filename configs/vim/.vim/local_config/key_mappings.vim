@@ -70,10 +70,10 @@ map <Leader><Leader>t :tabnew<CR>
 map <Leader>ev :tabedit $MYVIMRC<CR>
 
 " Buffer
-nmap <leader>bn :bnext<CR>
-nmap <leader>bp :bprevious<CR>
-nmap <leader>bf :bfirst<CR>
-nmap <leader>bd :bdelete<CR>
+nmap <Leader>bn :bnext<CR>
+nmap <Leader>bp :bprevious<CR>
+nmap <Leader>bf :bfirst<CR>
+nmap <Leader>bd :bdelete<CR>
 
 " "Back to last position
 nnoremap <C-b> <C-o>
@@ -146,6 +146,8 @@ map <Leader>b :BufExplorer<CR>
 " Plugin: Undotree
 map <Leader>u :UndotreeToggle<CR>
 
+" Plugin: AutoPairs
+
 " Plugin: CoC
 
 " Code Navigation
@@ -185,3 +187,4 @@ tnoremap <silent> <F9> <C-\><C-n>:FloatermNext<CR>
 
 nnoremap <silent> <F12> :FloatermToggle<CR>
 tnoremap <silent> <F12> <C-\><C-n>:FloatermToggle<CR>
+
