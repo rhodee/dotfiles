@@ -29,13 +29,13 @@ noremap <Leader>k <C-W>k
 noremap <Leader>j <C-W>j
 
 " narrower window
-map - <C-W><
+nmap - <C-W><
 " wider window
-map + <C-W>>
+nmap + <C-W>>
 " shorter window
-map _ <C-W>-
+nmap _ <C-W>-
 " taller window
-map = <C-W>+
+nmap = <C-W>+
 
 " Open new splits easily
 map sv <C-W>v
@@ -54,8 +54,7 @@ nnoremap gf :vertical wincmd f<CR>
 " Buffer Switching with tab
 nnoremap <Leader><Tab> :buffer<Space><Tab>
 nnoremap <Leader>o :e **/*
-nnoremap <Leader>n :NERDTreeToggle<CR>
-nnoremap <Leader>nn :Ranger<CR>
+nnoremap <Leader>n :Vexplore<CR>
 
 " Tabs
 "
