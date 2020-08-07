@@ -2,7 +2,7 @@
   "languageserver": {
     "golang": {
       "command": "gopls",
-      "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
+      "rootPatterns": ["go.mod"],
       "filetypes": ["go"]
     }
   },
@@ -15,7 +15,10 @@
   "typescript.suggest.enabled": true,
   "eslint.autoFixOnSave": true,
   "go.checkForUpdates": "ask",
+  "diagnostic.displayByAle": true,
+  "diagnostic.checkCurrentLine": true,
   "coc.preferences.formatOnSaveFiletypes": [
+    "go",
     "javascript",
     "javascriptreact",
     "typescript",

@@ -102,7 +102,6 @@ set gdefault "no need to add g at end of substitute / replace commands
 " UI CONFIG
 " ----------------------------------------------------------------------------
 set laststatus=2
-set statusline=
 set background=dark
 set guioptions-=m " remove menu bar
 set guioptions-=T " remove toolbar
@@ -169,8 +168,7 @@ set printfont:Arial
 
 " ----------------------------------------------------------------------------
 " Navigation
-" ----------------------------------------------------------------------------
-set autochdir " Set the working directory to the current buffer
+" ---------------------------------------------------------------------------- set autochdir " Set the working directory to the current buffer
 
 " Wrapping
 set formatoptions-=t          " Keep my textwidth setting
@@ -300,6 +298,11 @@ if has("autocmd")
   autocmd User GoyoEnter Limelight
   autocmd User GoyoLeave Limelight!
   let g:limelight_paragraph_span = 1
+  " Color name (:help cterm-colors) or ANSI code
+  let g:limelight_conceal_ctermfg = 100
+
+  " Color name (:help gui-colors) or RGB color
+  let g:limelight_conceal_guifg = '#83a598'
 endif
 " ----------------------------------------------------------------------------
 " Plugin: netrw + vim-vinegar
@@ -326,7 +329,10 @@ let g:UltiSnipsSnippetsDirectores=[ "UltiSnips" ] " add more paths at $VIM
 " Plugin: Airline
 " ----------------------------------------------------------------------------
 let g:airline_powerline_fonts  = 1
-" ----------------------------------------------------------------------------
+let g:airline#extensions#tabline#enabled  = 1
+let g:airline#extensions#tabline#show_tabs = 1
+set statusline=^%{coc#status()}
+"--------------------------------------------------------------------------
 " Plugin: CoC
 " ----------------------------------------------------------------------------
 let g:coc_global_extensions = [
