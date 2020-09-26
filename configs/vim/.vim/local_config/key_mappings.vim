@@ -82,8 +82,8 @@ nmap <Leader>p ]p
 command! Qall qall
 command! Q q " Bind :Q to :q
 noremap <C-q> :confirm qall<CR>
-map Q <Nop>  " Disable Ex mode
-map K <Nop>  " Disable K looking stuff up
+" Disable Ex mode
+map Q <Nop>
 
 " toggle and untoggle spell checking
 map <Leader>ss :setlocal spell!<CR>
@@ -186,3 +186,5 @@ tnoremap <silent> <F9> <C-\><C-n>:FloatermNext<CR>
 nnoremap <silent> <F12> :FloatermToggle<CR>
 tnoremap <silent> <F12> <C-\><C-n>:FloatermToggle<CR>
 
+" Plugin: NERDTree
+nnoremap <silent> <Leader>n :NERDTreeToggle<CR>

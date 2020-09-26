@@ -5,7 +5,6 @@ compiler go
 
 let g:go_auto_type_info          = 1
 let g:go_fmt_experimental        = 1
-let g:go_fmt_command             = "gofumpt"
 let g:go_statusline_duration     = 10000
 let g:go_code_completion_enabled = 0
 let g:go_auto_sameids            = 0

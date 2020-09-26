@@ -151,6 +151,8 @@ autocmd BufRead,BufNewFile vimrc,vimrc.local set filetype=vim
 set title
 set showbreak=↪⋯⋯
 set signcolumn=yes
+set shortmess+=c
+set updatetime=300
 set list
 set listchars=tab:»·,trail:·,eol:¬,nbsp:·,extends:❯,precedes:❮
 
@@ -195,12 +197,13 @@ set wildignore+=*.sw?                            " Vim swap files
 set wildignore+=*.DS_Store                       " OSX
 set wildignore+=go/pkg                           " Go static files
 set wildignore+=go/bin                           " Go bin files
+set wildignore+=vendor                           " Go vendor files
 set wildignore+=*.orig                           " Merge resolution files
 " ----------------------------------------------------------------------------
 " Spell checking
 " ----------------------------------------------------------------------------
 if has("spell")
-  set spell spelllang=en_us "check spelling (z= suggestions, zg add good word, zb bad)
+  " set spell spelllang=en_us "check spelling (z= suggestions, zg add good word, zb bad)
   set complete+=kspell
   syntax spell notoplevel
 endif
@@ -241,6 +244,14 @@ let g:gitgutter_highlight_lines   = 0    " start git gutter when editor opened
 let g:gitgutter_highlight_linenrs = 1    " start git gutter when editor opened
 let g:gitgutter_max_signs         = 1000 " default value
 let g:gitgutter_sign_priority     = 0    " do not clobber other values in the gutter
+
+
+let g:gitgutter_sign_added = '✚'
+let g:gitgutter_sign_modified = '✹'
+let g:gitgutter_sign_removed = '-'
+let g:gitgutter_sign_removed_first_line = '-'
+let g:gitgutter_sign_modified_removed = '-'
+
 hi GitGutterAdd    ctermfg=2 ctermbg=236
 hi GitGutterChange ctermfg=3 ctermbg=236
 hi GitGutterDelete ctermfg=1 ctermbg=236
@@ -250,17 +261,19 @@ hi GitGutterDelete ctermfg=1 ctermbg=236
 let g:AutoPairsFlyMode = 1
 let g:AutoPairsMapCR = 0
 " ----------------------------------------------------------------------------
-" Plugin: ALE
+" Plugin: NERDTree
 " ----------------------------------------------------------------------------
-let g:ale_linters={'go': ['golanglint-ci', 'go vet', 'staticcheck']}
-let g:ale_fixers={'go': ['gofmt', 'goimports']}
-let g:ale_go_gofmt_options='-s'   " simplify code
-let g:ale_lint_on_enter=0
-let g:ale_fix_on_save=1
-let g:ale_lint_on_text_changed='never'
-let g:ale_go_langserver_executable='gopls'
-let g:ale_sign_error = '⤫'
-let g:ale_sign_warning = '⚠'
+let g:NERDTreeDirArrowExpandable   = ''
+let g:NERDTreeDirArrowCollapsible  = ''
+let NERDTreeShowHidden             = 1
+let NERDTreeHijackNetrw            = 1
+let NERDTreeRespectWildIgnore      = 1
+let g:NERDTreeChDirMode            = 2
+let g:NERDTreeShowBookmarks        = 0
+let g:nerdtree_tabs_focus_on_files = 1
+let g:NERDTreeMinimalUI            = 1
+
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 " ----------------------------------------------------------------------------
 " Plugin: Vim-Go
 " ----------------------------------------------------------------------------
@@ -311,7 +324,7 @@ endif
 " Escape inside a FZF terminal window should exit the terminal window
 " rather than going into the terminal's normal mode.
 " autocmd FileType fzf tnoremap <buffer> <Esc> <Esc>
-let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --follow --glob "!.git/*"'
+let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --follow --glob "!.git/*" --glob "!vendor/*"'
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 " ----------------------------------------------------------------------------
 " Plugin: Snippets
@@ -320,10 +333,19 @@ let g:UltiSnipsSnippetsDirectores=[ "UltiSnips" ] " add more paths at $VIM
 " ----------------------------------------------------------------------------
 " Plugin: Airline
 " ----------------------------------------------------------------------------
-let g:airline_powerline_fonts  = 1
-let g:airline#extensions#tabline#enabled  = 1
-let g:airline#extensions#tabline#show_tabs = 1
-set statusline=^%{coc#status()}
+let g:airline_powerline_fonts = 1
+let g:airline_extensions = ['branch', 'coc', 'fzf', 'undotree', 'wordcount']
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+let g:airline#extensions#tabline#buffer_nr_show = 1
+let g:airline#extensions#default#layout = [['a', 'b', 'c'], ['x', 'z', 'warning', 'error']]
+let g:airline_skip_empty_sections = 1
+let airline#extensions#coc#stl_format_err = '%E{[%e(#%fe)]}'
+let airline#extensions#coc#stl_format_warn = '%W{[%w(#%fw)]}'
+
+" Configure error/warning section to use coc.nvim
+let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
+let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
+let g:airline_theme = 'gruvbox'
 "--------------------------------------------------------------------------
 " Plugin: CoC
 " ----------------------------------------------------------------------------
