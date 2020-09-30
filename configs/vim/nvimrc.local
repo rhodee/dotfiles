@@ -36,3 +36,10 @@ iab Teh The
 iab teh the
 
 let g:python3_host_prog = /usr/local/bin/python3
+
+function! PJSON()
+    silent !clear
+    echo "!python -m json.tool %"
+endfunction
+
+command! PrettyJSON call PJSON()<CR>
