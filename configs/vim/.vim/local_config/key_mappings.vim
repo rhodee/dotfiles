@@ -14,13 +14,13 @@ noremap H ^
 noremap L $
 
 " clear search highlights
-map <silent> <Leader><cr> :noh<cr>
+nnoremap <silent> <Leader><cr> :noh<cr>
 
 " switch between the last two files
 nnoremap <Leader><Leader> <C-^>
 
 " Fast saving
-nmap <silent> <Leader>w :w!<cr>
+nnoremap <silent> <Leader>w :w!<cr>
 
 "move between buffer
 noremap <Leader>h <C-W>h
@@ -29,24 +29,24 @@ noremap <Leader>k <C-W>k
 noremap <Leader>j <C-W>j
 
 " narrower window
-nmap - <C-W><
+nnoremap - <C-W><
 " wider window
-nmap + <C-W>>
+nnoremap + <C-W>>
 " shorter window
-nmap _ <C-W>-
+nnoremap _ <C-W>-
 " taller window
-nmap = <C-W>+
+nnoremap = <C-W>+
 
 " Open new splits easily
-map sv <C-W>v
-map ss <C-W>s
-map sq <C-W>q
+noremap sv <C-W>v
+noremap ss <C-W>s
+noremap sq <C-W>q
 
 " indent like ST2
-nmap <Leader>] >>
-nmap <Leader>[ <<
-vmap <Leader>[ <gv
-vmap <Leader>] >gv
+nnoremap <Leader>] >>
+nnoremap <Leader>[ <<
+vnoremap <Leader>[ <gv
+vnoremap <Leader>] >gv
 
 " Navigation
 nnoremap gf :vertical wincmd f<CR>
@@ -58,39 +58,39 @@ nnoremap <Leader>o :e **/*
 " Tabs
 "
 " opens a new tab with the current buffer's path
-map <Leader>te :tabedit <c-r>=expand("%:p:h")<CR>/
-map <Leader>to :tabonly<CR>
-map <Leader>tc :tabclose<CR>
-map <Leader>tm :tabmove<CR>
-map <Leader>tn :tabnext<CR>
-map <Leader>tp :tabprevious<CR>
-map <Leader><Leader>t :tabnew<CR>
-map <Leader>ev :tabedit $MYVIMRC<CR>
+noremap <Leader>te :tabedit <c-r>=expand("%:p:h")<CR>/
+noremap <Leader>to :tabonly<CR>
+noremap <Leader>tc :tabclose<CR>
+noremap <Leader>tm :tabmove<CR>
+noremap <Leader>tn :tabnext<CR>
+noremap <Leader>tp :tabprevious<CR>
+noremap <Leader><Leader>t :tabnew<CR>
+noremap <Leader>ev :tabedit $MYVIMRC<CR>
 
 " Buffer
-nmap <Leader>bn :bnext<CR>
-nmap <Leader>bp :bprevious<CR>
-nmap <Leader>bf :bfirst<CR>
-nmap <Leader>bd :bdelete<CR>
+nnoremap <Leader>bn :bnext<CR>
+nnoremap <Leader>bp :bprevious<CR>
+nnoremap <Leader>bf :bfirst<CR>
+nnoremap <Leader>bd :bdelete<CR>
 
 " "Back to last position
 nnoremap <C-b> <C-o>
 
 " Paste with current indentation
-nmap <Leader>p ]p
+nnoremap <Leader>p ]p
 
 command! Qall qall
 command! Q q " Bind :Q to :q
 noremap <C-q> :confirm qall<CR>
 " Disable Ex mode
-map Q <Nop>
+noremap Q <Nop>
 
 " toggle and untoggle spell checking
-map <Leader>ss :setlocal spell!<CR>
+noremap <Leader>ss :setlocal spell!<CR>
 
 " <F9> toggles word wrap
-map <F9> :set wrap!<CR>
-map <F9> <ESC>:set wrap!<CR>
+noremap <F9> :set wrap!<CR>
+noremap <F9> <ESC>:set wrap!<CR>
 
 " Remove crutches in Insert Mode
 inoremap <Down> <Nop>
@@ -123,10 +123,10 @@ nnoremap <silent> <Leader>fi :Rg<CR>
 " ----------------------------------------------------------------------------
 " Plugin: EasyAlign
 " Start interactive EasyAlign in visual mode (e.g. vipga)
-xmap ga :EasyAlign
+xnoremap ga :EasyAlign
 
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
-nmap ga :EasyAlign
+nnoremap ga :EasyAlign
 
 " Plugin: ALE
 nnoremap <Leader>a <Plug>(ale_next_wrap)
@@ -139,26 +139,26 @@ nnoremap <silent> <Leader>d :GitGutterToggle<CR>
 
 " Plugin: BufExplorer
 " "Back to last position
-map <Leader>b :BufExplorer<CR>
+noremap <Leader>b :BufExplorer<CR>
 
 " Plugin: Undotree
-map <Leader>u :UndotreeToggle<CR>
+noremap <Leader>u :UndotreeToggle<CR>
 
 " Plugin: AutoPairs
 
 " Plugin: CoC
 
 " Code Navigation
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
+nnoremap <silent> gd <Plug>(coc-definition)
+nnoremap <silent> gy <Plug>(coc-type-definition)
+nnoremap <silent> gi <Plug>(coc-implementation)
+nnoremap <silent> gr <Plug>(coc-references)
 
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Symbol renaming.
-nmap <leader>rn <Plug>(coc-rename)
+nnoremap <leader>rn <Plug>(coc-rename)
 
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? coc#_select_confirm() :
