@@ -86,7 +86,7 @@ noremap <C-q> :confirm qall<CR>
 noremap Q <Nop>
 
 " toggle and untoggle spell checking
-noremap <Leader>ss :setlocal spell!<CR>
+noremap <Leader>sps :setlocal spell!<CR>
 
 " <F9> toggles word wrap
 noremap <F9> :set wrap!<CR>
@@ -127,9 +127,6 @@ xnoremap ga :EasyAlign
 
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nnoremap ga :EasyAlign
-
-" Plugin: ALE
-nnoremap <Leader>a <Plug>(ale_next_wrap)
 
 " Plugin: GOYO
 nnoremap <silent> <Leader>z :Goyo<CR>
