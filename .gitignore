@@ -13,3 +13,10 @@
 !configs/git/**
 !configs/kitty/
 !configs/kitty/**
+!configs/fish/
+!configs/fish/*.fish
+!configs/fish/conf.d/
+!configs/fish/functions/
+!configs/fish/functions/*.fish
+!configs/fish/extras/
+!configs/fish/extras/.keep
