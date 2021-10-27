@@ -7,20 +7,19 @@ local map = vim.api.nvim_set_keymap
 local opts = {noremap = true}
 local g = vim.g
 
-map("", "<Space>", "<Nop>", { noremap = true, silent = true })
+map("n", "<Space>", "<Nop>", { noremap = true, silent = true })
 g.mapleader = " "
 g.maplocalleader = " "
 
 -- Telescope
-map("n", "<leader>f", ":Telescope live_grep<Return>", opts)
+map("n", "<C-f>", ":Telescope live_grep<Return>", opts)
 map("n", "<C-p>", ":lua require('telescope.builtin').git_files()<Return>", opts)
-map("n", "<leader>gs", ":Telescope git_files<Return>", opts)
+map("n", "<Leader>gs", ":Telescope git_files<Return>", opts)
 
 -- Completion
 
-
 -- Nvim-Tree
-map("n", "<C-n>", ":lua require('nvim-tree').toggle()<Return>", opts)
+map("n", "<Leader>n", ":lua require('nvim-tree').toggle()<Return>", opts)
 
 map("n", ";", ":", opts)
 
@@ -34,9 +33,6 @@ map("n", "<Leader><Return>", ":noh<Return>", opts)
 
 -- switch between the last two files
 map("n", "<Leader><Leader>", "<C-^>", opts)
-
--- Fast saving
-map("n", "<Leader>w", "w!<Return>", opts)
 
 -- move between buffer
 map("n", "<Leader>h", "<C-W>h", opts)

@@ -111,12 +111,17 @@ return require("packer").startup({
       config = [[require('config.statusline')]]
     }
 
-      -- Profiling
-      -- usage: nvim --startuptime and then :StartupTime
-      use {
-        "dstein64/vim-startuptime",
-        cmd = "StartupTime",
-        config = [[vim.g.startuptime_tries = 10]]
-      }
-    end
+    use {
+      "windwp/nvim-autopairs",
+      config = [[require('config.autopairs')]]
+    }
+
+    -- Profiling
+    -- usage: nvim --startuptime and then :StartupTime
+    use {
+      "dstein64/vim-startuptime",
+      cmd = "StartupTime",
+      config = [[vim.g.startuptime_tries = 10]]
+    }
+  end
 })

@@ -1,12 +1,13 @@
 [user]
-  name = <NAME>
-  email = <EMAIL ADDRESS>
+  name = rhodee
 [help]
   autocorrect = 5
-[url "git@github.com:<USERNAME>/"]
+[url "git@github.com:rhodee/"]
   insteadOf = "me:"
-[url "ssh://git@github.com/<USERNAME>/"]
-  insteadOf = https://github.com/<USERNAME>/
+[url "ssh://git@github.com/rhodee/"]
+  insteadOf = https://github.com/rhodee/
+[url "ssh://git@github.com/"]
+  insteadOf = https://github.com/
 [color]
   ui = auto
 [color "branch"]
@@ -99,13 +100,6 @@
  # always setup 'git pull' to rebase instead of merge
   autosetuprebase = always
   autosetupmerge = true
-[merge]
-  tool = vimdiff
-[mergetool]
-  prompt = true
-[diff]
-  mnemonicprefix = true
-  tool = vimdiff
 [difftool]
   prompt = true
 [color "diff-highlight"]
@@ -113,7 +107,10 @@
   oldHighlight = red bold 52
   newNormal = green bold
   newHighlight = green bold 22
-[github]
-  user = rhodee
-[credential "https://source.developers.google.com"]
-  helper = gcloud.sh
+[filter "lfs"]
+  required = true
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+[init]
+  defaultBranch = main

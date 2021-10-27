@@ -1,9 +1,16 @@
 local cmp = require("cmp")
+local luasnip = require("luasnip")
 local cmd = vim.cmd
 local o = vim.o
+local api = vim.api
 
 -- Set completeopt to have a better completion experience
 o.completeopt = 'menuone,noselect'
+
+local has_words_before = function()
+  local line, col = unpack(api.nvim_win_get_cursor(0))
+  return col ~= 0 and api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+end
 
 cmp.setup {
   mapping = {
@@ -17,30 +24,33 @@ cmp.setup {
         behavior = cmp.ConfirmBehavior.Replace,
         select = true,
     },
-    ['<Tab>'] = function(fallback)
-        if cmp.visible() then
+    ["<Tab>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
         cmp.select_next_item()
-        elseif luasnip.expand_or_jumpable() then
+      elseif luasnip.expand_or_jumpable() then
         luasnip.expand_or_jump()
-        else
+      elseif has_words_before() then
+        cmp.complete()
+      else
         fallback()
-        end
-    end,
-    ['<S-Tab>'] = function(fallback)
-        if cmp.visible() then
+      end
+    end, { "i", "s" }),
+
+    ["<S-Tab>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
         cmp.select_prev_item()
-        elseif luasnip.jumpable(-1) then
+      elseif luasnip.jumpable(-1) then
         luasnip.jump(-1)
-        else
+      else
         fallback()
-        end
-    end,
+      end
+    end, { "i", "s" }),
   },
   sources = {
     {name = "nvim_lsp"},
     {name = "nvim_lua"},
     {name = "buffer"},
     {name = "path"},
-    { name = 'luasnip' },
+    {name = "luasnip"},
   }
 }
