@@ -16,7 +16,14 @@ map("n", "<C-f>", ":Telescope live_grep<Return>", opts)
 map("n", "<C-p>", ":lua require('telescope.builtin').git_files()<Return>", opts)
 map("n", "<Leader>gs", ":Telescope git_files<Return>", opts)
 
--- Completion
+-- DAP
+map("n", "<Leader>bp", ":lua require('dap').toggle_breakpoint()<Return>", opts)
+map("n", "<Leader>dap", ":lua require('dap').continue()<Return>", opts)
+map("n", "<Leader>dui", ":lua require('dap').toggle()<Return>", opts)
+
+-- ALE
+map("n", "<Leader>rn", ":ALERename<Return>", opts)
+
 
 -- Nvim-Tree
 map("n", "<Leader>n", ":lua require('nvim-tree').toggle()<Return>", opts)

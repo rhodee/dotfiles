@@ -13,6 +13,11 @@ g.loaded_python_provider = 0
 g.python_host_prog = "/usr/bin/python2"
 g.python3_host_prog = "/usr/bin/python"
 
+-- Language Bindings
+require('config.go')
+
+-- Misc
+require('config.signature')
 ----------------------------------------------------------------------------
 -- Load Common Configuration
 -- :options for full list.
@@ -40,9 +45,9 @@ opt("breakindent", true, window)
 opt("breakindentopt", "shift:2", window)
 opt("breakindentopt", "shift:2", window)
 opt("showbreak", "↳")
+
 -- no need to add g at end of substitute / replace commands
 opt("gdefault", true)
-
 ----------------------------------------------------------------------------
 -- SEARCH
 -----------------------------------------------------------------------------
@@ -64,8 +69,8 @@ opt("relativenumber", true, window)
 opt("numberwidth", 5, window)
 
 -- Reading/Writing
-opt("ttimeout", true)
-opt("ttimeoutlen", 10)
+opt("timeoutlen", 500)
+opt("ttimeoutlen", 500)
 
 -- Moving Around/Editing
 opt("cmdheight", 2)
@@ -88,4 +93,13 @@ opt("listchars", "tab:»·,trail:·,eol:¬,nbsp:·,extends:❯,precedes:❮")
 -- Encoding
 opt("encoding", "utf-8")
 opt("fileencoding", "utf-8")
-opt("colorcolumn", "+1", window)
+
+autocmd(
+"misc_autocmds",
+{
+  [[TextYankPost * silent! lua vim.highlight.on_yank()]],
+  [[Filetype qf set nobuflisted]],
+  [[BufLeave * silent! :wa]],
+},
+true
+)

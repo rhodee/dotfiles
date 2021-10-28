@@ -1,40 +1,27 @@
 local utils = require("config.utils")
 local opt = utils.opt
-local autocmd = utils.autocmd
 local g = vim.g
 
-autocmd(
-  "lang_go_aucmds",
-  {
-    [[Filetype go set nolist]]
-  },
-  true
-)
+require('go').setup({
+  goimport ='goimport', -- goimport command
+  gofmt = 'gofmt', --gofmt cmd,
+  max_line_len = 120, -- max line length in goline format
+  tag_transform = false, -- tag_transfer check gomodifytags for details
+  verbose = true,  -- output loginf in messages
+  log_path = vim.fn.expand("$HOME") .. "/.config/nvim/gonvim.log",
+  lsp_cfg = true, -- true: apply go.nvim non-default gopls setup
+  lsp_gofumpt = false, -- true: set default gofmt in gopls format to gofumpt
+  lsp_on_attach = true, -- if a on_attach function provided:  attach on_attach function to gopls
+                       -- true: will use go.nvim on_attach if true
+                       -- nil/false do nothing
 
--- Plugin: https://github.com/fatih/vim-go
--- No gofmt on save. Use ALE.
-g.go_fmt_autosave = 0
-g.go_autodetect_gopath = 1
-g.go_snippet_engine = ""
-
--- Use the LSP
-g.go_auto_type_info = 0
-g.go_def_mapping_enabled = 0
-g.go_code_completion_enabled = 0
-g.go_doc_keywordprg_enabled = 0
-g.go_echo_go_info = 0
-g.go_fmt_fail_silently = 0
-g.go_list_type = "quickfix"
-g.go_test_show_name = 1
-g.go_list_autoclose = 0
-g:go_fmt_command = "goimports"
-g:go_rename_command = "gopls"
-g:go_term_mode = "vsplit"
-g:go_def_mode = "gopls"
-g:go_info_mode = "gopls"
-
--- https://github.com/neoclide/coc.nvim/issues/472#issuecomment-475848284
-g.go_template_autocreate = 0
-g.go_decls_mode = "fzf"
-g.go_term_enabled = 1
-g.go_term_height = 20
+  lsp_codelens = true,
+  -- gopls_remote_auto = true, -- set to false is you do not want to pass -remote=auto to gopls(enable share)
+  -- gopls_cmd = nil,
+  -- if you need to specify gopls path and cmd, e.g {"/home/user/lsp/gopls", "-logfile", "/var/log/gopls.log" }
+  lsp_diag_hdlr = true, -- hook lsp diag handler
+  dap_debug = true, -- set to true to enable dap
+  dap_debug_keymap = true, -- set keymaps for debugger
+  dap_debug_gui = true, -- set to true to enable dap gui, highly recommand
+  dap_debug_vt = true, -- set to true to enable dap virtual text
+})

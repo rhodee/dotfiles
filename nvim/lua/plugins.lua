@@ -45,6 +45,10 @@ return require("packer").startup({
         config = [[require('config.nvim-tree')]]
       }
 
+      use {
+        "ray-x/lsp_signature.nvim",
+      }
+
       -- NeoVim LSP
       use {
         "neovim/nvim-lspconfig",
@@ -56,6 +60,7 @@ return require("packer").startup({
         "hrsh7th/nvim-cmp",
         config = [[require('config.completion')]]
       }
+
       use {
         "hrsh7th/cmp-buffer",
         "hrsh7th/cmp-nvim-lsp",
@@ -89,9 +94,7 @@ return require("packer").startup({
 
       -- Go
       use {
-        "fatih/vim-go",
-        ft = "go",
-        run = ":GoUpdateBinaries"
+        "ray-x/go.nvim",
       }
 
       -- Rust
@@ -114,6 +117,16 @@ return require("packer").startup({
     use {
       "windwp/nvim-autopairs",
       config = [[require('config.autopairs')]]
+    }
+
+    -- Debug with DAP
+    use {
+      "rcarriga/nvim-dap-ui",
+    }
+
+    use {
+      "mfussenegger/nvim-dap",
+      config = [[require('config.dap')]]
     }
 
     -- Profiling
