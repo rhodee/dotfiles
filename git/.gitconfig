@@ -100,6 +100,13 @@
  # always setup 'git pull' to rebase instead of merge
   autosetuprebase = always
   autosetupmerge = true
+[merge]
+  tool = vimdiff
+[mergetool]
+  prompt = true
+[diff]
+  mnemonicprefix = true
+  tool = vimdiff
 [difftool]
   prompt = true
 [color "diff-highlight"]
@@ -112,5 +119,14 @@
   clean = git-lfs clean -- %f
   smudge = git-lfs smudge -- %f
   process = git-lfs filter-process
+[sequence]
+    editor = interactive-rebase-tool
+[gpg]
+  program = gpg
 [init]
-  defaultBranch = main
+ defaultBranch = main
+[pull]
+  ff = only
+[log]
+  date = iso-locald
+
