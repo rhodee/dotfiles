@@ -3,7 +3,6 @@ local g = vim.g
 -- Open NvimTree on Vim open.
 -- vim.cmd [[autocmd VimEnter * NvimTreeOpen]]
 
-g.nvim_tree_ignore = {".git", "node_modules", ".cache", "vendor"}
 g.nvim_tree_window_picker_exclude = {
   filetype = {
     "notify",
@@ -16,6 +15,7 @@ g.nvim_tree_window_picker_exclude = {
 }
 
 require "nvim-tree".setup {
+  tree_ignore = {".git", "node_modules", ".cache", "vendor"},
   -- closes neovim automatically when the tree is the last **WINDOW** in the view
   auto_close = true,
   -- updates the root directory of the tree on `DirChanged` (when your run `:cd` usually)
