@@ -17,9 +17,10 @@ brew 'ripgrep'
 brew 'fzf'
 brew 'tree'
 brew 'wget'
+brew 'bat'
 
 # Git Utils
 brew 'interactive-rebase-tool'
 brew 'gnupg'
 brew 'diff-so-fancy'
-
+brew 'git-delta'

@@ -25,6 +25,8 @@
   added = yellow
   changed = green
   untracked = cyan
+[include]
+  path = /PATH/TO/themes.gitconfig
 [alias]
   co = checkout
   ci = commit
@@ -47,6 +49,7 @@
   sl = stash list
   sa = stash apply
   ss = stash save
+  ssh = stash show -p
   # show diff in working tree since last commit, including new files
   ds = diff --color-words --ignore-all-space --cached
   dc = diff --cached
@@ -70,8 +73,19 @@
   ign = ls-files -o -i --exclude-standard
 [commit]
   template = ~/.gitmessage.txt
+[pager]
+  diff = delta
+  log = delta
+  reflog = delta
+  show = delta
+[interactive]
+  diffFilter = delta --color-only --features=interactive
+[delta]
+  features = tangara-chilensis
+  colorMoved = default
+[delta "interactive"]
+  keep-plus-minus-markers = false
 [core]
-  pager = diff-so-fancy | less --tabs=4 -RFX
   editor = vim
   excludesfile = ~/.gitignore_global
   quotepath = false
