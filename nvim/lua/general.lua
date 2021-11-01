@@ -46,6 +46,11 @@ opt("breakindentopt", "shift:2", window)
 opt("breakindentopt", "shift:2", window)
 opt("showbreak", "↳")
 
+-- code folding
+opt("foldlevel", 20)
+opt("foldmethod", "expr")
+opt("foldexpr", "nvim_treesitter#foldexpr()")
+
 -- no need to add g at end of substitute / replace commands
 opt("gdefault", true)
 ----------------------------------------------------------------------------

@@ -46,7 +46,7 @@ g.ale_rust_rustfmt_options = "--edition=2021"
 -- -- ALE supported tools - https://github.com/dense-analysis/ale/blob/master/supported-tools.md
 -- -- :ALEInfo
 g.ale_linters = {
-  ["go"] = {"gopls", "staticcheck", "gosimple"},
+  ["go"] = {"gopls", "staticcheck"},
   ["rust"] = {"rustc", "analyzer", "cargo"},
   ["json"] = {"jsonlint"},
   ["md"] = {"markdownlint"}
