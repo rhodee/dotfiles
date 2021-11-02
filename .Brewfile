@@ -18,6 +18,7 @@ brew 'fzf'
 brew 'tree'
 brew 'wget'
 brew 'bat'
+brew 'exa'
 
 # Git Utils
 brew 'interactive-rebase-tool'
