@@ -1,5 +1,5 @@
 local g = vim.g
-
+-- local cmd = vim.cmd
 -- Open NvimTree on Vim open.
 -- vim.cmd [[autocmd VimEnter * NvimTreeOpen]]
 
@@ -13,6 +13,13 @@ g.nvim_tree_window_picker_exclude = {
     "terminal"
   }
 }
+
+-- show indent markets when folder is open
+g.nvim_tree_indent_markers = 1
+-- highlight files/dirs.
+g.nvim_tree_highlight_opened_files = 0
+-- Append trailing slash to folder names
+g.nvim_tree_add_trailing = 0
 
 require "nvim-tree".setup {
   tree_ignore = {".git", "node_modules", ".cache", "vendor"},
@@ -40,7 +47,7 @@ require "nvim-tree".setup {
   },
   view = {
     -- width of the window, can be either a number (columns) or a string in `%`
-    width = 30,
+    width = "25%",
     -- side of the tree, can be one of 'left' | 'right' | 'top' | 'bottom'
     side = "left",
     -- if true the tree will resize itself after opening a file

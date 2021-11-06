@@ -19,11 +19,22 @@ return require("packer").startup({
       -- https://github.com/wbthomason/packer.nvim/blob/daec6c759f95cd8528e5dd7c214b18b4cec2658c/doc/packer.txt#L534
       use "wbthomason/packer.nvim"
 
+      -- NeoVim LSP
+      use {
+        "neovim/nvim-lspconfig",
+        config = [[require('config.lsp')]],
+      }
+
       -- General
       use {
-        "tpope/vim-surround",
+        "nvim-lua/popup.nvim",
         "nvim-lua/plenary.nvim"
       }
+
+      use {
+        "tpope/vim-surround",
+      }
+
       use {
         "nvim-telescope/telescope-fzf-native.nvim",
         run = "make"
@@ -47,12 +58,6 @@ return require("packer").startup({
 
       use {
         "ray-x/lsp_signature.nvim",
-      }
-
-      -- NeoVim LSP
-      use {
-        "neovim/nvim-lspconfig",
-        config = [[require('config.lsp')]],
       }
 
       -- Completion
@@ -109,9 +114,15 @@ return require("packer").startup({
       }
 
     use {
+      "akinsho/nvim-bufferline.lua",
+      requires = {"kyazdani42/nvim-web-devicons", opt = true},
+      config = [[require('config.bufferline')]]
+    }
+
+    use {
       "hoob3rt/lualine.nvim",
       requires = {"kyazdani42/nvim-web-devicons", opt = true},
-      config = [[require('config.statusline')]]
+      config = [[require('config.lualine')]]
     }
 
     use {
