@@ -12,6 +12,8 @@ brew 'ruby'
 brew 'openssl'
 brew 'openssh'
 brew 'starship'
+brew 'tmux'
+brew 'gitui'
 
 # Handy Utils
 brew 'ripgrep'

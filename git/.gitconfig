@@ -86,7 +86,7 @@
 [delta "interactive"]
   keep-plus-minus-markers = false
 [core]
-  editor = vim
+  editor = nvim
   excludesfile = ~/.gitignore_global
   quotepath = false
   # Do not consider trailing space change as a cause for merge
