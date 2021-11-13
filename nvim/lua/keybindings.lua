@@ -67,20 +67,6 @@ map("n", "<Leader>[", "<<", opts)
 map("v", "<Leader>[", "<gv", opts)
 map("v", "<Leader>]", ">gv", opts)
 
--- Tabs
--- opens a new tab with the current buffer's path
-map("n", "<Leader>to", ":tabonly<Return>", opts)
-map("n", "<Leader>tc", ":tabclose<Return>", opts)
-map("n", "<Leader>tn", ":tabnext<Return>", opts)
-map("n", "<Leader>tp", ":tabprevious<Return>", opts)
-map("n", "<Leader>t", ":tabnew<Return>", opts)
-
--- Buffer
-map("n", "<Leader>bn", ":bnext<Return>", opts)
-map("n", "<Leader>bp", ":bprevious<Return>", opts)
-map("n", "<Leader>bf", ":bfirst<Return>", opts)
-map("n", "<Leader>bd", ":bdelete<Return>", opts)
-
 -- Back to last position
 map("n", "<C-b>", "<C-o>", opts)
 

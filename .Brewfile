@@ -11,6 +11,7 @@ brew 'neovim'
 brew 'ruby'
 brew 'openssl'
 brew 'openssh'
+brew 'starship'
 
 # Handy Utils
 brew 'ripgrep'

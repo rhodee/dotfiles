@@ -114,12 +114,6 @@ return require("packer").startup({
       }
 
     use {
-      "akinsho/nvim-bufferline.lua",
-      requires = {"kyazdani42/nvim-web-devicons", opt = true},
-      config = [[require('config.bufferline')]]
-    }
-
-    use {
       "hoob3rt/lualine.nvim",
       requires = {"kyazdani42/nvim-web-devicons", opt = true},
       config = [[require('config.lualine')]]
