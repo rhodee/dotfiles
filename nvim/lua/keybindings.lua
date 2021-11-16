@@ -12,9 +12,10 @@ g.mapleader = " "
 g.maplocalleader = " "
 
 -- Telescope
+map("n", "<C-p>", ":Telescope find_files<Return>", opts)
 map("n", "<C-f>", ":Telescope live_grep<Return>", opts)
-map("n", "<C-p>", ":lua require('telescope.builtin').git_files()<Return>", opts)
-map("n", "<Leader>gs", ":Telescope git_files<Return>", opts)
+map("n", "<leader>bb", ":Telescope buffers<Return>", opts)
+map("n", "<leader>hh", ":Telescope help_tags<Return>", opts)
 
 -- DAP
 map("n", "<Leader>bp", ":lua require('dap').toggle_breakpoint()<Return>", opts)
@@ -24,6 +25,9 @@ map("n", "<Leader>dui", ":lua require('dap').toggle()<Return>", opts)
 -- ALE
 map("n", "<Leader>rn", ":ALERename<Return>", opts)
 
+-- Terminal
+map("t", "<C-s>", "<C-\\><C-n>", opts)
+map("t", "<Esc><Esc>", "<C-\\><C-n>", opts)
 
 -- Nvim-Tree
 map("n", "<Leader>n", ":lua require('nvim-tree').toggle()<Return>", opts)
@@ -57,9 +61,15 @@ map("n", "-", "<C-W>-", opts)
 map("n", "-", "<C-W>+", opts)
 
 -- Open new splits easily
-map("n", "sv", "<C-W>v", opts)
+map("n", "vv", "<C-W>v", opts)
 map("n", "ss", "<C-W>s", opts)
 map("n", "sq", "<C-W>q", opts)
+
+-- more natural movement with wrap on
+map("n", "j", "gj", opts)
+map("n", "k", "gk", opts)
+map("v", "j", "gj", opts)
+map("v", "k", "gk", opts)
 
 -- indent like ST2
 map("n", "<Leader>]", ">>", opts)

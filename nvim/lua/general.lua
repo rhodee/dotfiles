@@ -46,6 +46,26 @@ opt("breakindentopt", "shift:2", window)
 opt("breakindentopt", "shift:2", window)
 opt("showbreak", "↳")
 
+-- Display
+opt("showmatch", true)
+-- stop syntax highlight after x lines for performance
+opt("synmaxcol", 300)
+opt("laststatus", 2)
+opt("eol", false)
+opt("matchtime", 2)
+opt("showcmd", true)
+
+
+-- Commands
+opt("wildmenu", true)
+opt("wildignore", '.git,*.swp,*.jpg,*.png,*.gif,.DS_Store')
+
+
+-- Folds
+opt("foldenable", false)
+opt("foldlevel", 4)
+opt("foldmethod", 'syntax')
+
 -- code folding
 opt("foldlevel", 20)
 opt("foldmethod", "expr")
@@ -62,6 +82,8 @@ opt("hlsearch", true)
 opt("incsearch", true)
 opt("smartcase", true)
 
+opt("startofline", true)
+
 -- prevent vim from adding line at the end of every file
 opt("hidden", true)
 opt("binary", true)
@@ -71,9 +93,11 @@ opt("backspace", "eol,start,indent")
 -- Lineno
 opt("number", true, window)
 opt("relativenumber", true, window)
-opt("numberwidth", 5, window)
+opt("numberwidth", 3, window)
 
 -- Reading/Writing
+opt("timeout", true)
+opt("ttimeout", true)
 opt("timeoutlen", 500)
 opt("ttimeoutlen", 500)
 
