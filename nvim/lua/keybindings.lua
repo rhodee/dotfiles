@@ -1,24 +1,42 @@
 ------------------------------------------------------------------------------
+-- Keymaps configuration file: keymaps of neovim
 -- GENERAL KEY MAP
 -- :map for list mappings.
 ------------------------------------------------------------------------------
-
 local map = vim.api.nvim_set_keymap
 local opts = {noremap = true}
 local g = vim.g
 
-map("n", "<Space>", "<Nop>", { noremap = true, silent = true })
 g.mapleader = " "
 g.maplocalleader = " "
+
+-- clear search highlighting
+-- map('n', '<leader>c', ':nohl<CR>', default_opts)
+
+-- map Esc to kk
+map("i", 'kk', '<Esc>', opts)
+
+-- fast saving with <leader> and s
+map("n", "<Leader>w", ":w<CR>", opts)
+map("i", "<Leader>w", "<C-c>:w<CR>", opts)
+
+-- close all windows and exit from neovim
+map("n", '<Leader>q', ":qa!<CR>", opts)
+
+-- Nvim-Tree
+map("n", '<C-n>', ":NvimTreeToggle<Return>", opts)       -- open/close
+map("n", '<Leader>r', ":NvimTreeRefresh<Return>", opts)  -- refresh
+
+map("n", "<Space>", "<Nop>", { noremap = true, silent = true })
 
 -- Telescope
 map("n", "<C-p>", ":Telescope find_files<Return>", opts)
 map("n", "<C-f>", ":Telescope live_grep<Return>", opts)
-map("n", "<leader>bb", ":Telescope buffers<Return>", opts)
-map("n", "<leader>hh", ":Telescope help_tags<Return>", opts)
+map("n", "<C-b>", ":Telescope buffers<Return>", opts)
+map("n", "<C-h>", ":Telescope help_tags<Return>", opts)
 
 -- DAP
-map("n", "<Leader>bp", ":lua require('dap').toggle_breakpoint()<Return>", opts)
+map("n", "<Leadert>tb", ":lua require('dap').toggle_breakpoint()<Return>", opts)
 map("n", "<Leader>dap", ":lua require('dap').continue()<Return>", opts)
 map("n", "<Leader>dui", ":lua require('dap').toggle()<Return>", opts)
 
@@ -26,14 +44,10 @@ map("n", "<Leader>dui", ":lua require('dap').toggle()<Return>", opts)
 map("n", "<Leader>rn", ":ALERename<Return>", opts)
 
 -- Terminal
-map("t", "<C-s>", "<C-\\><C-n>", opts)
-map("t", "<Esc><Esc>", "<C-\\><C-n>", opts)
+map('n', '<C-t>', ':Term<CR>', { noremap = true })
 
--- Nvim-Tree
-map("n", "<Leader>n", ":lua require('nvim-tree').toggle()<Return>", opts)
-
+-- Get to command mode faster
 map("n", ";", ":", opts)
-
 
 -- jump to start and end of line
 map("n", "H", "^", opts)
@@ -76,9 +90,6 @@ map("n", "<Leader>]", ">>", opts)
 map("n", "<Leader>[", "<<", opts)
 map("v", "<Leader>[", "<gv", opts)
 map("v", "<Leader>]", ">gv", opts)
-
--- Back to last position
-map("n", "<C-b>", "<C-o>", opts)
 
 -- Paste with current indentation
 map("n", "<Leader>p", "]p", opts)
