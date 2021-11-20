@@ -14,17 +14,19 @@ brew 'openssh'
 brew 'starship'
 brew 'tmux'
 brew 'gitui'
+brew 'age'
 
 # Handy Utils
 brew 'ripgrep'
 brew 'fzf'
 brew 'tree'
 brew 'wget'
+brew 'curl'
 brew 'bat'
 brew 'exa'
+brew 'bottom'
 
 # Git Utils
 brew 'interactive-rebase-tool'
 brew 'gnupg'
-brew 'diff-so-fancy'
 brew 'git-delta'
