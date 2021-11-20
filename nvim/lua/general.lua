@@ -87,12 +87,25 @@ opt("eol", false)
 opt("matchtime", 2)
 opt("showcmd", true)
 
+----------------------------------------------------------------------------
+-- Window splitting and buffers {{{1
+----------------------------------------------------------------------------
+-- exclude usetab as we do not want to jump to buffers in already open tabs
+-- do not use split or vsplit to ensure we don't open any new windows
+o.switchbuf = "useopen,uselast" -- "uselast"
+vim.opt.fillchars = {
+  vert = "│",
+  fold = "⠀",
+  eob = " ", -- suppress ~ at EndOfBuffer
+  --diff = "⣿", -- alternatives = ⣿ ░ ─ ╱
+  msgsep = "‾",
+  foldopen = "▾",
+  foldsep = "│",
+  foldclose = "▸",
+}
 
-----------------------------------------------------------------------------
--- Search
-----------------------------------------------------------------------------
-opt("wildmenu", true)
-opt("wildignore", '.git,*.swp,*.jpg,*.png,*.gif,.DS_Store')
+opt("jumpoptions", "stack")
+opt("virtualedit", "onemore")
 
 ----------------------------------------------------------------------------
 -- Folds
@@ -109,15 +122,29 @@ opt("foldexpr", "nvim_treesitter#foldexpr()")
 -----------------------------------------------------------
 -- insert mode completion options
 opt("completeopt", 'menuone,noselect')
+opt("wildmode", "full,longest")
+opt("wildignorecase", true)
+opt("wildoptions", "pum")
+opt("pumblend", 15)
+opt("pumheight", 15)
+opt("pumwidth", 20)
+opt("wildignore", "*.aux,*.out,*.toc,*.o,*.obj,*.dll,*.jar,*.pyc,*.rbc,*.class,*.gif,*.ico,*.jpg,*.jpeg,*.png,*.avi,*.wav,*.webm,*.eot,*.otf,*.ttf,*.woff,*.doc,*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz,.sass-cache,*/vendor/gems/*,*/vendor/cache/*,*/.bundle/*,*.gem,*.*~,*~ ,*.swp,.lock,._*,tags.lock,.DS_Store")
+
+---------------------------------------------------------------------------
+-- Spelling
+---------------------------------------------------------------------------
+opt("spelloptions","camel")
+opt("spellcapcheck", "") -- don't check for capital letters at start of sentence
+opt("fileformats", "unix,mac,dos")
 
 ----------------------------------------------------------------------------
 -- SEARCH
------------------------------------------------------------------------------
+----------------------------------------------------------------------------
 opt("ignorecase", true)
+opt("smartcase", true)
 opt("infercase", true)
 opt("hlsearch", true)
 opt("incsearch", true)
-opt("smartcase", true)
 
 opt("gdefault", true) -- no need to add g at end of substitute / replace commands
 opt("startofline", true)
@@ -154,7 +181,24 @@ opt("title", true)
 opt("showbreak", "↪⋯⋯")
 opt("updatetime", 300)
 opt("list", true)
-opt("listchars", "tab:»·,trail:·,eol:¬,nbsp:·,extends:❯,precedes:❮")
+opt("listchars", "tab:»·,trail:·,eol:¬,nbsp:·,extends:❯,precedes:❮,nbsp:%")
+vim.opt.formatoptions = {
+  ["1"] = false,
+  ["2"] = false, -- Use indent from 2nd line of a paragraph
+  a = false, -- Auto formatting is BAD.
+  q = true, -- continue comments with gq"
+  c = false, -- Auto-wrap comments using textwidth
+  r = false, -- Continue comments when pressing Enter
+  o = false, -- Automatically insert the current comment leader after hitting 'o' or 'O'
+  n = true, -- Recognize numbered lists
+  t = false, -- autowrap lines using text width value
+  j = true, -- remove a comment leader when joining lines.
+  -- Only break if the line was not longer than 'textwidth' when the insert
+  -- started and only at a white character that has been entered during the
+  -- current insert command.
+  l = false,
+  v = false,
+}
 
 -- Encoding
 opt("encoding", "utf-8")
@@ -218,4 +262,3 @@ end
 
 -- remove whitespace on save
 cmd [[au BufWritePre * :%s/\s\+$//e]]
-

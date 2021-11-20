@@ -15,6 +15,7 @@ brew 'starship'
 brew 'tmux'
 brew 'gitui'
 brew 'age'
+brew 'fish'
 
 # Handy Utils
 brew 'ripgrep'
