@@ -1,4 +1,3 @@
-set -xU VIMDATA '$HOME/share/nvim'
 set -xU VIMCONFIG '$HOME/.config/nvim'
 set -xU VISUAL 'vim'
 set -xU EDITOR "$VISUAL"
@@ -12,6 +11,9 @@ source $HOME/.config/fish/functions/*.fish
 ulimit -S -n 10000
 
 starship init fish | source
+
+zoxide init fish | source
+
 if test -e "$HOME/.extra.fish";
   source ~/.config/fish/extras/secret.fish
 end
