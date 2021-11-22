@@ -23,7 +23,7 @@ ssh_only = false
 
 # makes prompt a single line
 [line_break]
-disabled = true
+disabled = false
 
 # Disable the package module, hiding it from the prompt completely
 [package]
@@ -57,7 +57,7 @@ read_only = " "
 [memory_usage]
 symbol = " "
 disabled = false
-threshold = 50
+threshold = 80
 
 [git_status]
 format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style)"
@@ -75,5 +75,5 @@ format = '\([$state( $progress_current/$progress_total)]($style)\) '
 style = "bright-black"
 
 [username]
-show_always = true
+show_always = false
 format = "[$user]($style) on "

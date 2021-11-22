@@ -1,8 +1,8 @@
 # Navigation
-function ..    ; cd .. ; end
-function ...   ; cd ../.. ; end
-function ....  ; cd ../../.. ; end
-function ..... ; cd ../../../.. ; end
+function ..    ; z .. ; end
+function ...   ; z ../.. ; end
+function ....  ; z ../../.. ; end
+function ..... ; z ../../../.. ; end
 
 # Utilities
 function g        ; git $argv ; end
@@ -36,7 +36,7 @@ alias cp="cp -i"
 alias mv="mv -i"
 alias rm="rm -i"
 alias gdoc="godoc -http=:6060; echo GoDoc exited on port 6060"
-alias sandbox="cd $HOME/Development"
+alias sandbox="z $HOME/Development"
 alias grem="git remote -v"
 # File size
 alias fs="stat -f \"%z bytes\""
