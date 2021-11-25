@@ -5,8 +5,7 @@ set -xU TERM 'xterm'
 set -gx VOLTA_HOME "$HOME/.volta"
 set -gx PATH "$VOLTA_HOME/bin" $PATH
 
-source $HOME/.config/fish/conf.d/*.fish
-source $HOME/.config/fish/functions/*.fish
+set fish_greeting
 
 ulimit -S -n 10000
 
