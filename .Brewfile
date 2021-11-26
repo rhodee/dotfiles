@@ -2,6 +2,7 @@
 
 tap 'homebrew/bundle'
 tap 'homebrew/core'
+tap 'ktr0731/evans'
 
 # Install python, Go from DL sites, never from brew
 
@@ -17,6 +18,7 @@ brew 'tmux'
 brew 'fish'
 brew 'zoxide'
 brew 'gitui'
+brew 'age'
 
 # Handy Utils
 brew 'ripgrep'
@@ -26,8 +28,9 @@ brew 'curl'
 brew 'wget'
 brew 'bat'
 brew 'exa'
+brew 'evans' # gRPC for cURL
 
 # Git Utils
-brew 'interactive-rebase-tool'
+brew 'git-interactive-rebase-tool'
 brew 'gnupg'
 brew 'git-delta'
