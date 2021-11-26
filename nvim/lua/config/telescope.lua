@@ -3,20 +3,25 @@ require("telescope").setup {
   defaults = {
     vimgrep_arguments = {
       "rg",
-      "--hidden",
       "--color=never",
       "--no-heading",
       "--with-filename",
       "--line-number",
       "--column",
-      "--smart-case"
+      "--smart-case",
+      "--ignore",
+      "--hidden",
+      "-g",
+      "!.git",
     },
     mappings = {
       i = {
-        ["<esc>"] = actions.close
+        ['<ESC>'] = require('telescope.actions').close,
+        ['<C-u>'] = false,
+        ['<C-d>'] = false,
       },
       n = {
-        ["<esc>"] = actions.close,
+        ['<ESC>'] = require('telescope.actions').close,
         ["<cr>"] = false
       }
     },

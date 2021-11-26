@@ -22,6 +22,7 @@ g.nvim_tree_highlight_opened_files = 0
 g.nvim_tree_add_trailing = 0
 
 require "nvim-tree".setup {
+  hijack_cursor = true,
   tree_ignore = {".git", "node_modules", ".cache", "vendor"},
   -- closes neovim automatically when the tree is the last **WINDOW** in the view
   auto_close = true,

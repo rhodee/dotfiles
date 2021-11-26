@@ -1,5 +1,6 @@
 local cmp = require("cmp")
 local luasnip = require("luasnip")
+local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 local cmd = vim.cmd
 local o = vim.o
 local api = vim.api
@@ -52,10 +53,13 @@ cmp.setup {
     end, { "i", "s" }),
   },
   sources = {
-    {name = "nvim_lsp"},
-    {name = "nvim_lua"},
-    {name = "buffer"},
-    {name = "path"},
-    {name = "luasnip"},
+    { name = "nvim_lsp" },
+    { name = "luasnip" },
+    { name = "buffer" },
+    { name = "path" },
+    { name = "nvim_lua" },
+    { name = "rg" },
   }
 }
+
+cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done({ map_char = { tex = '' } }))

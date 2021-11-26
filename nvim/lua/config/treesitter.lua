@@ -16,6 +16,9 @@ require("nvim-treesitter.configs").setup {
   matchup = {
     enable = true
   },
+  autopairs = {
+    enable = true,
+  },
 }
 
 -- autocmd(

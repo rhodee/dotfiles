@@ -85,16 +85,22 @@ return require("packer").startup({
         config = [[require('config.ale')]]
       }
 
-      -- Git
+      -- T.Pope
       use {
         "tpope/vim-fugitive",
         "tpope/vim-commentary",
+        "tpope/vim-repeat",
       }
 
       use {
         "lewis6991/gitsigns.nvim",
         requires = {"nvim-lua/plenary.nvim"},
         config = [[require('config.gitsigns')]]
+      }
+
+      use {
+        'norcalli/nvim-colorizer.lua',
+        config = [[require('config.colorizer')]],
       }
 
       -- Go
@@ -122,6 +128,12 @@ return require("packer").startup({
     use {
       "windwp/nvim-autopairs",
       config = [[require('config.autopairs')]]
+    }
+
+
+    use {
+      'lukas-reineke/indent-blankline.nvim',
+      config = [[require('config.blankline')]]
     }
 
     -- Debug with DAP
