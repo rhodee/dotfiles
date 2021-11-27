@@ -3,7 +3,6 @@
 tap 'homebrew/bundle'
 tap 'homebrew/core'
 tap 'ktr0731/evans'
-tap 'filippo.io/age'
 tap 'bufbuild/buf'
 
 # Install python, Go from DL sites, never from brew
