@@ -19,20 +19,36 @@ return require("packer").startup({
       -- https://github.com/wbthomason/packer.nvim/blob/daec6c759f95cd8528e5dd7c214b18b4cec2658c/doc/packer.txt#L534
       use "wbthomason/packer.nvim"
 
-      -- NeoVim LSP
-      use {
-        "neovim/nvim-lspconfig",
-        config = [[require('config.lsp')]],
-      }
-
       -- General
       use {
-        "nvim-lua/popup.nvim",
-        "nvim-lua/plenary.nvim"
+        "nvim-treesitter/nvim-treesitter",
+        run = ":TSUpdate",
+        opt = true,
+        event = "BufRead",
+        config = [[require('config.treesitter')]],
+        wants = {
+          "plenary.nvim",
+          "popup.nvim",
+          "telescope-fzy-native.nvim",
+          "trouble.nvim",
+          "telescope-symbols.nvim",
+        },
+        requires = {
+          "nvim-lua/popup.nvim",
+          "nvim-lua/plenary.nvim",
+          "nvim-telescope/telescope-symbols.nvim",
+          "nvim-telescope/telescope-fzy-native.nvim",
+        },
       }
 
       use {
-        "tpope/vim-surround",
+        "nvim-lua/plenary.nvim",
+        module = "plenary"
+      }
+
+      use {
+        "nvim-lua/popup.nvim",
+        module = "popup"
       }
 
       use {
@@ -41,14 +57,88 @@ return require("packer").startup({
       }
 
       use {
-        "nvim-treesitter/nvim-treesitter",
-        run = ":TSUpdate"
+        "folke/trouble.nvim",
+        requires = {"kyazdani42/nvim-web-devicons", opt = true},
+        config = [[require('config.trouble')]],
       }
 
       use {
         "nvim-telescope/telescope.nvim",
-        requires = {{"nvim-lua/plenary.nvim"}},
+        requires = {"nvim-lua/plenary.nvim"},
         config = [[require('config.telescope')]]
+      }
+
+      -- Completion
+      use {
+        "hrsh7th/nvim-cmp",
+        event = "InsertEnter",
+        opt = true,
+        wants = { "LuaSnip" },
+        config = [[require('config.completion')]],
+        requires = {
+          "hrsh7th/cmp-nvim-lsp",
+          "hrsh7th/cmp-buffer",
+          "hrsh7th/cmp-path",
+          "hrsh7th/cmp-nvim-lua",
+          "saadparwaiz1/cmp_luasnip",
+          {
+            "L3MON4D3/LuaSnip",
+            wants = "friendly-snippets",
+            config = [[require('config.snippets')]]
+          },
+          "rafamadriz/friendly-snippets",
+        }
+      }
+
+      -- LSP
+      use {
+        "neovim/nvim-lspconfig",
+        opt = true,
+        event = "BufReadPre",
+        wants = {
+          "cmp-nvim-lsp",
+        },
+        config = [[require('config.lsp')]],
+      }
+
+      -- Theme
+      use {
+        "ellisonleao/gruvbox.nvim",
+        requires = {"rktjmp/lush.nvim"}
+      }
+
+      use {
+        "nvim-lualine/lualine.nvim",
+        event = "VimEnter",
+        requires = {"kyazdani42/nvim-web-devicons", opt = true},
+        config = [[require('config.lualine')]],
+        wants = "nvim-web-devicons",
+      }
+
+      use {
+        "windwp/nvim-autopairs",
+        config = [[require('config.autopairs')]]
+      }
+
+      use {
+        'lukas-reineke/indent-blankline.nvim',
+        config = [[require('config.blankline')]]
+      }
+
+      use {
+        'folke/twilight.nvim',
+        config = [[require('config.twilight')]]
+      }
+
+      use {
+        'folke/zen-mode.nvim',
+        config = [[require('config.zen')]]
+      }
+
+      -- Better understanding
+      use {
+        "folke/which-key.nvim",
+        config = [[require('config.whichkey')]],
       }
 
       use {
@@ -58,25 +148,13 @@ return require("packer").startup({
 
       use {
         "ray-x/lsp_signature.nvim",
+        config = [[require('config.signature')]]
       }
 
-      -- Completion
+      -- Symbols
       use {
-        "hrsh7th/nvim-cmp",
-        config = [[require('config.completion')]]
-      }
-
-      use {
-        "hrsh7th/cmp-buffer",
-        "hrsh7th/cmp-nvim-lsp",
-        "hrsh7th/cmp-nvim-lua",
-        "hrsh7th/cmp-path"
-      }
-
-      -- Completion (Snippets)
-      use {
-        'L3MON4D3/LuaSnip',
-        config = [[require('config.completion')]]
+        "simrat39/symbols-outline.nvim",
+        cmd = { "SymbolsOutline" },
       }
 
       -- Linting
@@ -87,6 +165,7 @@ return require("packer").startup({
 
       -- T.Pope
       use {
+        "tpope/vim-surround",
         "tpope/vim-fugitive",
         "tpope/vim-commentary",
         "tpope/vim-repeat",
@@ -100,41 +179,21 @@ return require("packer").startup({
 
       use {
         'norcalli/nvim-colorizer.lua',
+        event = "BufReadPre",
         config = [[require('config.colorizer')]],
       }
 
       -- Go
       use {
         "ray-x/go.nvim",
+        config = [[require('config.go')]],
+        ft = "go",
       }
 
       -- Rust
       use {
         "rust-lang/rust.vim"
       }
-
-      -- UI
-      use {
-        "ellisonleao/gruvbox.nvim",
-        requires = {"rktjmp/lush.nvim"}
-      }
-
-    use {
-      "hoob3rt/lualine.nvim",
-      requires = {"kyazdani42/nvim-web-devicons", opt = true},
-      config = [[require('config.lualine')]]
-    }
-
-    use {
-      "windwp/nvim-autopairs",
-      config = [[require('config.autopairs')]]
-    }
-
-
-    use {
-      'lukas-reineke/indent-blankline.nvim',
-      config = [[require('config.blankline')]]
-    }
 
     -- Debug with DAP
     use {
@@ -144,6 +203,13 @@ return require("packer").startup({
     use {
       "mfussenegger/nvim-dap",
       config = [[require('config.dap')]]
+    }
+
+    use {
+      "theHamsta/nvim-dap-virtual-text",
+      config = function()
+        require("nvim-dap-virtual-text").setup()
+      end,
     }
 
     -- Profiling

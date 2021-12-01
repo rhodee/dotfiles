@@ -20,11 +20,6 @@ g.loaded_python_provider = 0
 g.python_host_prog = "/usr/bin/python2"
 g.python3_host_prog = "/usr/bin/python"
 
--- Language Bindings
-require('config.go')
-
--- Misc
-require('config.signature')
 ----------------------------------------------------------------------------
 -- Load Common Configuration
 -- :options for full list.
@@ -41,7 +36,10 @@ opt("syntax", "enable")
 opt("splitbelow", true)
 opt("splitright", true)
 opt("showmode", false)
-
+-- enable mouse mode
+opt("mouse", "a")
+-- confirm to save changes before exiting modified buffer
+opt("confirm", true)
 ----------------------------------------------------------------------------
 -- Improve wrapping
 ----------------------------------------------------------------------------
@@ -105,18 +103,20 @@ vim.opt.fillchars = {
 }
 
 opt("jumpoptions", "stack")
-opt("virtualedit", "onemore")
+opt("virtualedit", "all")
 
 ----------------------------------------------------------------------------
--- Folds
+-- Folds (Treesitter managed)
 ----------------------------------------------------------------------------
-opt("foldenable", false)
 opt("foldlevel", 4)
-opt("foldmethod", 'syntax')
-opt("foldlevel", 20)
 opt("foldmethod", "expr")
 opt("foldexpr", "nvim_treesitter#foldexpr()")
 
+----------------------------------------------------------------------------
+-- Undo
+----------------------------------------------------------------------------
+opt("undofile", true)
+opt("undolevels", 10000)
 -----------------------------------------------------------
 -- Autocompletion
 -----------------------------------------------------------
@@ -182,6 +182,7 @@ opt("showbreak", "↪⋯⋯")
 opt("updatetime", 300)
 opt("list", true)
 opt("listchars", "tab:»·,trail:·,eol:¬,nbsp:·,extends:❯,precedes:❮,nbsp:%")
+opt("shortmess", "ToOlxfitn")
 vim.opt.formatoptions = {
   ["1"] = false,
   ["2"] = false, -- Use indent from 2nd line of a paragraph
@@ -204,8 +205,7 @@ vim.opt.formatoptions = {
 opt("encoding", "utf-8")
 opt("fileencoding", "utf-8")
 
--- highlight on yank
---
+-- Highlight on yank
 autocmd(
 "misc_autocmds",
 {
@@ -220,17 +220,33 @@ true
 -- Terminal
 -----------------------------------------------------------
 -- open a terminal pane on the right using :Term
-cmd [[command Term :botright vsplit term://$SHELL]]
+cmd([[command Term :botright vsplit term://$SHELL]])
 
 -- Terminal visual tweaks
 --- enter insert mode when switching to terminal
 --- close terminal buffer on process exit
-cmd [[
+cmd([[
     autocmd TermOpen * setlocal listchars= nonumber norelativenumber nocursorline
     autocmd TermOpen * startinsert
     autocmd BufLeave term://* stopinsert
-]]
+]])
 
+-- Check if we need to reload the file when it changed
+cmd("au FocusGained * :checktime")
+
+-- show cursor line only in active window
+cmd([[
+  autocmd InsertLeave,WinEnter * set cursorline
+  autocmd InsertEnter,WinLeave * set nocursorline
+]])
+
+-- go to last loc when opening a buffer
+cmd([[
+  autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | execute "normal! g`\"" | endif
+]])
+
+-- remove whitespace on save
+cmd [[au BufWritePre * :%s/\s\+$//e]]
 -----------------------------------------------------------
 -- Startup
 -----------------------------------------------------------
@@ -260,5 +276,3 @@ for _, plugin in pairs(disabled_built_ins) do
     g["loaded_" .. plugin] = 1
 end
 
--- remove whitespace on save
-cmd [[au BufWritePre * :%s/\s\+$//e]]

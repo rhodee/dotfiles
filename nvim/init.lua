@@ -10,5 +10,8 @@ end
 require("auto_exec")
 require("general")
 require("keybindings")
-require("plugins")
 require("colors")
+
+vim.defer_fn(function()
+  require("plugins")
+end, 0)

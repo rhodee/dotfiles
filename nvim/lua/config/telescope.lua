@@ -1,4 +1,7 @@
-local actions = require("telescope.actions")
+local trouble = require("trouble.providers.telescope")
+local telescope = require("telescope")
+-- local actions = require("telescope.actions")
+
 require("telescope").setup {
   defaults = {
     vimgrep_arguments = {
@@ -16,14 +19,15 @@ require("telescope").setup {
     },
     mappings = {
       i = {
-        ['<ESC>'] = require('telescope.actions').close,
-        ['<C-u>'] = false,
-        ['<C-d>'] = false,
+        ["<c-t>"] = trouble.open_with_trouble,
+        -- ['<ESC>'] = require('telescope.actions').close,
+        -- ['<C-u>'] = false,
+        -- ['<C-d>'] = false,
       },
-      n = {
-        ['<ESC>'] = require('telescope.actions').close,
-        ["<cr>"] = false
-      }
+      -- n = {
+      --   ['<ESC>'] = require('telescope.actions').close,
+      --   ["<cr>"] = false
+      -- }
     },
     layout_config = {
       horizontal = {
@@ -42,7 +46,7 @@ require("telescope").setup {
     file_ignore_patterns = {},
     generic_sorter = require "telescope.sorters".get_generic_fuzzy_sorter,
     path_display = absolute,
-    winblend = 0,
+    winblend = 10,
     border = {},
     borderchars = {"─", "│", "─", "│", "╭", "╮", "╯", "╰"},
     color_devicons = false,
