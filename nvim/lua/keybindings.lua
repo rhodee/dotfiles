@@ -41,13 +41,15 @@ map("n", "<Leader>dap", ":lua require('dap').continue()<Return>", opts)
 map("n", "<Leader>dui", ":lua require('dap').toggle()<Return>", opts)
 
 -- ALE
-map("n", "<Leader>rn", ":ALERename<Return>", opts)
+-- map("n", "<Leader>rn", ":ALERename<Return>", opts)
 
 -- Terminal
 map('n', '<C-t>', ':Term<CR>', { noremap = true })
 
 -- Get to command mode faster
 map("n", ";", ":", opts)
+map("v", ";", ":", opts)
+map("x", ";", ":", opts)
 
 -- jump to start and end of line
 map("n", "H", "^", opts)
@@ -66,13 +68,13 @@ map("n", "<Leader>k", "<C-W>k", opts)
 map("n", "<Leader>j", "<C-W>j", opts)
 
 -- narrower window
-map("n", "-", "<C-W><", opts)
+map("n", "<Leader>-", "<C-W><", opts)
 -- wider window
-map("n", "-", "<C-W>>", opts)
+map("n", "<Leader>+", "<C-W>>", opts)
 -- shorter window
 map("n", "-", "<C-W>-", opts)
 -- taller window
-map("n", "-", "<C-W>+", opts)
+map("n", "+", "<C-W>+", opts)
 
 -- Open new splits easily
 map("n", "vv", "<C-W>v", opts)

@@ -10,15 +10,18 @@ local has_words_before = function()
   return col ~= 0 and api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
 
-cmp.setup {
+local cmp = require("cmp")
+local luasnip = require("luasnip")
+local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+
+cmp.setup({
   snippet = {
     expand = function(args)
       luasnip.lsp_expand(args.body)
     end,
   },
+
   mapping = {
-    ['<C-p>'] = cmp.mapping.select_prev_item(),
-    ['<C-n>'] = cmp.mapping.select_next_item(),
     ['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
     ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
     ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
@@ -52,6 +55,7 @@ cmp.setup {
       end
     end, { "i", "s" }),
   },
+
   sources = {
     { name = "nvim_lsp" },
     { name = "luasnip" },
@@ -59,7 +63,22 @@ cmp.setup {
     { name = "path" },
     { name = "nvim_lua" },
     { name = "rg" },
-  }
-}
+  },
+
+  documentation = {
+    border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+    winhighlight = "NormalFloat:NormalFloat,FloatBorder:TelescopeBorder",
+  },
+
+  experimental = {
+    ghost_text = {
+      hl_group = "LineNr",
+    },
+  },
+})
 
 cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done({ map_char = { tex = '' } }))
+
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+

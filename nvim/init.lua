@@ -14,4 +14,5 @@ require("colors")
 
 vim.defer_fn(function()
   require("plugins")
+  require("languages")
 end, 0)

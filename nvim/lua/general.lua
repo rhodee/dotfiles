@@ -1,10 +1,12 @@
------------------------------------------------------------
+----------------------------------------------------------------------------
 -- Neovim settings
------------------------------------------------------------
+----------------------------------------------------------------------------
+local api = vim.api
+local exec = api.nvim_exec
 
------------------------------------------------------------
+----------------------------------------------------------------------------
 -- Neovim API aliases
------------------------------------------------------------
+----------------------------------------------------------------------------
 local g = vim.g
 local cmd = vim.cmd
 local o, wo, bo = vim.o, vim.wo, vim.bo
@@ -40,7 +42,8 @@ opt("showmode", false)
 opt("mouse", "a")
 -- confirm to save changes before exiting modified buffer
 opt("confirm", true)
-----------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------
 -- Improve wrapping
 ----------------------------------------------------------------------------
 opt("breakindent", true, window)
@@ -59,13 +62,8 @@ opt("tabstop", 4, buffer)
 -- don't auto commenting new lines
 cmd [[au BufEnter * set fo-=c fo-=r fo-=o]]
 
--- remove line lenght marker for selected filetypes
-cmd [[autocmd FileType text,markdown,html,xhtml,javascript setlocal cc=0]]
-
--- 2 spaces for selected filetypes
-cmd [[
-  autocmd FileType sql,xml,html,xhtml,css,scss,javascript,lua,yaml setlocal shiftwidth=2 tabstop=2
-]]
+-- remove line length marker for selected filetypes
+cmd [[autocmd FileType text,markdown,html,xhtml setlocal cc=0]]
 
 ----------------------------------------------------------------------------
 -- Memory, CPU
@@ -86,10 +84,11 @@ opt("matchtime", 2)
 opt("showcmd", true)
 
 ----------------------------------------------------------------------------
--- Window splitting and buffers {{{1
+-- Window splitting and buffers
 ----------------------------------------------------------------------------
 -- exclude usetab as we do not want to jump to buffers in already open tabs
 -- do not use split or vsplit to ensure we don't open any new windows
+
 o.switchbuf = "useopen,uselast" -- "uselast"
 vim.opt.fillchars = {
   vert = "│",
@@ -103,7 +102,7 @@ vim.opt.fillchars = {
 }
 
 opt("jumpoptions", "stack")
-opt("virtualedit", "all")
+opt("virtualedit", "onemore")
 
 ----------------------------------------------------------------------------
 -- Folds (Treesitter managed)
@@ -117,18 +116,18 @@ opt("foldexpr", "nvim_treesitter#foldexpr()")
 ----------------------------------------------------------------------------
 opt("undofile", true)
 opt("undolevels", 10000)
------------------------------------------------------------
+
+----------------------------------------------------------------------------
 -- Autocompletion
------------------------------------------------------------
--- insert mode completion options
+----------------------------------------------------------------------------
 opt("completeopt", 'menuone,noselect')
-opt("wildmode", "full,longest")
 opt("wildignorecase", true)
 opt("wildoptions", "pum")
 opt("pumblend", 15)
 opt("pumheight", 15)
 opt("pumwidth", 20)
-opt("wildignore", "*.aux,*.out,*.toc,*.o,*.obj,*.dll,*.jar,*.pyc,*.rbc,*.class,*.gif,*.ico,*.jpg,*.jpeg,*.png,*.avi,*.wav,*.webm,*.eot,*.otf,*.ttf,*.woff,*.doc,*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz,.sass-cache,*/vendor/gems/*,*/vendor/cache/*,*/.bundle/*,*.gem,*.*~,*~ ,*.swp,.lock,._*,tags.lock,.DS_Store")
+-- opt("wildmode", "full,longest")
+-- opt("wildignore", "*.aux,*.out,*.toc,*.o,*.obj,*.dll,*.jar,*.pyc,*.rbc,*.class,*.gif,*.ico,*.jpg,*.jpeg,*.png,*.avi,*.wav,*.webm,*.eot,*.otf,*.ttf,*.woff,*.doc,*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz,.sass-cache,*/vendor/gems/*,*/vendor/cache/*,*/.bundle/*,*.gem,*.*~,*~ ,*.swp,.lock,._*,tags.lock,.DS_Store")
 
 ---------------------------------------------------------------------------
 -- Spelling
@@ -174,8 +173,9 @@ opt("mat", 5)
 
 -- For regular expressions turn magic on
 opt("magic", true)
+
 ------------------------------------------------------------------------------
---FORMATTING
+-- FORMATTING
 ------------------------------------------------------------------------------
 opt("title", true)
 opt("showbreak", "↪⋯⋯")
@@ -216,15 +216,15 @@ autocmd(
 true
 )
 
------------------------------------------------------------
+----------------------------------------------------------------------------
 -- Terminal
------------------------------------------------------------
+----------------------------------------------------------------------------
 -- open a terminal pane on the right using :Term
 cmd([[command Term :botright vsplit term://$SHELL]])
 
--- Terminal visual tweaks
---- enter insert mode when switching to terminal
---- close terminal buffer on process exit
+--  Terminal visual tweaks
+--  enter insert mode when switching to terminal
+--  close terminal buffer on process exit
 cmd([[
     autocmd TermOpen * setlocal listchars= nonumber norelativenumber nocursorline
     autocmd TermOpen * startinsert
@@ -247,9 +247,17 @@ cmd([[
 
 -- remove whitespace on save
 cmd [[au BufWritePre * :%s/\s\+$//e]]
------------------------------------------------------------
+
+-- Go
+-- Fmt/Import on save
+exec([[
+  autocmd BufWritePre *.go :silent! lua require('go.format').gofmt()
+  autocmd BufWritePre *.go :silent! lua require('go.format').goimport()
+]], false)
+
+----------------------------------------------------------------------------
 -- Startup
------------------------------------------------------------
+----------------------------------------------------------------------------
 -- disable builtins plugins
 local disabled_built_ins = {
     "netrw",

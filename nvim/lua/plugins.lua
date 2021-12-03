@@ -17,7 +17,9 @@ vim.cmd(
 return require("packer").startup({
     function()
       -- https://github.com/wbthomason/packer.nvim/blob/daec6c759f95cd8528e5dd7c214b18b4cec2658c/doc/packer.txt#L534
-      use "wbthomason/packer.nvim"
+      use {
+        "wbthomason/packer.nvim"
+      }
 
       -- General
       use {
@@ -95,6 +97,7 @@ return require("packer").startup({
         "neovim/nvim-lspconfig",
         opt = true,
         event = "BufReadPre",
+        module = "lspconfig",
         wants = {
           "cmp-nvim-lsp",
         },
@@ -135,12 +138,6 @@ return require("packer").startup({
         config = [[require('config.zen')]]
       }
 
-      -- Better understanding
-      use {
-        "folke/which-key.nvim",
-        config = [[require('config.whichkey')]],
-      }
-
       use {
         "kyazdani42/nvim-tree.lua",
         config = [[require('config.nvim-tree')]]
@@ -158,10 +155,10 @@ return require("packer").startup({
       }
 
       -- Linting
-      use {
-        "dense-analysis/ale",
-        config = [[require('config.ale')]]
-      }
+      -- use {
+      --   "dense-analysis/ale",
+      --   config = [[require('config.ale')]]
+      -- }
 
       -- T.Pope
       use {
@@ -186,8 +183,7 @@ return require("packer").startup({
       -- Go
       use {
         "ray-x/go.nvim",
-        config = [[require('config.go')]],
-        ft = "go",
+        requires = {"nvim-treesitter/nvim-treesitter"},
       }
 
       -- Rust
