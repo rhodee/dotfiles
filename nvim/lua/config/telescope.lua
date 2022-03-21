@@ -1,6 +1,4 @@
-local trouble = require("trouble.providers.telescope")
 local telescope = require("telescope")
--- local actions = require("telescope.actions")
 
 require("telescope").setup {
   defaults = {
@@ -17,22 +15,10 @@ require("telescope").setup {
       "-g",
       "!.git",
     },
-    mappings = {
-      i = {
-        ["<c-t>"] = trouble.open_with_trouble,
-        -- ['<ESC>'] = require('telescope.actions').close,
-        -- ['<C-u>'] = false,
-        -- ['<C-d>'] = false,
-      },
-      -- n = {
-      --   ['<ESC>'] = require('telescope.actions').close,
-      --   ["<cr>"] = false
-      -- }
-    },
     layout_config = {
       horizontal = {
         height = 0.8,
-        width = 0.9
+        width = 0.8
       }
     },
     prompt_prefix = "> ",
@@ -46,7 +32,7 @@ require("telescope").setup {
     file_ignore_patterns = {},
     generic_sorter = require "telescope.sorters".get_generic_fuzzy_sorter,
     path_display = absolute,
-    winblend = 10,
+    winblend = 0,
     border = {},
     borderchars = {"─", "│", "─", "│", "╭", "╮", "╯", "╰"},
     color_devicons = false,
@@ -56,17 +42,13 @@ require("telescope").setup {
     grep_previewer = require "telescope.previewers".vim_buffer_vimgrep.new,
     qflist_previewer = require "telescope.previewers".vim_buffer_qflist.new
   },
-  pickers = {
-    buffers = {
-      sort_lastused = true
-    },
-    find_files = {
-      hidden = true,
-      previewer = false,
-      layout_config = {prompt_position = "top"}
-    }
-  },
   extensions = {
+    ["ui-select"] = {
+      require("telescope.themes").get_dropdown({}),
+    },
+    file_browser = {
+      theme = "ivy",
+    },
     fzf = {
       fuzzy = true,
       override_generic_sorter = true,
@@ -78,3 +60,5 @@ require("telescope").setup {
 
 -- load extensions after calling setup function
 require("telescope").load_extension("fzf")
+require("telescope").load_extension("ui-select")
+require("telescope").load_extension("file_browser")

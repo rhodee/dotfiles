@@ -1,26 +1,38 @@
 ----------------------------------------------------------------------------
--- Neovim settings
+-- Neovim settings--
 ----------------------------------------------------------------------------
-local api = vim.api
-local exec = api.nvim_exec
 
 ----------------------------------------------------------------------------
--- Neovim API aliases
+-- Neovim API aliases--
 ----------------------------------------------------------------------------
+local sys = require('config.os')
+local utils = require('config.utils')
+local o = vim.o
 local g = vim.g
 local cmd = vim.cmd
 local o, wo, bo = vim.o, vim.wo, vim.bo
-local utils = require("config.utils")
+local api = vim.api
+local exec = api.nvim_exec
 local opt = utils.opt
 local autocmd = utils.autocmd
 local map = utils.map
-
 local buffer = {o, bo}
 local window = {o, wo}
 
 g.loaded_python_provider = 0
 g.python_host_prog = "/usr/bin/python2"
 g.python3_host_prog = "/usr/bin/python"
+
+if sys.is_linux or sys.is_macos then
+    o.undodir = os.getenv('HOME') .. '/.vim/undo-dir'
+elseif sys.is_windows then
+    o.undodir = fn.stdpath('data') .. '\\undo-dir'
+end
+
+-- Autocmd
+vim.cmd('autocmd BufWritePost plugins.lua PackerCompile')
+vim.cmd('autocmd BufRead,BufNewFile *.md,*.txt setlocal spell spelllang=en_us')
+vim.cmd('autocmd BufRead,BufNewFile *.htm,*.html setlocal tabstop=2 shiftwidth=2 softtabstop=2')
 
 ----------------------------------------------------------------------------
 -- Load Common Configuration
@@ -248,13 +260,6 @@ cmd([[
 -- remove whitespace on save
 cmd [[au BufWritePre * :%s/\s\+$//e]]
 
--- Go
--- Fmt/Import on save
-exec([[
-  autocmd BufWritePre *.go :silent! lua require('go.format').gofmt()
-  autocmd BufWritePre *.go :silent! lua require('go.format').goimport()
-]], false)
-
 ----------------------------------------------------------------------------
 -- Startup
 ----------------------------------------------------------------------------
@@ -283,4 +288,3 @@ local disabled_built_ins = {
 for _, plugin in pairs(disabled_built_ins) do
     g["loaded_" .. plugin] = 1
 end
-

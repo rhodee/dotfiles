@@ -7,11 +7,11 @@ local map = vim.api.nvim_set_keymap
 local opts = {noremap = true}
 local g = vim.g
 
-g.mapleader = " "
-g.maplocalleader = " "
+g.mapleader = ","
+g.maplocalleader = ","
 
 -- clear search highlighting
--- map('n', '<leader>c', ':nohl<CR>', default_opts)
+map('n', '<leader>c', ':nohl<CR>', opts)
 
 -- map Esc to kk
 map("i", 'kk', '<Esc>', opts)
@@ -23,25 +23,11 @@ map("i", "<Leader>w", "<C-c>:w<CR>", opts)
 -- close all windows and exit from neovim
 map("n", '<Leader>q', ":qa!<CR>", opts)
 
--- Nvim-Tree
-map("n", '<C-n>', ":NvimTreeToggle<Return>", opts)       -- open/close
-map("n", '<Leader>r', ":NvimTreeRefresh<Return>", opts)  -- refresh
-
-map("n", "<Space>", "<Nop>", { noremap = true, silent = true })
-
 -- Telescope
 map("n", "<C-p>", ":Telescope find_files<Return>", opts)
 map("n", "<C-f>", ":Telescope live_grep<Return>", opts)
 map("n", "<C-b>", ":Telescope buffers<Return>", opts)
 map("n", "<C-h>", ":Telescope help_tags<Return>", opts)
-
--- DAP
-map("n", "<Leadert>tb", ":lua require('dap').toggle_breakpoint()<Return>", opts)
-map("n", "<Leader>dap", ":lua require('dap').continue()<Return>", opts)
-map("n", "<Leader>dui", ":lua require('dap').toggle()<Return>", opts)
-
--- ALE
--- map("n", "<Leader>rn", ":ALERename<Return>", opts)
 
 -- Terminal
 map('n', '<C-t>', ':Term<CR>', { noremap = true })
@@ -60,6 +46,9 @@ map("n", "<Leader><Return>", ":noh<Return>", opts)
 
 -- switch between the last two files
 map("n", "<Leader><Leader>", "<C-^>", opts)
+
+-- Tree
+map("n", "<Leader><space>", ":Telescope file_browser<CR>", opts)
 
 -- move between buffer
 map("n", "<Leader>h", "<C-W>h", opts)
@@ -96,9 +85,7 @@ map("v", "<Leader>]", ">gv", opts)
 -- Paste with current indentation
 map("n", "<Leader>p", "]p", opts)
 
--- command! Qall qall
 -- Bind :Q to :q
--- command! Q q
 map("n", "<C-q>", ":confirm qall<Return>", opts)
 
 -- Disable Ex mode

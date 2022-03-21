@@ -10,6 +10,7 @@ ts_configs.setup({
     "go",
     "gomod",
     "graphql",
+    "hcl",
     "html",
     "javascript",
     "json",
@@ -18,6 +19,7 @@ ts_configs.setup({
     -- "markdown",
     "python",
     "regex",
+    "ruby",
     "rust",
     "toml",
     "tsx",
@@ -29,38 +31,14 @@ ts_configs.setup({
     use_languagetree = true,
     additional_vim_regex_highlighting = false,
   },
-  autotag = { enable = true },
-  matchup = { enable = true },
-  autopairs = { enable = true },
-  context_commentstring = { enable = true },
-  indent = { enable = true },
-  incremental_selection = {
-    enable = true,
-  },
-  query_linter = {
-    enable = true,
-    use_virtual_text = true,
-    lint_events = { "BufWrite", "CursorHold" },
-  },
-  move = {
-    enable = true,
-    set_jumps = true, -- whether to set jumps in the jumplist
-    goto_next_start = { ["]m"] = "@function.outer", ["]]"] = "@class.outer" },
-    goto_next_end = { ["]M"] = "@function.outer", ["]["] = "@class.outer" },
-    goto_previous_start = { ["[m"] = "@function.outer", ["[["] = "@class.outer" },
-    goto_previous_end = { ["[M"] = "@function.outer", ["[]"] = "@class.outer" },
-  },
-  lsp_interop = {
-    enable = true,
-    peek_definition_code = {
-      ["gD"] = "@function.outer",
-    },
+  indent = {
+    enable = true
   },
 })
 
 -- Add Markdown
 local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
-parser_config.jsonc.used_by = "json"
+parser_config.jsonc.filetype_to_parsename = "json"
 parser_config.markdown = {
   install_info = {
     url = "https://github.com/ikatyang/tree-sitter-markdown",
@@ -69,4 +47,4 @@ parser_config.markdown = {
 }
 
 local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
-parser_config.tsx.used_by = { "javascript.jsx", "typescript.tsx", "javascriptreact", "typescriptreact"}
+parser_config.tsx.filetype_to_parsename = { "javascript.jsx", "typescript.tsx", "javascriptreact", "typescriptreact"}

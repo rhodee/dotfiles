@@ -69,22 +69,11 @@
   oops = reset --soft "HEAD^"
   unstage = reset HEAD
   sup = submodule update
-  code-review = difftool origin/master...
   ign = ls-files -o -i --exclude-standard
 [commit]
   template = ~/.gitmessage.txt
-[pager]
-  diff = delta
-  log = delta
-  reflog = delta
-  show = delta
 [interactive]
   diffFilter = delta --color-only --features=interactive
-[delta]
-  features = tangara-chilensis
-  colorMoved = default
-[delta "interactive"]
-  keep-plus-minus-markers = false
 [core]
   editor = nvim
   excludesfile = ~/.gitignore_global
@@ -93,6 +82,7 @@
   whitespace = -trailing-space,space-before-tab
   autocrlf = false
   legacyheaders = false
+  pager = delta
 [receive]
   denyNonFastForwards = true
 [push]
@@ -115,12 +105,13 @@
   autosetuprebase = always
   autosetupmerge = true
 [merge]
-  tool = vimdiff
+  conflictstyle = diff3
 [mergetool]
   prompt = true
 [diff]
   mnemonicprefix = true
   tool = vimdiff
+  colorMoved = default
 [difftool]
   prompt = true
 [color "diff-highlight"]
@@ -145,4 +136,11 @@
  defaultBranch = main
 [pull]
   ff = only
+[delta]
+  navigate = true
+  side-by-side = true
+  line-numbers = true
+  features = gruvbox-dark
+[delta "interactive"]
+    keep-plus-minus-markers = false
 

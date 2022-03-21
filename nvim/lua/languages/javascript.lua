@@ -1,4 +1,4 @@
--- ++ LSP: tsserver ++
+-- LSP: npm install -g typescript-language-server typescript
 local nvim_lsp = require('lspconfig')
 
 nvim_lsp.tsserver.setup{
@@ -13,7 +13,7 @@ nvim_lsp.tsserver.setup{
     client.resolved_capabilities.document_range_formatting = false
 
 
-    lsp_on_attach(client, bufnr)
+    on_attach(client, bufnr)
     local ts_utils = require('nvim-lsp-ts-utils')
 
     ts_utils.setup({})
