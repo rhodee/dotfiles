@@ -64,12 +64,9 @@ packer.startup(function()
       requires = {
         {'nvim-lua/popup.nvim'},
         {'nvim-lua/plenary.nvim'},
-        {'nvim-telescope/telescope-ui-select.nvim' }
       },
       run = 'make'
     }
-
-    use 'nvim-telescope/telescope-file-browser.nvim'
 
     use {
       'lewis6991/gitsigns.nvim',

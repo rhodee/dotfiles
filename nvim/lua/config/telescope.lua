@@ -46,9 +46,6 @@ require("telescope").setup {
     ["ui-select"] = {
       require("telescope.themes").get_dropdown({}),
     },
-    file_browser = {
-      theme = "ivy",
-    },
     fzf = {
       fuzzy = true,
       override_generic_sorter = true,
@@ -60,5 +57,3 @@ require("telescope").setup {
 
 -- load extensions after calling setup function
 require("telescope").load_extension("fzf")
-require("telescope").load_extension("ui-select")
-require("telescope").load_extension("file_browser")
