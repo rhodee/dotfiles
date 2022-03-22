@@ -86,6 +86,9 @@ packer.startup(function()
       config = [[require('config.cmp')]]
     }
     use 'hrsh7th/cmp-nvim-lsp'
+    use 'hrsh7th/cmp-buffer'
+    use 'hrsh7th/cmp-vsnip'
+    use 'hrsh7th/vim-vsnip'
 
     -- Theme
     use {
@@ -99,6 +102,14 @@ packer.startup(function()
       requires = {'kyazdani42/nvim-web-devicons', opt = true},
       config = [[require('config.lualine')]],
       wants = 'nvim-web-devicons',
+    }
+
+    use {
+        'kyazdani42/nvim-tree.lua',
+        requires = {
+          'kyazdani42/nvim-web-devicons',
+        },
+        config = [[require('config.nvim-tree')]]
     }
 
     use {

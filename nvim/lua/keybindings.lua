@@ -48,7 +48,7 @@ map("n", "<Leader><Return>", ":noh<Return>", opts)
 map("n", "<Leader><Leader>", "<C-^>", opts)
 
 -- Tree
-map("n", "<Leader><space>", ":Telescope file_browser<CR>", opts)
+map("n", "<Leader><space>", ":NvimTreeToggle<CR>", opts)
 
 -- move between buffer
 map("n", "<Leader>h", "<C-W>h", opts)
