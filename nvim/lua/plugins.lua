@@ -44,6 +44,7 @@ packer.startup(function()
     use 'editorconfig/editorconfig-vim'
     use 'bronson/vim-trailing-whitespace'
     use 'tpope/vim-surround'
+    use 'tpope/vim-commentary'
 
     -- TOML
     use 'cespare/vim-toml'
