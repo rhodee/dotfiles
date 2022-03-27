@@ -26,6 +26,9 @@ ts_configs.setup({
     "typescript",
     "yaml",
   },
+  autotag = {
+    enable = true,
+  },
   highlight = {
     enable = true,
     use_languagetree = true,
@@ -33,6 +36,9 @@ ts_configs.setup({
   },
   indent = {
     enable = true
+  },
+  rainbow = {
+    enable = true,
   },
 })
 

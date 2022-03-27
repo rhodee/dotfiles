@@ -34,6 +34,15 @@ packer.startup(function()
       'nvim-treesitter/nvim-treesitter',
       run = ':TSUpdate',
       config = [[require('config.treesitter')]],
+      requires = {
+        {'p00f/nvim-ts-rainbow'},
+        {'windwp/nvim-ts-autotag'},
+      },
+    }
+
+    use {
+      'folke/zen-mode.nvim',
+      config = [[require('config.zen')]],
     }
 
     use {

@@ -1,6 +1,6 @@
 local telescope = require("telescope")
 
-require("telescope").setup {
+telescope.setup {
   defaults = {
     vimgrep_arguments = {
       "rg",
