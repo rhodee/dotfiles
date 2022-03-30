@@ -26,7 +26,7 @@
   changed = green
   untracked = cyan
 [include]
-  path = ~/themes.gitconfig
+  path = $HOME/themes.gitconfig
 [alias]
   co = checkout
   ci = commit
@@ -34,7 +34,6 @@
   po = push origin
   pro = pull --rebase origin
   fo = fetch origin
-  pom = push origin master
   rem = remote -v
   rshow = remote show origin
   st = status --short --branch --ignore-submodules
@@ -50,11 +49,7 @@
   sa = stash apply
   ss = stash save
   ssh = stash show -p
-  # show diff in working tree since last commit, including new files
-  ds = diff --color-words --ignore-all-space --cached
-  dc = diff --cached
-  dlc = diff --cached HEAD^
-  di = diff HEAD --color-words --ignore-all-space
+  diff = "!f() { 〈git diff --color-words --ignore-all-space $1..$2〉 }; f"
   # find git tracked-files
   f = "!git ls-files | grep -i"
   get = grep --color=auto --break --ignore-case -Ii --untracked --before-context 1 --after-context 2 -e
@@ -69,11 +64,22 @@
   oops = reset --soft "HEAD^"
   unstage = reset HEAD
   sup = submodule update
+  cr = "!f() { (git difftool $1 $2) }; f"
   ign = ls-files -o -i --exclude-standard
 [commit]
   template = ~/.gitmessage.txt
+[pager]
+  diff = delta
+  log = delta
+  reflog = delta
+  show = delta
 [interactive]
   diffFilter = delta --color-only --features=interactive
+[delta]
+  features = tangara-chilensis
+  colorMoved = default
+[delta "interactive"]
+  keep-plus-minus-markers = false
 [core]
   editor = nvim
   excludesfile = ~/.gitignore_global
@@ -82,7 +88,6 @@
   whitespace = -trailing-space,space-before-tab
   autocrlf = false
   legacyheaders = false
-  pager = delta
 [receive]
   denyNonFastForwards = true
 [push]
@@ -105,13 +110,12 @@
   autosetuprebase = always
   autosetupmerge = true
 [merge]
-  conflictstyle = diff3
+  tool = vimdiff
 [mergetool]
   prompt = true
 [diff]
   mnemonicprefix = true
   tool = vimdiff
-  colorMoved = default
 [difftool]
   prompt = true
 [color "diff-highlight"]
@@ -141,6 +145,3 @@
   side-by-side = true
   line-numbers = true
   features = gruvbox-dark
-[delta "interactive"]
-    keep-plus-minus-markers = false
-
