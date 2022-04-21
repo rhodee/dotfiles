@@ -3,17 +3,14 @@ local telescope = require("telescope")
 telescope.setup {
   defaults = {
     vimgrep_arguments = {
-      "rg",
-      "--color=never",
-      "--no-heading",
-      "--with-filename",
-      "--line-number",
-      "--column",
-      "--smart-case",
-      "--ignore",
-      "--hidden",
-      "-g",
-      "!.git",
+      'rg',
+      '--hidden',
+      '--no-heading',
+      '--with-filename',
+      '--line-number',
+      '--column',
+      '--smart-case',
+      '--ignore-file',
     },
     layout_config = {
       horizontal = {
@@ -40,7 +37,37 @@ telescope.setup {
     set_env = {["COLORTERM"] = "truecolor"}, -- default = nil,
     file_previewer = require "telescope.previewers".vim_buffer_cat.new,
     grep_previewer = require "telescope.previewers".vim_buffer_vimgrep.new,
-    qflist_previewer = require "telescope.previewers".vim_buffer_qflist.new
+    qflist_previewer = require "telescope.previewers".vim_buffer_qflist.new,
+    pickers = {
+      find_files = {
+        find_command = {
+          'rg',
+          '--hidden',
+          '--no-heading',
+          '--with-filename',
+          '--files',
+          '--column',
+          '--smart-case',
+          '--ignore-file',
+          '--iglob',
+          '!.git',
+        },
+        on_input_filter_cb = function(prompt)
+          local result = vim.split(prompt, ' ')
+          if #result == 2 then
+            return { prompt = result[2] .. '.' .. result[1] }
+          else
+            return { prompt = prompt }
+          end
+        end,
+      },
+      oldfiles = {
+        only_cwd = true,
+        file_ignore_patterns = {
+          'COMMIT_EDITMSG',
+        },
+      },
+    },
   },
   extensions = {
     ["ui-select"] = {

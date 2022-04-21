@@ -1,68 +1,93 @@
-local function clock()
-    return " " .. os.date("%H:%M")
+local status_ok, lualine = pcall(require, "lualine")
+if not status_ok then
+	return
 end
 
-local function lsp_progress(self, is_active)
-    if not is_active then
-      return ""
-    end
-    local messages = vim.lsp.util.get_progress_messages()
-    if #messages == 0 then
-      return ""
-    end
-    local status = {}
-    for _, msg in pairs(messages) do
-      table.insert(status, (msg.percentage or 0) .. "%% " .. (msg.title or ""))
-    end
-    local spinners = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" }
-    local ms = vim.loop.hrtime() / 1000000
-    local frame = math.floor(ms / 120) % #spinners
-    return table.concat(status, " | ") .. " " .. spinners[frame + 1]
+local hide_in_width = function()
+	return vim.fn.winwidth(0) > 80
 end
 
-vim.cmd([[autocmd User LspProgressUpdate let &ro = &ro]])
-
-local config = {
-    options = {
-      theme = "gruvbox",
-      section_separators = { left = "", right = "" },
-      component_separators = { left = "", right = "" },
-      -- section_separators = { "", "" },
-      -- component_separators = { "", "" },
-      icons_enabled = true,
-    },
-    sections = {
-      lualine_a = { "mode" },
-      lualine_b = { "branch" },
-      lualine_c = { { "diagnostics", sources = { "nvim_lsp" } }, "filename" },
-      lualine_x = { "filetype", lsp_progress },
-      lualine_y = { "progress" },
-      lualine_z = { clock },
-    },
-    inactive_sections = {
-      lualine_a = {},
-      lualine_b = {},
-      lualine_c = {},
-      lualine_x = {},
-      lualine_y = {},
-      lualine_z = {},
-    },
-    extensions = {"fzf", "quickfix", "fugitive", "nvim-tree" }
+local diagnostics = {
+	"diagnostics",
+	sources = { "nvim_diagnostic" },
+	sections = { "error", "warn" },
+	symbols = { error = " ", warn = " " },
+	colored = false,
+	update_in_insert = false,
+	always_visible = true,
 }
 
-  -- try to load matching lualine theme
+local diff = {
+	"diff",
+	colored = false,
+	symbols = { added = " ", modified = " ", removed = " " }, -- changes diff symbols
+  cond = hide_in_width
+}
 
-local M = {}
+local mode = {
+	"mode",
+	fmt = function(str)
+		return "-- " .. str .. " --"
+	end,
+}
 
-function M.load()
-    local name = vim.g.colors_name or ""
-    local ok, _ = pcall(require, "lualine.themes." .. name)
-    if ok then
-      config.options.theme = name
-    end
-    require("lualine").setup(config)
+local filetype = {
+	"filetype",
+	icons_enabled = false,
+	icon = nil,
+}
+
+local branch = {
+	"branch",
+	icons_enabled = true,
+	icon = "",
+}
+
+local location = {
+	"location",
+	padding = 0,
+}
+
+-- cool function for progress
+local progress = function()
+	local current_line = vim.fn.line(".")
+	local total_lines = vim.fn.line("$")
+	local chars = { "__", "▁▁", "▂▂", "▃▃", "▄▄", "▅▅", "▆▆", "▇▇", "██" }
+	local line_ratio = current_line / total_lines
+	local index = math.ceil(line_ratio * #chars)
+	return chars[index]
 end
 
-M.load()
+local spaces = function()
+	return "spaces: " .. vim.api.nvim_buf_get_option(0, "shiftwidth")
+end
 
-return M
+lualine.setup({
+	options = {
+		icons_enabled = true,
+		theme = "auto",
+		component_separators = { left = "", right = "" },
+		section_separators = { left = "", right = "" },
+		disabled_filetypes = { "alpha", "dashboard", "NvimTree", "Outline" },
+		always_divide_middle = true,
+	},
+	sections = {
+		lualine_a = { branch, diagnostics },
+		lualine_b = { mode },
+		lualine_c = {},
+		-- lualine_x = { "encoding", "fileformat", "filetype" },
+		lualine_x = { diff, spaces, "encoding", filetype },
+		lualine_y = { location },
+		lualine_z = { progress },
+	},
+	inactive_sections = {
+		lualine_a = {},
+		lualine_b = {},
+		lualine_c = { "filename" },
+		lualine_x = { "location" },
+		lualine_y = {},
+		lualine_z = {},
+	},
+	tabline = {},
+	extensions = {},
+})

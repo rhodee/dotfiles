@@ -23,7 +23,7 @@ g.indent_blankline_context_patterns = {
     'arguments',
 }
 
-g.indent_blankline_filetype_exclude = { 'help', 'packer', 'NvimTree', 'Trouble', 'go' }
+g.indent_blankline_filetype_exclude = { 'help', 'packer', 'NvimTree', 'go' }
 g.indent_blankline_buftype_exclude = { 'help', 'terminal', 'nofile' }
 g.indent_blankline_char_highlight = 'LineNr'
 g.indent_blankline_max_indent_increase = 1

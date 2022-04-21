@@ -29,6 +29,9 @@ ts_configs.setup({
   autotag = {
     enable = true,
   },
+  context_commentstring = {
+    enable = true,
+  },
   highlight = {
     enable = true,
     use_languagetree = true,
@@ -38,6 +41,11 @@ ts_configs.setup({
     enable = true
   },
   rainbow = {
+    enable = true,
+    extended_mode = true,
+    max_file_lines = 1500,
+  },
+  matchup = {
     enable = true,
   },
 })
