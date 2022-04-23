@@ -1,9 +1,9 @@
 -- LSP: npm install -g @tailwindcss/language-server
 local nvim_lsp = require('lspconfig')
+local cfg = require('config.lsp')
 
 nvim_lsp.tailwindcss.setup{
-  capabilities = capabilities,
-  on_attach = on_attach,
+  on_attach = cfg.on_attach,
   flags = {
     debounce_text_changes = 150,
   },

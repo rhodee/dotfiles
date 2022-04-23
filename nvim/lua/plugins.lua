@@ -60,7 +60,13 @@ packer.startup(function(use)
     use 'editorconfig/editorconfig-vim'
     use 'bronson/vim-trailing-whitespace'
     use 'tpope/vim-surround'
-    use 'numToStr/Comment.nvim'
+
+	use {
+     'numToStr/Comment.nvim',
+	  config = function()
+	    require('Comment').setup()
+	  end
+	}
 
     use {
       'folke/todo-comments.nvim',
@@ -74,7 +80,16 @@ packer.startup(function(use)
     use 'tbastos/vim-lua'
 
     -- Go
-    use 'ray-x/go.nvim'
+    use {
+	  'ray-x/go.nvim',
+	  ft = { 'go', 'gomod' },
+	  config = function()
+		require('go').setup({})
+	  end
+    }
+
+    -- TS
+    use 'jose-elias-alvarez/typescript.nvim'
 
     -- Rust
     use 'simrat39/rust-tools.nvim'
@@ -98,12 +113,12 @@ packer.startup(function(use)
     use 'stevearc/dressing.nvim'
 
 
-  use {
-    'nvim-telescope/telescope.nvim',
-     requires = {
-      'nvim-telescope/telescope-ui-select.nvim',
-      'nvim-telescope/telescope-fzf-native.nvim',
-      'nvim-lua/plenary.nvim'
+  	use {
+      'nvim-telescope/telescope.nvim',
+       requires = {
+        'nvim-telescope/telescope-ui-select.nvim',
+        'nvim-telescope/telescope-fzf-native.nvim',
+        'nvim-lua/plenary.nvim'
       },
       config = [[require('config.telescope')]]
     }
@@ -141,12 +156,6 @@ packer.startup(function(use)
     }
 
     use {
-      'akinsho/nvim-bufferline.lua',
-      requires = { 'famiu/bufdelete.nvim' },
-      config = [[require('config.bufferline')]],
-    }
-
-    use {
     'kyazdani42/nvim-tree.lua',
     requires = {
         'kyazdani42/nvim-web-devicons',
@@ -178,7 +187,7 @@ packer.startup(function(use)
     }
 
     -- DAP
-    use  'mfussenegger/nvim-dap'
+    use 'mfussenegger/nvim-dap'
     use 'rcarriga/nvim-dap-ui'
     use 'theHamsta/nvim-dap-virtual-text'
 

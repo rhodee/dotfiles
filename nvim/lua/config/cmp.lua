@@ -2,12 +2,13 @@ local cmp = require('cmp')
 local luasnip = require('luasnip')
 
 local source_names = {
-  buffer     = {'BUF'  , 'String'},
-  nvim_lsp   = {nil    , 'Question'},
-  luasnip    = {'Snip' , 'CmpItemMenu'},
-  nvim_lua   = {nil    , 'ErrorMsg'},
-  path       = {'Path' , 'WarningMsg'},
-  treesitter = {''    , 'Delimiter'}
+  buffer                    = {'BUF'  , 'String'},
+  nvim_lsp                  = {nil    , 'Question'},
+  luasnip                   = {'Snip' , 'CmpItemMenu'},
+  nvim_lua                  = {nil    , 'ErrorMsg'},
+  path                      = {'Path' , 'WarningMsg'},
+  treesitter                = {''    , 'Delimiter'},
+  nvim_lsp_signature_help   = {nil    , 'ErrorMsg'},
 }
 
 local symbols = {
@@ -106,8 +107,9 @@ cmp.setup {
     { name = "nvim_lsp" },
     { name = "luasnip" },
     { name = "treesitter" },
-    { name = "buffer" },
     { name = "path" },
+    { name = "buffer" },
+    { name = "nvim_lsp_signature_help" },
   },
   confirm_opts = {
     behavior = cmp.ConfirmBehavior.Replace,

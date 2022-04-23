@@ -1,10 +1,10 @@
 -- LSP: npm i -g dockerfile-language-server-nodejs
 local nvim_lsp = require('lspconfig')
+local cfg = require('config.lsp')
 
-nvim_lsp.dockerls.setup{
-  capabilities = capabilities,
-  on_attach = on_attach,
+nvim_lsp.dockerls.setup({
+  on_attach = cfg.on_attach,
   flags = {
     debounce_text_changes = 150,
   }
-}
+})
