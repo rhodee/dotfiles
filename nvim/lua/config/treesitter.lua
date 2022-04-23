@@ -1,6 +1,21 @@
-local ts_configs = require("nvim-treesitter.configs")
+require('nvim-treesitter').define_modules {
+  fold = {
+    attach = function()
+      vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
+      vim.opt.foldmethod = 'expr'
+      vim.cmd'normal zx' -- recompute folds
+    end,
+    detach = function() end,
+  }
+}
 
-ts_configs.setup({
+require('treesitter-context').setup {
+  enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
+  throttle = true, -- Throttles plugin updates (may improve performance)
+  max_lines = 4, -- How many lines the window should span. Values <= 0 mean no limit.
+}
+
+require('nvim-treesitter.configs').setup({
   ensure_installed = {
     "bash",
     "cmake",
@@ -37,8 +52,14 @@ ts_configs.setup({
     use_languagetree = true,
     additional_vim_regex_highlighting = false,
   },
+  fold = {
+    enable = true,
+  },
   indent = {
     enable = true
+  },
+  incremental_selection = {
+    enable = true,
   },
   rainbow = {
     enable = true,

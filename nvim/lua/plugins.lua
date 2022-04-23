@@ -46,6 +46,7 @@ packer.startup(function(use)
       requires = {
         {'p00f/nvim-ts-rainbow'},
         {'windwp/nvim-ts-autotag'},
+        {'lewis6991/nvim-treesitter-context'},
         {'JoosepAlviste/nvim-ts-context-commentstring'},
         {'andymass/vim-matchup'},
       },
@@ -83,8 +84,7 @@ packer.startup(function(use)
     use {
       'nvim-telescope/telescope-fzf-native.nvim',
       requires = {
-        {'nvim-lua/popup.nvim'},
-        {'nvim-lua/plenary.nvim'},
+        {'nvim-telescope/telescope.nvim'},
       },
       run = 'make'
     }
@@ -97,23 +97,31 @@ packer.startup(function(use)
 
     use 'stevearc/dressing.nvim'
 
-    use {
-      'nvim-telescope/telescope.nvim',
-      requires = {'nvim-lua/plenary.nvim'},
+
+  use {
+    'nvim-telescope/telescope.nvim',
+     requires = {
+      'nvim-telescope/telescope-ui-select.nvim',
+      'nvim-telescope/telescope-fzf-native.nvim',
+      'nvim-lua/plenary.nvim'
+      },
       config = [[require('config.telescope')]]
     }
 
     -- Code Completion
     use {
       'hrsh7th/nvim-cmp',
+      requires = {
+       'hrsh7th/cmp-nvim-lsp',
+       'hrsh7th/cmp-buffer',
+       'saadparwaiz1/cmp_luasnip',
+       'ray-x/cmp-treesitter',
+        {
+          'L3MON4D3/LuaSnip',
+          config = [[require('config.luasnip')]]
+        }
+      },
       config = [[require('config.cmp')]]
-    }
-    use 'hrsh7th/cmp-nvim-lsp'
-    use 'hrsh7th/cmp-buffer'
-    use 'saadparwaiz1/cmp_luasnip'
-    use {
-      'L3MON4D3/LuaSnip',
-      config = [[require('config.luasnip')]]
     }
 
     -- Theme
@@ -139,11 +147,11 @@ packer.startup(function(use)
     }
 
     use {
-        'kyazdani42/nvim-tree.lua',
-        requires = {
-          'kyazdani42/nvim-web-devicons',
-        },
-        config = [[require('config.nvim-tree')]]
+    'kyazdani42/nvim-tree.lua',
+    requires = {
+        'kyazdani42/nvim-web-devicons',
+      },
+      config = [[require('config.nvim-tree')]]
     }
 
     use {
@@ -162,8 +170,15 @@ packer.startup(function(use)
       cmd = { 'SymbolsOutline' },
     }
 
+    use {
+      'chentau/marks.nvim',
+      config = function()
+        require('marks').setup({})
+      end
+    }
+
     -- DAP
-    use 'mfussenegger/nvim-dap'
+    use  'mfussenegger/nvim-dap'
     use 'rcarriga/nvim-dap-ui'
     use 'theHamsta/nvim-dap-virtual-text'
 

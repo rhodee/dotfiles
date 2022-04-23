@@ -29,17 +29,24 @@ telescope.setup {
     file_ignore_patterns = {},
     generic_sorter = require "telescope.sorters".get_generic_fuzzy_sorter,
     path_display = absolute,
-    winblend = 0,
+    winblend = 15,
+    mappings = {
+      i = {
+        ["<CR>"] =  require('telescope.actions').select_tab,
+        ["<esc>"] = require('telescope.actions').close,
+      }
+    },
     border = {},
     borderchars = {"─", "│", "─", "│", "╭", "╮", "╯", "╰"},
     color_devicons = false,
     use_less = true,
     set_env = {["COLORTERM"] = "truecolor"}, -- default = nil,
-    file_previewer = require "telescope.previewers".vim_buffer_cat.new,
-    grep_previewer = require "telescope.previewers".vim_buffer_vimgrep.new,
-    qflist_previewer = require "telescope.previewers".vim_buffer_qflist.new,
+    file_previewer = require('telescope.previewers').vim_buffer_cat.new,
+    grep_previewer = require('telescope.previewers').vim_buffer_vimgrep.new,
+    qflist_previewer = require('telescope.previewers').vim_buffer_qflist.new,
     pickers = {
       find_files = {
+      	theme = 'dropdown',
         find_command = {
           'rg',
           '--hidden',
@@ -75,7 +82,7 @@ telescope.setup {
     },
     fzf = {
       fuzzy = true,
-      override_generic_sorter = true,
+      override_generic_sorter = false,
       override_file_sorter = true,
       case_mode = "smart_case"
     }
@@ -83,4 +90,5 @@ telescope.setup {
 }
 
 -- load extensions after calling setup function
-require("telescope").load_extension("fzf")
+telescope.load_extension('fzf')
+telescope.load_extension('ui-select')

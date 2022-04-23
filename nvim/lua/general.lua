@@ -40,12 +40,10 @@ vim.cmd('autocmd BufRead,BufNewFile *.htm,*.html setlocal tabstop=2 shiftwidth=2
 ----------------------------------------------------------------------------
 opt("clipboard", "unnamedplus")
 opt("swapfile", false, buffer)
-opt("title", true)
 opt("wrap", false, window)
 opt("linebreak", true, window)
 opt("shiftround", true)
 opt("colorcolumn", "120", window)
-opt("list", true)
 opt("syntax", "enable")
 opt("splitbelow", true)
 opt("splitright", true)
@@ -54,6 +52,7 @@ opt("showmode", false)
 opt("mouse", "a")
 -- confirm to save changes before exiting modified buffer
 opt("confirm", true)
+opt("textwidth", 120)
 
 -----------------------------------------------------------------------------
 -- Improve wrapping
@@ -67,7 +66,7 @@ opt("showbreak", "↳")
 -- Tabs, indent
 ----------------------------------------------------------------------------
 opt("expandtab", true, buffer)
-opt("shiftwidth", 2)
+opt("shiftwidth", 4)
 opt("smartindent", true, buffer)
 opt("tabstop", 4, buffer)
 
@@ -80,10 +79,11 @@ cmd [[autocmd FileType text,markdown,html,xhtml setlocal cc=0]]
 ----------------------------------------------------------------------------
 -- Memory, CPU
 ----------------------------------------------------------------------------
-opt("lazyredraw", true)
+opt("lazyredraw", true) -- Faster scrolling
 opt("history", 1000)
-opt("synmaxcol", 300)
-opt("hidden", true)
+opt("synmaxcol", 300) -- max column for syntax highlight
+opt("hidden", true) -- Enable background buffers
+opt("updatetime", 700) -- ms to wait for trigger an event
 
 ----------------------------------------------------------------------------
 -- Display
@@ -190,8 +190,6 @@ opt("magic", true)
 -- FORMATTING
 ------------------------------------------------------------------------------
 opt("title", true)
-opt("showbreak", "↪⋯⋯")
-opt("updatetime", 300)
 opt("list", true)
 opt("listchars", "tab:»·,trail:·,eol:¬,nbsp:·,extends:❯,precedes:❮,nbsp:%")
 opt("shortmess", "ToOlxfitn")
@@ -260,31 +258,3 @@ cmd([[
 -- remove whitespace on save
 cmd [[au BufWritePre * :%s/\s\+$//e]]
 
-----------------------------------------------------------------------------
--- Startup
-----------------------------------------------------------------------------
--- disable builtins plugins
-local disabled_built_ins = {
-    "netrw",
-    "netrwPlugin",
-    "netrwSettings",
-    "netrwFileHandlers",
-    "gzip",
-    "zip",
-    "zipPlugin",
-    "tar",
-    "tarPlugin",
-    "getscript",
-    "getscriptPlugin",
-    "vimball",
-    "vimballPlugin",
-    "2html_plugin",
-    "logipat",
-    "rrhelper",
-    "spellfile_plugin",
-    "matchit"
-}
-
-for _, plugin in pairs(disabled_built_ins) do
-    g["loaded_" .. plugin] = 1
-end

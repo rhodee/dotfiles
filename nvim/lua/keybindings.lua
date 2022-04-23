@@ -24,10 +24,10 @@ map("i", "<Leader>w", "<C-c>:w<CR>", opts)
 map("n", '<Leader>q', ":qa!<CR>", opts)
 
 -- Telescope
-map("n", "<C-p>", ":Telescope find_files<Return>", opts)
-map("n", "<C-f>", ":Telescope live_grep<Return>", opts)
-map("n", "<C-b>", ":Telescope buffers<Return>", opts)
-map("n", "<C-h>", ":Telescope help_tags<Return>", opts)
+map('n', '<C-p>', '<cmd>lua require("telescope.builtin").find_files()<cr>', opts)
+map('n', '<C-f>', '<cmd>lua require("telescope.builtin").live_grep()<cr>', opts)
+map('n', '<C-b>', '<cmd>lua require("telescope.builtin").buffers()<cr>', opts)
+map('n', '<C-h>', '<cmd>lua require("telescope.builtin").help_tags()<cr>', opts)
 
 -- Terminal
 map('n', '<C-t>', ':Term<CR>', { noremap = true })
