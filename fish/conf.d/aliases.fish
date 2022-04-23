@@ -9,9 +9,6 @@ function g        ; git $argv ; end
 function grep     ; command grep --color=auto $argv ; end
 
 alias push="git push"
-alias changelog="git log --all --since='2 weeks' --oneline --no-merges $argv"
-alias recap="git log --since=00:00:00 --all --no-merges --oneline --author $argv"
-
 alias ag='ag --follow --hidden'
 
 alias diskspace_report="df -P -kHl"

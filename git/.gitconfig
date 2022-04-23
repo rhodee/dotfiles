@@ -75,9 +75,6 @@
   show = delta
 [interactive]
   diffFilter = delta --color-only --features=interactive
-[delta]
-  features = tangara-chilensis
-  colorMoved = default
 [delta "interactive"]
   keep-plus-minus-markers = false
 [core]
@@ -144,4 +141,4 @@
   navigate = true
   side-by-side = true
   line-numbers = true
-  features = gruvbox-dark
+  features = villsau
