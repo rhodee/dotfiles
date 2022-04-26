@@ -61,12 +61,12 @@ packer.startup(function(use)
     use 'bronson/vim-trailing-whitespace'
     use 'tpope/vim-surround'
 
-	use {
+    use {
      'numToStr/Comment.nvim',
-	  config = function()
-	    require('Comment').setup()
-	  end
-	}
+      config = function()
+        require('Comment').setup()
+      end
+    }
 
     use {
       'folke/todo-comments.nvim',
@@ -81,11 +81,11 @@ packer.startup(function(use)
 
     -- Go
     use {
-	  'ray-x/go.nvim',
-	  ft = { 'go', 'gomod' },
-	  config = function()
-		require('go').setup({})
-	  end
+      'ray-x/go.nvim',
+      ft = { 'go', 'gomod' },
+      config = function()
+        require('go').setup({})
+      end
     }
 
     -- TS
@@ -113,7 +113,7 @@ packer.startup(function(use)
     use 'stevearc/dressing.nvim'
 
 
-  	use {
+    use {
       'nvim-telescope/telescope.nvim',
        requires = {
         'nvim-telescope/telescope-ui-select.nvim',

@@ -7,18 +7,20 @@ local map = vim.api.nvim_set_keymap
 local opts = {noremap = true}
 local g = vim.g
 
-g.mapleader = ","
-g.maplocalleader = ","
+--Remap space as leader key
+map("", "<space>", "<Nop>", opts)
+g.mapleader = " "
+g.maplocalleader = "\\"
 
 -- clear search highlighting
-map('n', '<leader>c', ':nohl<CR>', opts)
+map('n', '<Leader>c', ':nohl<CR>', opts)
 
 -- map Esc to kk
-map("i", 'kk', '<Esc>', opts)
+map("i", 'kk', '<esc>', opts)
 
 -- fast saving with <leader> and s
 map("n", "<Leader>w", ":w<CR>", opts)
-map("i", "<Leader>w", "<C-c>:w<CR>", opts)
+map("i", "<Leader>w", "<esc>:w<CR>", opts)
 
 -- close all windows and exit from neovim
 map("n", '<Leader>q', ":qa!<CR>", opts)
@@ -48,7 +50,7 @@ map("n", "<Leader><Return>", ":noh<Return>", opts)
 map("n", "<Leader><Leader>", "<C-^>", opts)
 
 -- Tree
-map("n", "<Leader><space>", ":NvimTreeToggle<CR>", opts)
+map("n", "<Leader>t", ":NvimTreeToggle<CR>", opts)
 
 -- move between buffer
 map("n", "<Leader>h", "<C-W>h", opts)
@@ -96,7 +98,7 @@ map("n", "<Leader>sp", ":setlocal spell!<Return>", opts)
 
 -- <F9> toggles word wrap
 map("n", "<F9>", ":set wrap!<Return>", opts)
-map("n", "<F9>", "<ESC>:set wrap!<Return>", opts)
+map("n", "<F9>", "<esc>:set wrap!<Return>", opts)
 
 -- Remove crutches in Insert Mode
 map("i", "<Left>", "<Nop>", opts)

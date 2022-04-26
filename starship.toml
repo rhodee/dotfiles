@@ -1,33 +1,35 @@
-format = """
-$username\
-$hostname\
-$directory\
-$git_branch\
-$git_state\
-$git_status\
-$cmd_duration\
-$line_break\
-$package\
-$battery\
-$memory_usage\
-$status\
-$character"""
+
+scan_timeout = 30
+command_timeout = 500
 
 # Don't print a new line at the start of the prompt
 add_newline = false
 
 [character]
-success_symbol = "[❯](bold green) "
-error_symbol = "[❯](bold red) "
+success_symbol = "[➜](bold green) "
+error_symbol = "[✗](bold red) "
+
+[nodejs]
+disabled = true
+
+[gcloud]
+disabled = true
+
+[golang]
+format = "[go@$version](bold fg:#99ff99) "
+
+[directory]
+truncation_length = 4
+repo_root_style = "bold fg:#99ff99"
+
+[git_branch]
+style = "bold fg:#dc00f7"
+format = "[$symbol$branch]($style) "
 
 [hostname]
-format = "[$hostname]($style) 👀 "
+format = "[$hostname]($style)"
 style = "bold fg:#ff295b"
-ssh_only = false
-
-# makes prompt a single line
-[line_break]
-disabled = false
+ssh_only = true
 
 # Disable the package module, hiding it from the prompt completely
 [package]
@@ -40,44 +42,20 @@ style = "yellow"
 
 # These symbols will only show when battery levels are 20% or less
 [battery]
+full_symbol = "🔋"
 charging_symbol = "⚡️ "
-discharging_symbol = "💀 "
 
 [[battery.display]]  # "bold red" style when capacity is between 0% and 20%
 threshold = 20
+discharging_symbol = "💀"
 style = "bold red"
 
-# Clear visibility for exit codes
-[status]
-style = "bg:red"
-symbol = "💣 "
-format = '[\[$symbol$status\]]($style) '
-disabled = false
-
-[directory]
-style = "yellow"
-read_only = " "
+[[battery.display]]  # "bold yello" style when capacity is between 0% and 50%
+threshold = 50
+style = "bold yellow"
 
 [memory_usage]
 symbol = " "
 disabled = false
 threshold = 80
 
-[git_status]
-format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style)"
-style = "cyan"
-conflicted = "​"
-untracked = "​"
-modified = "​"
-staged = "​"
-renamed = "​"
-deleted = "​"
-stashed = "≡ "
-
-[git_state]
-format = '\([$state( $progress_current/$progress_total)]($style)\) '
-style = "bright-black"
-
-[username]
-show_always = false
-format = "[$user]($style) on "
