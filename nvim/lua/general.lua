@@ -19,9 +19,10 @@ local map = utils.map
 local buffer = {o, bo}
 local window = {o, wo}
 
-g.loaded_python_provider = 0
-g.python_host_prog = "/usr/bin/python2"
-g.python3_host_prog = "/usr/bin/python"
+local ok, _ = pcall(require, 'local.extesions')
+if not ok then
+  -- not loaded
+end
 
 if sys.is_linux or sys.is_macos then
     o.undodir = os.getenv('HOME') .. '/.vim/undo-dir'

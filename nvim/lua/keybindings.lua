@@ -87,9 +87,6 @@ map("v", "<Leader>]", ">gv", opts)
 -- Paste with current indentation
 map("n", "<Leader>p", "]p", opts)
 
--- Bind :Q to :q
-map("n", "<C-q>", ":confirm qall<Return>", opts)
-
 -- Disable Ex mode
 map("n", "Q", "<Nop>", opts)
 
