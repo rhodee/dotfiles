@@ -19,7 +19,7 @@ local map = utils.map
 local buffer = {o, bo}
 local window = {o, wo}
 
-local ok, _ = pcall(require, 'local.extesions')
+local ok, _ = pcall(require, 'local.settings')
 if not ok then
   -- not loaded
 end
