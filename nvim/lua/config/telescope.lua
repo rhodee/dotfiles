@@ -1,4 +1,5 @@
 local telescope = require("telescope")
+local actions = require'telescope.actions'
 
 telescope.setup {
   defaults = {
@@ -10,13 +11,6 @@ telescope.setup {
       '--line-number',
       '--column',
       '--smart-case',
-      '--ignore-file',
-    },
-    layout_config = {
-      horizontal = {
-        height = 0.8,
-        width = 0.8
-      }
     },
     prompt_prefix = "> ",
     selection_caret = "> ",
@@ -25,67 +19,54 @@ telescope.setup {
     selection_strategy = "closest",
     sorting_strategy = "descending",
     layout_strategy = "horizontal",
-    file_sorter = require "telescope.sorters".get_fuzzy_file,
-    file_ignore_patterns = {},
-    generic_sorter = require "telescope.sorters".get_generic_fuzzy_sorter,
-    path_display = absolute,
-    winblend = 15,
+    layout_config = {
+      horizontal = {
+        prompt_position = "top",
+        preview_width = 0.55,
+        results_width = 0.8,
+      },
+      vertical = {
+        mirror = false,
+      },
+      width = 0.8,
+      height = 0.8,
+      preview_cutoff = 120,
+    },
+    file_sorter = require("telescope.sorters").get_fuzzy_file,
+    file_ignore_patterns = { "node_modules", "vendor" },
+    generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
+    path_display = { "truncate" },
+    winblend = 0,
     mappings = {
       i = {
-        ["<CR>"] =  require('telescope.actions').select_tab,
-        ["<esc>"] = require('telescope.actions').close,
-      }
+        ["<CR>"] =  actions.select_tab,
+        ["<c-s>"] = actions.move_selection_previous,
+        ["<c-t>"] = actions.move_selection_next,
+        ["<tab>"] = actions.add_selection,
+        ["<esc>"] = actions.close,
+      },
     },
     border = {},
     borderchars = {"─", "│", "─", "│", "╭", "╮", "╯", "╰"},
-    color_devicons = false,
+    color_devicons = true,
     use_less = true,
     set_env = {["COLORTERM"] = "truecolor"}, -- default = nil,
     file_previewer = require('telescope.previewers').vim_buffer_cat.new,
     grep_previewer = require('telescope.previewers').vim_buffer_vimgrep.new,
     qflist_previewer = require('telescope.previewers').vim_buffer_qflist.new,
+    buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
+    extensions = {
+      fzf = {
+        override_generic_sorter = true,
+        override_file_sorter = true,
+        case_mode = "smart_case",
+      }
+    },
     pickers = {
       find_files = {
-      	theme = 'dropdown',
-        find_command = {
-          'rg',
-          '--hidden',
-          '--no-heading',
-          '--with-filename',
-          '--files',
-          '--column',
-          '--smart-case',
-          '--ignore-file',
-          '--iglob',
-          '!.git',
-        },
-        on_input_filter_cb = function(prompt)
-          local result = vim.split(prompt, ' ')
-          if #result == 2 then
-            return { prompt = result[2] .. '.' .. result[1] }
-          else
-            return { prompt = prompt }
-          end
-        end,
-      },
-      oldfiles = {
-        only_cwd = true,
-        file_ignore_patterns = {
-          'COMMIT_EDITMSG',
-        },
+        theme = 'dropdown',
       },
     },
-  },
-  extensions = {
-    ["ui-select"] = {
-      require("telescope.themes").get_dropdown({}),
-    },
-    fzf = {
-      fuzzy = true,
-      override_generic_sorter = false,
-      override_file_sorter = true,
-      case_mode = "smart_case"
-    }
   }
 }
 

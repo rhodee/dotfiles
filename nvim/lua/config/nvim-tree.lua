@@ -1,11 +1,9 @@
-local nvim_tree = require("nvim-tree")
-
-nvim_tree.setup({
+require('nvim-tree').setup({
+  hijack_unnamed_buffer_when_opening = true,
   view = {
-    width = 25,
+    width = 40,
   },
   filters = {
     dotfiles = false,
-    custom = { 'node_modules' },
   },
 })

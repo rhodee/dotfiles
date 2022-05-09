@@ -86,6 +86,10 @@ opt("synmaxcol", 300) -- max column for syntax highlight
 opt("hidden", true) -- Enable background buffers
 opt("updatetime", 700) -- ms to wait for trigger an event
 
+
+-- use filetype.lua instead of filetype.vim
+g.did_load_filetypes = 0
+g.do_filetype_lua = 1
 ----------------------------------------------------------------------------
 -- Display
 ----------------------------------------------------------------------------
@@ -194,6 +198,7 @@ opt("title", true)
 opt("list", true)
 opt("listchars", "tab:»·,trail:·,eol:¬,nbsp:·,extends:❯,precedes:❮,nbsp:%")
 opt("shortmess", "ToOlxfitn")
+opt("signcolumn", "yes")
 vim.opt.formatoptions = {
   ["1"] = false,
   ["2"] = false, -- Use indent from 2nd line of a paragraph

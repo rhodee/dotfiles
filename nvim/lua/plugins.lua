@@ -32,7 +32,10 @@ packer.startup(function(use)
     -- it's also required in init.lua
     use { 'lewis6991/impatient.nvim' }
 
-    use {'wbthomason/packer.nvim', opt = true}
+    use {
+        'wbthomason/packer.nvim',
+        event = 'VimEnter',
+    }
 
     -- Packages
     use 'nvim-lua/plenary.nvim'
@@ -106,12 +109,12 @@ packer.startup(function(use)
 
     use {
       'lewis6991/gitsigns.nvim',
+      opt = true,
       requires = { 'nvim-lua/plenary.nvim' },
       config = [[require('config.gitsigns')]]
     }
 
     use 'stevearc/dressing.nvim'
-
 
     use {
       'nvim-telescope/telescope.nvim',
@@ -127,16 +130,19 @@ packer.startup(function(use)
     use {
       'hrsh7th/nvim-cmp',
       requires = {
-       'hrsh7th/cmp-nvim-lsp',
-       'hrsh7th/cmp-buffer',
-       'saadparwaiz1/cmp_luasnip',
-       'ray-x/cmp-treesitter',
-        {
-          'L3MON4D3/LuaSnip',
-          config = [[require('config.luasnip')]]
-        }
+        {'hrsh7th/cmp-nvim-lsp'},
+        {'hrsh7th/cmp-buffer'},
+        {'saadparwaiz1/cmp_luasnip'},
+        {'ray-x/cmp-treesitter'},
       },
+      -- Error. Fix later.
+      -- event = 'InsertEnter',
       config = [[require('config.cmp')]]
+    }
+
+    use {
+      'L3MON4D3/LuaSnip',
+      config = [[require('config.luasnip')]],
     }
 
     -- Theme
@@ -156,8 +162,9 @@ packer.startup(function(use)
     }
 
     use {
-    'kyazdani42/nvim-tree.lua',
-    requires = {
+      'kyazdani42/nvim-tree.lua',
+      cmd = { 'NvimTreeToggle', 'NvimTreeFocus' },
+      requires = {
         'kyazdani42/nvim-web-devicons',
       },
       config = [[require('config.nvim-tree')]]
@@ -165,11 +172,13 @@ packer.startup(function(use)
 
     use {
       'windwp/nvim-autopairs',
+      after = 'nvim-cmp',
       config = [[require('config.autopairs')]]
     }
 
     use {
       'lukas-reineke/indent-blankline.nvim',
+      event = 'BufRead',
       config = [[require('config.blankline')]]
     }
 
@@ -184,6 +193,13 @@ packer.startup(function(use)
       config = function()
         require('marks').setup({})
       end
+    }
+
+    -- Text Objects
+    use {
+      'phaazon/hop.nvim',
+      branch = 'v1',
+      config = [[require('config.hop')]]
     }
 
     -- DAP
