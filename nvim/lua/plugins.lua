@@ -162,15 +162,6 @@ packer.startup(function(use)
     }
 
     use {
-      'kyazdani42/nvim-tree.lua',
-      cmd = { 'NvimTreeToggle', 'NvimTreeFocus' },
-      requires = {
-        'kyazdani42/nvim-web-devicons',
-      },
-      config = [[require('config.nvim-tree')]]
-    }
-
-    use {
       'windwp/nvim-autopairs',
       after = 'nvim-cmp',
       config = [[require('config.autopairs')]]
@@ -193,6 +184,10 @@ packer.startup(function(use)
       config = function()
         require('marks').setup({})
       end
+    }
+
+    use {
+      'nvim-telescope/telescope-file-browser.nvim',
     }
 
     -- Text Objects

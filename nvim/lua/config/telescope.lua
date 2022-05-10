@@ -1,5 +1,5 @@
-local telescope = require("telescope")
-local actions = require'telescope.actions'
+local telescope = require('telescope')
+local actions = require('telescope.actions')
 
 telescope.setup {
   defaults = {
@@ -12,10 +12,10 @@ telescope.setup {
       '--column',
       '--smart-case',
     },
-    prompt_prefix = "> ",
+    prompt_prefix = "🔍 ",
     selection_caret = "> ",
     entry_prefix = "  ",
-    initial_mode = "insert",
+    initial_mode = "normal",
     selection_strategy = "closest",
     sorting_strategy = "descending",
     layout_strategy = "horizontal",
@@ -32,20 +32,11 @@ telescope.setup {
       height = 0.8,
       preview_cutoff = 120,
     },
-    file_sorter = require("telescope.sorters").get_fuzzy_file,
-    file_ignore_patterns = { "node_modules", "vendor" },
-    generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
-    path_display = { "truncate" },
+    file_sorter = require('telescope.sorters').get_fuzzy_file,
+    file_ignore_patterns = { 'node_modules', 'vendor' },
+    generic_sorter = require('telescope.sorters').get_generic_fuzzy_sorter,
+    path_display = { 'smart' },
     winblend = 0,
-    mappings = {
-      i = {
-        ["<CR>"] =  actions.select_tab,
-        ["<c-s>"] = actions.move_selection_previous,
-        ["<c-t>"] = actions.move_selection_next,
-        ["<tab>"] = actions.add_selection,
-        ["<esc>"] = actions.close,
-      },
-    },
     border = {},
     borderchars = {"─", "│", "─", "│", "╭", "╮", "╯", "╰"},
     color_devicons = true,
@@ -73,3 +64,4 @@ telescope.setup {
 -- load extensions after calling setup function
 telescope.load_extension('fzf')
 telescope.load_extension('ui-select')
+telescope.load_extension('file_browser')

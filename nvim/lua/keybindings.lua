@@ -23,20 +23,14 @@ map('i', '<Leader>w', '<esc>:w<CR>', opts)
 -- close all windows and exit from neovim
 map('n', '<Leader>q', ':qa!<CR>', opts)
 
--- Telescope
-map('n', '<C-p>', '<cmd>Telescope find_files theme=dropdown<cr>', opts)
+-- Telescope Finders
+map('n', '<C-n>', '<cmd>Telescope file_browser theme=ivy<cr>', opts)
+map('n', '<C-p>', '<cmd>Telescope find_files theme=ivy<cr>', opts)
 map('n', '<C-f>', '<cmd>Telescope live_grep theme=dropdown<cr>', opts)
 map('n', '<C-b>', '<cmd>Telescope buffers theme=dropdown<cr>', opts)
 map('n', '<C-h>', '<cmd>Telescope help_tags theme=dropdown <cr>', opts)
-map('n', '<leader>fa', '<cmd>Telescope find_files theme=dropdown follow=true no_ignore=true hidden=true<cr>', opts)
-map('n', '<leader>cm', '<cmd>Telescope git_commits theme=dropdown<cr>', opts)
-map('n', '<leader>gt', '<cmd>Telescope git_status theme=dropdown<cr>', opts)
-map('n', '<leader>fh', '<cmd>Telescope help_tags theme=dropdown<cr>', opts)
+map('n', '<leader>fa', '<cmd>Telescope find_files theme=ivy follow=true no_ignore=true hidden=true<cr>', opts)
 map('n', '<leader>fo', '<cmd>Telescope oldfiles theme=dropdown previewer=false<cr>', opts)
-map('n', '<leader>th', '<cmd>Telescope themes theme=dropdown<cr>', opts)
-map('n', '<leader>tk', '<cmd>Telescope keymaps theme=dropdown<cr>', opts)
-map('n', '<leader>sc', '<cmd>Telescope command_history theme=dropdown previewer=false<cr>', opts)
-map('n', '<leader>sm', '<cmd>Telescope marks<cr>', opts)
 
 -- Insert completions
 map('i', '<c-f>', '<c-x><c-f>', opts)
@@ -61,10 +55,6 @@ map('n', '<Leader><Return>', ':noh<Return>', opts)
 
 -- switch between the last two files
 map('n', '<Leader><Leader>', '<C-^>', opts)
-
--- Tree
-map('n', '<C-n>', ':NvimTreeToggle<CR>', opts)
-map('n', '<leader>n', ':NvimTreeFocus<CR>', opts)
 
 -- move between buffer
 map('n', '<Leader>h', '<C-W>h', opts)
