@@ -1,6 +1,11 @@
-
 scan_timeout = 30
 command_timeout = 500
+
+# A minimal left prompt
+format = """$character"""
+
+# move the rest of the prompt to the right
+right_format = """$all"""
 
 # Don't print a new line at the start of the prompt
 add_newline = false
@@ -16,19 +21,13 @@ disabled = true
 disabled = true
 
 [golang]
-format = "[go@$version](bold fg:#99ff99) "
+format = "[go@$version](bold #efeeee) "
 
 [directory]
 truncation_length = 4
-repo_root_style = "bold fg:#99ff99"
-
-[git_branch]
-style = "bold fg:#dc00f7"
-format = "[$symbol$branch]($style) "
+repo_root_style = "bold #efeeee"
 
 [hostname]
-format = "[$hostname]($style)"
-style = "bold fg:#ff295b"
 ssh_only = true
 
 # Disable the package module, hiding it from the prompt completely

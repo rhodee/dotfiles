@@ -5,7 +5,8 @@ set -xU TERM 'xterm'
 set -gx VOLTA_HOME "$HOME/.volta"
 set -gx PATH "$VOLTA_HOME/bin" $PATH
 
-set fish_greeting
+source $HOME/.config/fish/conf.d/*.fish
+source $HOME/.config/fish/functions/*.fish
 
 ulimit -S -n 10000
 
@@ -16,3 +17,9 @@ zoxide init fish | source
 if test -e "$HOME/.extra.fish";
   source ~/.config/fish/extras/secret.fish
 end
+
+# Use starship
+if status --is-interactive
+  fish_config theme choose none
+end
+
