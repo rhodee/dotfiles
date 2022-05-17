@@ -10,21 +10,24 @@ o.termguicolors = true
 
 -- Colorschemes
 
--- g.gruvbox_bold = 1
--- g.gruvbox_italic = 1
--- g.gruvbox_underline = 1
--- g.gruvbox_undercurl = 1
--- g.gruvbox_contrast_dark = "medium"
--- g.gruvbox_italicize_comments = 1
+-- Gruvbox Medium
+
+g.gruvbox_bold = 1
+g.gruvbox_italic = 1
+g.gruvbox_underline = 1
+g.gruvbox_undercurl = 1
+g.gruvbox_contrast_dark = "medium"
+g.gruvbox_italicize_comments = 1
 
 -- Load the colorscheme
--- cmd([[colorscheme gruvbox]])
+cmd([[colorscheme gruvbox]])
 
-g.nord_contrast = true
-g.nord_borders = false
-g.nord_disable_background = false
-g.nord_italic = false
+-- Nord
+-- g.nord_contrast = true
+-- g.nord_borders = false
+-- g.nord_disable_background = false
+-- g.nord_italic = false
 
 -- Load the colorscheme
-require('nord').set()
-cmd([[colorscheme nord]])
+-- require('nord').set()
+-- cmd([[colorscheme nord]])
