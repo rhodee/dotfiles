@@ -32,6 +32,6 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
 }
 
 return {
-  capabilities = capabilities,
+  capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities),
   on_attach = on_attach
 }

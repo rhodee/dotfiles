@@ -1,7 +1,7 @@
 local telescope = require('telescope')
 local actions = require('telescope.actions')
 
-telescope.setup {
+telescope.setup({
   defaults = {
     vimgrep_arguments = {
       'rg',
@@ -15,7 +15,7 @@ telescope.setup {
     prompt_prefix = "🔍 ",
     selection_caret = "> ",
     entry_prefix = "  ",
-    initial_mode = "normal",
+    initial_mode = "insert",
     selection_strategy = "closest",
     sorting_strategy = "descending",
     layout_strategy = "horizontal",
@@ -47,7 +47,16 @@ telescope.setup {
     qflist_previewer = require('telescope.previewers').vim_buffer_qflist.new,
     buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
     extensions = {
+      file_browser = {
+        hijack_netrw = true,
+        theme = "ivy",
+        grouped = true,
+        hidden = true,
+        respect_gitignore = false,
+        previewer = false,
+      },
       fzf = {
+        fuzzy  = true,
         override_generic_sorter = true,
         override_file_sorter = true,
         case_mode = "smart_case",
@@ -55,11 +64,12 @@ telescope.setup {
     },
     pickers = {
       find_files = {
+        find_command = { "fd", "--type", "f", "--strip-cwd-prefix" },
         theme = 'dropdown',
       },
     },
   }
-}
+})
 
 -- load extensions after calling setup function
 telescope.load_extension('fzf')

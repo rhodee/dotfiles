@@ -53,7 +53,7 @@ local symbols = {
   Null = 'ﳠ',
 }
 
-cmp.setup {
+cmp.setup({
   snippet = {
     expand = function(args)
       luasnip.lsp_expand(args.body)
@@ -113,14 +113,14 @@ cmp.setup {
   completion = {
     completeopt = "menu,menuone,noinsert",
   },
-  sources = {
+  sources = cmp.config.sources({
     { name = "nvim_lsp" },
     { name = "luasnip" },
     { name = "treesitter" },
     { name = "path" },
     { name = "buffer" },
     { name = "nvim_lsp_signature_help" },
-  },
+  }),
   confirm_opts = {
     behavior = cmp.ConfirmBehavior.Replace,
     select = false,
@@ -134,4 +134,4 @@ cmp.setup {
   view = {
     native_menu = false,
   },
-}
+})
