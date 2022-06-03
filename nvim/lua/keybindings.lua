@@ -23,13 +23,12 @@ map('i', '<Leader>w', '<esc>:w<CR>', opts)
 -- close all windows and exit from neovim
 map('n', '<Leader>q', ':qa!<CR>', opts)
 
--- Telescope Finders
-map('n', '<C-n>', '<cmd>Telescope file_browser theme=ivy<cr>', opts)
-map('n', '<C-p>', '<cmd>Telescope find_files theme=ivy<cr>', opts)
+-- Telescope
+map('n', '<C-n>', '<cmd>Telescope file_browser<cr>', opts)
+map('n', '<C-p>', '<cmd>Telescope find_files theme=dropdown<cr>', opts)
 map('n', '<C-f>', '<cmd>Telescope live_grep theme=dropdown<cr>', opts)
 map('n', '<C-b>', '<cmd>Telescope buffers theme=dropdown<cr>', opts)
 map('n', '<C-h>', '<cmd>Telescope help_tags theme=dropdown <cr>', opts)
-map('n', '<leader>fa', '<cmd>Telescope find_files theme=ivy follow=true no_ignore=true hidden=true<cr>', opts)
 map('n', '<leader>fo', '<cmd>Telescope oldfiles theme=dropdown previewer=false<cr>', opts)
 
 -- Insert completions
