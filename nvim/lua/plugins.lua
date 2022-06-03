@@ -190,6 +190,14 @@ packer.startup(function(use)
       'nvim-telescope/telescope-file-browser.nvim',
     }
 
+    use {
+      'folke/trouble.nvim',
+      requires = 'kyazdani42/nvim-web-devicons',
+      config = function()
+        require('trouble').setup({})
+      end
+    }
+
     -- Text Objects
     use {
       'phaazon/hop.nvim',

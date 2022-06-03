@@ -7,8 +7,7 @@ local map = vim.api.nvim_set_keymap
 local opts = {noremap = true}
 local g = vim.g
 
-g.mapleader = ' '
-g.maplocalleader = ','
+g.mapleader = ','
 
 -- clear search highlighting
 map('n', '<Leader>c', ':nohl<CR>', opts)
@@ -29,7 +28,14 @@ map('n', '<C-p>', '<cmd>Telescope find_files theme=dropdown<cr>', opts)
 map('n', '<C-f>', '<cmd>Telescope live_grep theme=dropdown<cr>', opts)
 map('n', '<C-b>', '<cmd>Telescope buffers theme=dropdown<cr>', opts)
 map('n', '<C-h>', '<cmd>Telescope help_tags theme=dropdown <cr>', opts)
-map('n', '<leader>fo', '<cmd>Telescope oldfiles theme=dropdown previewer=false<cr>', opts)
+map('n', '<Leader>fo', '<cmd>Telescope oldfiles theme=dropdown previewer=false<cr>', opts)
+
+-- Trouble
+map('n', "<Leader>xx", "<cmd>Trouble<cr>", opts)
+map('n', "<Leader>xw", "<cmd>Trouble workspace_diagnostics<cr>", opts)
+map('n', "<Leader>xd", "<cmd>Trouble document_diagnostics<cr>", opts)
+map('n', "<Leader>xl", "<cmd>Trouble loclist<cr>", opts)
+map('n', "<Leader>xq", "<cmd>Trouble quickfix<cr>", opts)
 
 -- Insert completions
 map('i', '<c-f>', '<c-x><c-f>', opts)
@@ -38,7 +44,7 @@ map('i', '<c-f>', '<c-x><c-f>', opts)
 map('', '<leader>/', '<cmd>HopPattern<cr>', opts)
 
 -- Terminal
-map('n', '<C-t>', ':Term<CR>', { noremap = true })
+map('n', '<C-t>', ':term<CR>', opts)
 
 -- Get to command mode faster
 map('n', ';', ':', opts)
