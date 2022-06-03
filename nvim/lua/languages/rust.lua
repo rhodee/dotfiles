@@ -3,6 +3,7 @@ local nvim_lsp = require('lspconfig')
 local cfg = require('config.lsp')
 
 local opts = {
+  capabilities = cfg.capabilities,
   on_attach = cfg.on_attach,
   tools = { -- rust-tools options
     autoSetHints = true,
