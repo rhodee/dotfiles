@@ -135,3 +135,5 @@ cmp.setup({
     native_menu = false,
   },
 })
+
+require('luasnip.loaders.from_vscode').lazy_load()

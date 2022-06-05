@@ -145,6 +145,8 @@ packer.startup(function(use)
       config = [[require('config.luasnip')]],
     }
 
+    use 'rafamadriz/friendly-snippets'
+
     -- Theme
     use 'shaunsingh/nord.nvim'
 
@@ -192,7 +194,7 @@ packer.startup(function(use)
 
     use {
       'folke/trouble.nvim',
-      requires = 'kyazdani42/nvim-web-devicons',
+      requires = {'kyazdani42/nvim-web-devicons' },
       config = function()
         require('trouble').setup({})
       end
