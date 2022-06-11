@@ -14,7 +14,12 @@ telescope.setup({
       '--smart-case',
     },
     mappings = {
-      i = { ["<c-t>"] = trouble.open_with_trouble },
+      i = {
+        ['<C-t>'] = trouble.open_with_trouble,
+        ['<C-u>'] = false, -- clear prompt with ctrl+u
+        ['<C-d>'] = actions.preview_scrolling_down,
+        ['<C-f>'] = actions.preview_scrolling_up,
+    },
       n = { ["<c-t>"] = trouble.open_with_trouble },
     },
     borderchars = {"─", "│", "─", "│", "╭", "╮", "╯", "╰"},

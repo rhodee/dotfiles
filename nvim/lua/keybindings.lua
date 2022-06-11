@@ -31,7 +31,7 @@ map('n', '<C-h>', '<cmd>Telescope help_tags theme=dropdown <cr>', opts)
 map('n', '<Leader>fo', '<cmd>Telescope oldfiles theme=dropdown previewer=false<cr>', opts)
 
 -- Trouble
-map('n', "<Leader>xx", "<cmd>Trouble<cr>", opts)
+map('n', "<Leader>xx", "<cmd>TroubleToggle<cr>", opts)
 map('n', "<Leader>xw", "<cmd>Trouble workspace_diagnostics<cr>", opts)
 map('n', "<Leader>xd", "<cmd>Trouble document_diagnostics<cr>", opts)
 map('n', "<Leader>xl", "<cmd>Trouble loclist<cr>", opts)
@@ -41,7 +41,7 @@ map('n', "<Leader>xq", "<cmd>Trouble quickfix<cr>", opts)
 map('i', '<c-f>', '<c-x><c-f>', opts)
 
 -- Hop.
-map('', '<leader>/', '<cmd>HopPattern<cr>', opts)
+map('', '<Leader>/', '<cmd>HopPattern<cr>', opts)
 
 -- Terminal
 map('n', '<C-t>', ':term<CR>', opts)
