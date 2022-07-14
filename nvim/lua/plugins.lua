@@ -121,6 +121,7 @@ packer.startup(function(use)
        requires = {
         'nvim-telescope/telescope-ui-select.nvim',
         'nvim-telescope/telescope-fzf-native.nvim',
+        'nvim-telescope/telescope-dap.nvim',
         'nvim-lua/plenary.nvim'
       },
       config = [[require('config.telescope')]]
@@ -130,10 +131,10 @@ packer.startup(function(use)
     use {
       'hrsh7th/nvim-cmp',
       requires = {
-        {'hrsh7th/cmp-nvim-lsp'},
-        {'hrsh7th/cmp-buffer'},
-        {'saadparwaiz1/cmp_luasnip'},
-        {'ray-x/cmp-treesitter'},
+        'hrsh7th/cmp-nvim-lsp',
+        'hrsh7th/cmp-buffer',
+        'saadparwaiz1/cmp_luasnip',
+        'ray-x/cmp-treesitter',
       },
       -- Error. Fix later.
       -- event = 'InsertEnter',
@@ -149,7 +150,6 @@ packer.startup(function(use)
 
     -- Theme
     use 'shaunsingh/nord.nvim'
-
     use {
       'ellisonleao/gruvbox.nvim',
       requires = {'rktjmp/lush.nvim'}
@@ -188,9 +188,8 @@ packer.startup(function(use)
       end
     }
 
-    use {
-      'nvim-telescope/telescope-file-browser.nvim',
-    }
+    use 'nvim-telescope/telescope-file-browser.nvim'
+    use 'weilbith/nvim-code-action-menu'
 
     use {
       'folke/trouble.nvim',
@@ -204,17 +203,31 @@ packer.startup(function(use)
       end
     }
 
-    -- Text Objects
     use {
-      'phaazon/hop.nvim',
-      branch = 'v1',
-      config = [[require('config.hop')]]
+      'nvim-neotest/neotest',
+      requires = {
+        'nvim-lua/plenary.nvim',
+        'nvim-treesitter/nvim-treesitter',
+        'antoinemadec/FixCursorHold.nvim',
+        -- adapters
+        'akinsho/neotest-go',
+        'nvim-neotest/neotest-plenary',
+      },
+      config = [[require('config.test')]]
     }
 
     -- DAP
-    use 'mfussenegger/nvim-dap'
-    use 'rcarriga/nvim-dap-ui'
-    use 'theHamsta/nvim-dap-virtual-text'
+    --
+    -- add dlv to $PATH separately
+    use {
+      'mfussenegger/nvim-dap',
+      requires = {
+        'rcarriga/nvim-dap-ui',
+        'leoluz/nvim-dap-go',
+        'theHamsta/nvim-dap-virtual-text',
+      },
+      config = [[require('config.dap')]]
+    }
 
     if packer_bootstrap then
       require('packer').sync()

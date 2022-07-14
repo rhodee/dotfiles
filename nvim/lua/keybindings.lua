@@ -31,17 +31,35 @@ map('n', '<C-h>', '<cmd>Telescope help_tags theme=dropdown <cr>', opts)
 map('n', '<Leader>fo', '<cmd>Telescope oldfiles theme=dropdown previewer=false<cr>', opts)
 
 -- Trouble
-map('n', "<Leader>xx", "<cmd>TroubleToggle<cr>", opts)
-map('n', "<Leader>xw", "<cmd>Trouble workspace_diagnostics<cr>", opts)
-map('n', "<Leader>xd", "<cmd>Trouble document_diagnostics<cr>", opts)
-map('n', "<Leader>xl", "<cmd>Trouble loclist<cr>", opts)
-map('n', "<Leader>xq", "<cmd>Trouble quickfix<cr>", opts)
+map('n', '<Leader>xx', '<cmd>TroubleToggle<cr>', opts)
+map('n', '<Leader>xw', '<cmd>Trouble workspace_diagnostics<cr>', opts)
+map('n', '<Leader>xd', '<cmd>Trouble document_diagnostics<cr>', opts)
+map('n', '<Leader>xl', '<cmd>Trouble loclist<cr>', opts)
+map('n', '<Leader>xq', '<cmd>Trouble quickfix<cr>', opts)
+
+-- DAP
+--
+-- start
+map('n', '<Leader>dc', '<cmd>DapContinue<cr>', opts)
+-- step out
+map('n', '<Leader>do', '<cmd>DapStepOut<cr>', opts)
+-- step into
+map('n', '<Leader>di', '<cmd>DapStepInto<cr>', opts)
+-- step over
+map('n', '<Leader>dvr', '<cmd>DapStepOver<cr>', opts)
+-- toggle breakpoint
+map('n', '<Leader>db', '<cmd>DapToggleBreakpoint<cr>', opts)
+-- set breakpoint expr
+map('n', '<Leader>dbe', "<cmd>lua require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: '))<cr>", opts)
+-- UI
+map('n', '<Leader>du', "<cmd>lua require('dapui').toggle()<cr>", opts)
+-- REPL
+map('n', '<Leader>db', '<cmd>DapToggleRepl<cr>', opts)
+-- end session
+map('n', '<Leader>dx', '<cmd>DapTerminate<cr>', opts)
 
 -- Insert completions
 map('i', '<c-f>', '<c-x><c-f>', opts)
-
--- Hop.
-map('', '<Leader>/', '<cmd>HopPattern<cr>', opts)
 
 -- Terminal
 map('n', '<C-t>', ':term<CR>', opts)
