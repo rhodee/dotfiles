@@ -60,6 +60,14 @@ packer.startup(function(use)
       config = [[require('config.lsp')]],
     }
 
+    use {
+     'https://git.sr.ht/~whynothugo/lsp_lines.nvim',
+      config = function()
+        require('lsp_lines').setup()
+        vim.diagnostic.config({ virtual_text = false })
+      end
+    }
+
     use 'editorconfig/editorconfig-vim'
     use 'bronson/vim-trailing-whitespace'
     use 'tpope/vim-surround'
