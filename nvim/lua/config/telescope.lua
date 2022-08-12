@@ -1,4 +1,6 @@
-local telescope = require('telescope')
+local status, telescope = pcall(require, 'telescope')
+if (not status) then return end
+
 local actions = require('telescope.actions')
 local trouble = require('trouble.providers.telescope')
 
@@ -19,7 +21,7 @@ telescope.setup({
         ['<C-u>'] = false, -- clear prompt with ctrl+u
         ['<C-d>'] = actions.preview_scrolling_down,
         ['<C-f>'] = actions.preview_scrolling_up,
-    },
+      },
       n = { ["<c-t>"] = trouble.open_with_trouble },
     },
     borderchars = {"─", "│", "─", "│", "╭", "╮", "╯", "╰"},
@@ -38,6 +40,8 @@ telescope.setup({
   },
   extensions = {
     file_browser = {
+      -- disables netrw and use telescope-file-browser in its place
+      hijack_netrw = true,
       hidden = true,
       no_ignore = true,
       previewer = false,

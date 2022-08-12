@@ -1,4 +1,5 @@
-local luasnip = require('luasnip')
+local status, luasnip = pcall(require, 'luasnip')
+if (not status) then return end
 
 luasnip.config.setup({
   ext_opts = {

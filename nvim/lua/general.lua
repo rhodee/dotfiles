@@ -5,10 +5,10 @@
 ----------------------------------------------------------------------------
 -- Neovim API aliases--
 ----------------------------------------------------------------------------
-local sys = require('config.os')
-local utils = require('config.utils')
+local sys = require('config.util.os')
+local utils = require('config.util.cmd')
 local o = vim.o
-local g = vim.g
+local g = utils.g
 local cmd = vim.cmd
 local o, wo, bo = vim.o, vim.wo, vim.bo
 local api = vim.api
@@ -264,3 +264,6 @@ cmd([[
 -- remove whitespace on save
 cmd [[au BufWritePre * :%s/\s\+$//e]]
 
+-- Undercurl
+vim.cmd([[let &t_Cs = "\e[4:3m"]])
+vim.cmd([[let &t_Ce = "\e[4:0m"]])

@@ -1,8 +1,8 @@
--- LSP: go install github.com/lighttiger2505/sqls@latest
+-- LSP: npm i -g yaml-language-server
 local nvim_lsp = require('lspconfig')
-local cfg = require('config.lsp')
+local cfg = require('config.lsp.attach')
 
-nvim_lsp.sqls.setup{
+nvim_lsp.yamlls.setup{
   capabilities = cfg.capabilities,
   on_attach = cfg.on_attach,
   flags = {

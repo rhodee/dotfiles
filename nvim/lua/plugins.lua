@@ -1,9 +1,9 @@
 -------------------
 -- Local Imports --
 -------------------
-local fs = require('config.fs')
-local sys = require('config.os')
-local utils = require('config.utils')
+local fs = require('config.util.fs')
+local sys = require('config.util.os')
+local utils = require('config.util.cmd')
 
 local packer_bootstrap = false
 
@@ -57,7 +57,7 @@ packer.startup(function(use)
 
     use {
       'neovim/nvim-lspconfig',
-      config = [[require('config.lsp')]],
+      config = [[require('config.lsp.attach')]],
     }
 
     use {
@@ -102,9 +102,20 @@ packer.startup(function(use)
     -- TS
     use 'jose-elias-alvarez/typescript.nvim'
 
+    -- Null LSP
+    use 'jose-elias-alvarez/null-ls.nvim'
+
     -- Rust
     use 'simrat39/rust-tools.nvim'
     use 'rust-lang/rust.vim'
+
+    -- Markdown
+    use {
+      "iamcco/markdown-preview.nvim",
+      run = function()
+        vim.fn["mkdp#util#install"]()
+      end
+    }
 
     -- Search
     use {
@@ -242,9 +253,6 @@ packer.startup(function(use)
     end
 end)
 
--- Load LSP configurations
-require('languages')
-
 -- Autocommand that reloads neovim whenever you save the plugins.lua file
 vim.cmd [[
   augroup packer_user_config
@@ -252,3 +260,6 @@ vim.cmd [[
     autocmd BufWritePost plugins.lua source <afile> | PackerSync
   augroup end
 ]]
+
+-- Load LSP configurations
+require('config.lsp')

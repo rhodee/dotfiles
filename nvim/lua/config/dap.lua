@@ -1,7 +1,9 @@
-local dap = require('dap')
-
-local g = vim.g
 local fn = vim.fn
+
+local utils = require('config.util.cmd')
+
+local status, dap = pcall(require, 'dap')
+if (not status) then return end
 
 require('dapui').setup({})
 require('nvim-dap-virtual-text').setup({})
@@ -14,7 +16,7 @@ fn.sign_define('DapBreakpoint', {
   numhl = '',
 })
 
-g.dap_virtual_text = true
+utils.g.dap_virtual_text = true
 
 dap.adapters.lldb = {
   type = 'executable',

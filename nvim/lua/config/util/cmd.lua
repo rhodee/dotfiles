@@ -1,5 +1,6 @@
 -- https://github.com/wbthomason/dotfiles/blob/387ded8ad4c3cb9d5000edbd3b18bc8cb8a186e9/neovim/.config/nvim/lua/config/utils.lua
 local cmd = vim.cmd
+local g = vim.g
 local o_s = vim.o
 local map_key = vim.api.nvim_set_keymap
 
@@ -26,4 +27,4 @@ end
 
 local execute = vim.api.nvim_command
 
-return {opt = opt, autocmd = autocmd, map = map, execute = execute}
+return {g = g, opt = opt, autocmd = autocmd, map = map, execute = execute}

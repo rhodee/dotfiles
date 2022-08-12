@@ -3,9 +3,10 @@
 -- GENERAL KEY MAP
 -- :map for list mappings.
 ------------------------------------------------------------------------------
-local map = vim.api.nvim_set_keymap
+local utils = require('config.util.cmd')
+local map = utils.map
+local g = utils.g
 local opts = {noremap = true}
-local g = vim.g
 
 g.mapleader = ','
 
