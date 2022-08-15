@@ -47,18 +47,21 @@ require('nvim-treesitter.configs').setup({
   context_commentstring = {
     enable = true,
   },
+  fold = {
+    enable = true,
+  },
   highlight = {
     enable = true,
     use_languagetree = true,
     additional_vim_regex_highlighting = false,
   },
-  fold = {
+  incremental_selection = {
     enable = true,
   },
   indent = {
     enable = true
   },
-  incremental_selection = {
+  matchup = {
     enable = true,
   },
   rainbow = {
@@ -66,9 +69,7 @@ require('nvim-treesitter.configs').setup({
     extended_mode = true,
     max_file_lines = 1500,
   },
-  matchup = {
-    enable = true,
-  },
+  separator = '-',
 })
 
 -- Add Markdown
