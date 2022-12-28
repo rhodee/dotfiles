@@ -1,2 +1,2 @@
-plugin
-nvim/lua/local
+nvim/plugin
+nvim/**/local

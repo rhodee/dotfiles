@@ -23,3 +23,5 @@ local disabled_built_ins = {
   vim.tbl_map(function(plugin)
     vim.g['loaded_' .. plugin] = 1
   end, disabled_built_ins)
+
+

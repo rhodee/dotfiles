@@ -1,6 +1,11 @@
 local status, telescope = pcall(require, 'telescope')
 if (not status) then return end
 
+vim.keymap.set('n', '<leader>pf', builtin.find_files, {})
+vim.keymap.set('n', '<C-p>', builtin.git_files, {})
+
+
+local builtin = require('telescope.builtin')
 local actions = require('telescope.actions')
 local trouble = require('trouble.providers.telescope')
 
@@ -54,18 +59,10 @@ telescope.setup({
         },
       },
     },
-    fzf = {
-      fuzzy  = true,
-      override_generic_sorter = true,
-      override_file_sorter = true,
-      case_mode = "smart_case",
-    },
   },
 })
 
 -- load extensions after calling setup function
-telescope.load_extension('fzf')
 telescope.load_extension('ui-select')
 telescope.load_extension('file_browser')
 telescope.load_extension('dap')
-
