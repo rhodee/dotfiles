@@ -5,5 +5,4 @@ end
 
 -- set termguicolors to enable highlight groups
 vim.opt.termguicolors = true
-
 nvim_tree.setup({})

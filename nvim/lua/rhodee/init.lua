@@ -7,7 +7,6 @@
 ----------------------------------------------------------------------------
 local sys = require('rhodee.util.os')
 local utils = require('rhodee.util.cmd')
-local g = utils.g
 local o, wo, bo, fn = vim.o, vim.wo, vim.bo, vim.fn
 local opt = utils.opt
 local autocmd = utils.autocmd

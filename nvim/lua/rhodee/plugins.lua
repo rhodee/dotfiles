@@ -58,6 +58,7 @@ return require('packer').startup(function(use)
 
   use 'numToStr/Comment.nvim'
   use 'folke/todo-comments.nvim'
+  use 'simrat39/rust-tools.nvim'
 
   use {
     'lewis6991/gitsigns.nvim',
@@ -95,6 +96,7 @@ return require('packer').startup(function(use)
 	  requires = {
 		  -- LSP Support
 		  {'neovim/nvim-lspconfig'},
+		  {'hrsh7th/cmp-nvim-lsp-signature-help'},
 		  {'williamboman/mason.nvim'},
 		  {'williamboman/mason-lspconfig.nvim'},
 
@@ -110,7 +112,7 @@ return require('packer').startup(function(use)
 		  {'L3MON4D3/LuaSnip'},
 		  {'rafamadriz/friendly-snippets'},
 
-      {'https://git.sr.ht/~whynothugo/lsp_lines.nvim'},
+          {'https://git.sr.ht/~whynothugo/lsp_lines.nvim'},
 	  }
   }
 
