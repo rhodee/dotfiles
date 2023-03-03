@@ -18,10 +18,11 @@ lsp.ensure_installed({
 	'graphql',
 	'html',
 	'jsonls',
+	'jdtls',
 	'pyright',
 	'rust_analyzer',
-	'sumneko_lua',
-	'sqls',
+	'sqlls',
+	'terraformls',
 	'tsserver',
 	'yamlls',
 })
