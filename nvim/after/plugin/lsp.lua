@@ -10,21 +10,23 @@ lsp.preset('recommended')
 
 lsp.ensure_installed({
 	'bashls',
+	'bufls',
 	'cmake',
 	'cssls',
 	'dockerls',
-	'eslint',
 	'gopls',
 	'graphql',
 	'html',
-	'jsonls',
 	'jdtls',
+	'jsonls',
 	'pyright',
+	'rome',
 	'rust_analyzer',
 	'sqlls',
+	'tailwindcss',
 	'terraformls',
 	'tsserver',
-	'yamlls',
+	'yamlls'
 })
 
 lsp.set_preferences({
