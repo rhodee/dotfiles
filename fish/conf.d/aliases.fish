@@ -41,7 +41,7 @@ alias grem="git remote -v"
 # File size
 alias fs="stat -f \"%z bytes\""
 
-alias brew_update="brew -v update; brew upgrade; brew cleanup; brew doctor"
+alias brew_update="brew upgrade; brew cleanup; brew doctor"
 
 #docker
 alias dc="docker-compose"
