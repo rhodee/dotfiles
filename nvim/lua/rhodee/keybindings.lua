@@ -69,6 +69,8 @@ map('n', '<leader>[', '<<', opts)
 map('v', '<leader>[', '<gv', opts)
 map('v', '<leader>]', '>gv', opts)
 
+map("n", ":", "<cmd>FineCmdline<cr>", opts)
+
 -- Git
 map("n", "<leader>gs", '<cmd>Git<cr>', opts)
 

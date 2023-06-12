@@ -23,10 +23,10 @@ vim.cmd('autocmd BufWritePost plugins.lua PackerCompile')
 vim.cmd('autocmd BufRead,BufNewFile *.md,*.txt setlocal spell spelllang=en_us')
 vim.cmd('autocmd BufRead,BufNewFile *.htm,*.html setlocal tabstop=2 shiftwidth=2 softtabstop=2')
 
--- ----------------------------------------------------------------------------
--- -- Load Common Configuration
--- -- :options for full list.
--- ----------------------------------------------------------------------------
+----------------------------------------------------------------------------
+-- Load Common Configuration
+-- :options for full list.
+----------------------------------------------------------------------------
 opt("clipboard", "unnamedplus")
 opt("wrap", false, window)
 opt("linebreak", true, window)
@@ -42,9 +42,9 @@ opt("mouse", "a")
 opt("confirm", true)
 opt("textwidth", 120)
 
--- -----------------------------------------------------------------------------
--- -- Improve wrapping
--- ----------------------------------------------------------------------------
+-----------------------------------------------------------------------------
+-- Improve wrapping
+----------------------------------------------------------------------------
 opt("breakindent", true)
 opt("breakindentopt", "shift:2", window)
 opt("breakindentopt", "shift:2", window)

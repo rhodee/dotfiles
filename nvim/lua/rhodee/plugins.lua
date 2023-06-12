@@ -112,8 +112,15 @@ return require('packer').startup(function(use)
 		  {'L3MON4D3/LuaSnip'},
 		  {'rafamadriz/friendly-snippets'},
 
-          {'https://git.sr.ht/~whynothugo/lsp_lines.nvim'},
+        {'https://git.sr.ht/~whynothugo/lsp_lines.nvim'},
 	  }
+  }
+
+  use {
+	'VonHeikemen/fine-cmdline.nvim',
+	requires = {
+      'MunifTanjim/nui.nvim'
+	}
   }
 
   -- Themes
