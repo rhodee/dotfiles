@@ -1,7 +1,5 @@
 local status, lspconfig = pcall(require, 'lspconfig')
-if not status then
-    return
-end
+if not status then return end
 
 util = require('lspconfig/util')
 

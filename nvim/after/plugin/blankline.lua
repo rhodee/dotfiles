@@ -2,17 +2,17 @@ local status, indent_blankline = pcall(require, 'indent_blankline')
 if (not status) then return end
 
 local enable_indent_filetype = {
-  'go',
-  'lua',
-  'sh',
-  'rust',
   'cpp',
-  'typescript',
-  'typescriptreact',
+  'go',
   'javascript',
   'json',
+  'lua',
   'python',
+  'rust',
+  'sh',
   'sql',
+  'typescript',
+  'typescriptreact',
 }
 
 indent_blankline.setup({

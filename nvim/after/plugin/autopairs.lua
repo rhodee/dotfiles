@@ -3,5 +3,5 @@ if (not status) then return end
 
 autopairs.setup({
   check_ts = true,
-  disable_filetype = { 'TelescopePrompt' , 'vim' },
+  disable_filetype = { 'TelescopePrompt', 'Trouble', 'vim' },
 })

@@ -5,11 +5,10 @@
 ----------------------------------------------------------------------------
 -- Neovim API aliases--
 ----------------------------------------------------------------------------
-local sys = require('rhodee.util.os')
-local utils = require('rhodee.util.cmd')
+local sys = require('user.util.os')
+local utils = require('user.util.cmd')
 local o, wo, bo, fn = vim.o, vim.wo, vim.bo, vim.fn
 local opt = utils.opt
-local autocmd = utils.autocmd
 local buffer = {o, bo}
 local window = {o, wo}
 
@@ -133,9 +132,9 @@ opt("spelloptions","camel")
 opt("spellcapcheck", "") -- don't check for capital letters at start of sentence
 opt("fileformats", "unix,mac,dos")
 
--- ----------------------------------------------------------------------------
--- -- SEARCH
--- ----------------------------------------------------------------------------
+----------------------------------------------------------------------------
+-- SEARCH
+----------------------------------------------------------------------------
 opt("ignorecase", true)
 opt("smartcase", true)
 opt("infercase", true)
@@ -184,49 +183,9 @@ opt("signcolumn", "yes", window)
 opt("encoding", "utf-8")
 opt("fileencoding", "utf-8")
 
--- Highlight on yank
-autocmd("misc_autocmds", {
-  [[TextYankPost * silent! lua vim.highlight.on_yank(higroup="IncSearch", timeout=700)]],
-  [[Filetype qf set nobuflisted]],
-  [[BufLeave * silent! :wa]],
-}, true)
-
-----------------------------------------------------------------------------
--- Terminal
-----------------------------------------------------------------------------
--- open a terminal pane on the right using :Term
--- vim.cmd([[command Term :botright vsplit term://$SHELL]])
-
---  Terminal visual tweaks
---  enter insert mode when switching to terminal
---  close terminal buffer on process exit
-vim.cmd([[
-    autocmd TermOpen * setlocal listchars= nonumber norelativenumber nocursorline
-    autocmd TermOpen * startinsert
-    autocmd BufLeave term://* stopinsert
-]])
-
--- Check if we need to reload the file when it changed
-vim.cmd("au FocusGained * :checktime")
-
--- show cursor line only in active window
-vim.cmd([[
-  autocmd InsertLeave,WinEnter * set cursorline
-  autocmd InsertEnter,WinLeave * set nocursorline
-]])
-
--- go to last loc when opening a buffer
-vim.cmd([[
-  autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | execute "normal! g`\"" | endif
-]])
-
--- remove whitespace on save
-vim.cmd [[au BufWritePre * :%s/\s\+$//e]]
-
--- Undercurl
-vim.cmd([[let &t_Cs = "\e[4:3m"]])
-vim.cmd([[let &t_Ce = "\e[4:0m"]])
-
-require('rhodee.disable-builtins')
-require('rhodee.keybindings')
-require('rhodee.plugins')
+------------------------------------------------------------------------------
+-- FOLDING
+------------------------------------------------------------------------------
+opt('foldmethod', 'expr', wo)
+opt('foldexpr', 'nvim_treesitter#foldexpr()', wo)
+opt('foldlevel', '20')

@@ -1,13 +1,12 @@
 local status, telescope = pcall(require, 'telescope')
 if (not status) then return end
 
-vim.keymap.set('n', '<leader>pf', builtin.find_files, {})
-vim.keymap.set('n', '<C-p>', builtin.git_files, {})
-
-
 local builtin = require('telescope.builtin')
 local actions = require('telescope.actions')
 local trouble = require('trouble.providers.telescope')
+
+vim.keymap.set('n', '<leader>pf', builtin.find_files, {})
+vim.keymap.set('n', '<C-p>', builtin.git_files, {})
 
 telescope.setup({
   defaults = {
@@ -43,7 +42,14 @@ telescope.setup({
     qflist_previewer = require('telescope.previewers').vim_buffer_qflist.new,
     buffer_previewer_maker = require('telescope.previewers').buffer_previewer_maker,
   },
+  pickers = {
+    find_files = {
+    },
+  },
   extensions = {
+    heading = {
+      treesitter = true,
+    },
     file_browser = {
       -- disables netrw and use telescope-file-browser in its place
       hijack_netrw = true,
@@ -63,6 +69,9 @@ telescope.setup({
 })
 
 -- load extensions after calling setup function
-telescope.load_extension('ui-select')
-telescope.load_extension('file_browser')
+telescope.load_extension('aerial')
+telescope.load_extension('changed_files')
 telescope.load_extension('dap')
+telescope.load_extension('heading')
+telescope.load_extension('ui-select')
+telescope.load_extension('windows')

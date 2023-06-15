@@ -3,7 +3,7 @@
 -- GENERAL KEY MAP
 -- :map for list mappings.
 ------------------------------------------------------------------------------
-local utils = require('rhodee.util.cmd')
+local utils = require('user.util.cmd')
 local map = utils.map
 local g = utils.g
 local opts = {noremap = true}
@@ -14,9 +14,11 @@ g.mapleader = ','
 map('n', 'Q', '<Nop>', opts)
 
 -- Get to command mode faster
-map('n', ';', ':', opts)
-map('v', ';', ':', opts)
-map('x', ';', ':', opts)
+map('n', ';', '<cmd>FineCmdline<cr>', opts)
+map('n', ':', '<cmd>FineCmdline<cr>', opts)
+-- map('n', ';', ':', opts)
+-- map('v', ';', ':', opts)
+-- map('x', ';', ':', opts)
 
 -- clear search highlighting
 map('n', '<leader>c', ':nohl<CR>', opts)
@@ -69,50 +71,66 @@ map('n', '<leader>[', '<<', opts)
 map('v', '<leader>[', '<gv', opts)
 map('v', '<leader>]', '>gv', opts)
 
-map("n", ":", "<cmd>FineCmdline<cr>", opts)
-
 -- Git
-map("n", "<leader>gs", '<cmd>Git<cr>', opts)
+map('n', "<leader>gs", '<cmd>Git<cr>', opts)
 
 -- Undotree
-map("n", "<leader>u", '<cmd>UndotreeToggle<cr>', opts)
+map('n', "<leader>u", '<cmd>UndotreeToggle<cr>', opts)
 
 -- Telescope
 map('n', '<C-p>', '<cmd>Telescope find_files theme=dropdown<cr>', opts)
 map('n', '<C-f>', '<cmd>Telescope live_grep theme=dropdown<cr>', opts)
 map('n', '<C-b>', '<cmd>Telescope buffers theme=dropdown<cr>', opts)
 map('n', '<C-h>', '<cmd>Telescope help_tags theme=dropdown <cr>', opts)
-map('n', '<leader>fo', '<cmd>Telescope oldfiles theme=dropdown previewer=false<cr>', opts)
+map('n', '<leader>to', '<cmd>Telescope oldfiles theme=dropdown previewer=false<cr>', opts)
+map('n', '<leader>tr', '<cmd>Telescope lsp_references<cr>', opts)
+map('n', '<leader>ts', '<cmd>Telescope lsp_document_symbols<cr>', opts)
+map('n', '<leader>tw', '<cmd>Telescope windows<cr>', opts)
+map('n', '<leader>tq', '<Cmd>Telescope quickfix<cr>', opts)
 
 -- Trouble
-map('n', '<leader>xx', '<cmd>TroubleToggle<cr>', opts)
-map('n', '<leader>xw', '<cmd>Trouble workspace_diagnostics<cr>', opts)
-map('n', '<leader>xd', '<cmd>Trouble document_diagnostics<cr>', opts)
-map('n', '<leader>xl', '<cmd>Trouble loclist<cr>', opts)
+map('n', '<leader>xt', '<cmd>TroubleToggle<cr>', opts)
+map('n', '<leader>xw', '<cmd>TroubleToggle workspace_diagnostics<cr>', opts)
+map('n', '<leader>xd', '<cmd>TroubleToggle document_diagnostics<cr>', opts)
+map('n', '<leader>xq', '<cmd>TroubleToggle quickfix<cr>', opts)
+map('n', '<leader>xr', '<cmd>TroubleToggle lsp_references<cr>', opts)
+map('n', '<leader>xl', '<cmd>TroubleToggle loclist<cr>', opts)
+map('n', '<leader>xc', '<cmd>TroubleClose<cr>', opts)
 
 -- NVIM-Tree
-map("n", "<leader>n", '<cmd>NvimTreeToggle<cr>', opts)
+map('n', "<leader>n", '<cmd>NvimTreeToggle<cr>', opts)
+
+-- Difffview
+map('n', '<leader>dh', '<cmd>DiffViewFileHistory<cr>', opts)
+map('n', '<leader>do', '<cmd>DiffViewOpen<cr>', opts)
+map('n', '<leader>dc', '<cmd>DiffViewOpen<cr>', opts)
+
+-- CodeActionMenu
+map('n', '<c-a>', '<cmd>CodeActionMenu<cr>', opts)
+
+-- Aerial
+map('n', '<leader>a', '<cmd>AerialToggle!<cr>', opts)
 
 -- DAP
 
 -- start
-map('n', '<leader>dc', '<cmd>DapContinue<cr>', opts)
+-- map('n', '<leader>dc', '<cmd>DapContinue<cr>', opts)
 -- step out
-map('n', '<leader>do', '<cmd>DapStepOut<cr>', opts)
+-- map('n', '<leader>do', '<cmd>DapStepOut<cr>', opts)
 -- step into
-map('n', '<leader>di', '<cmd>DapStepInto<cr>', opts)
+-- map('n', '<leader>di', '<cmd>DapStepInto<cr>', opts)
 -- step over
-map('n', '<leader>dvr', '<cmd>DapStepOver<cr>', opts)
+-- map('n', '<leader>dvr', '<cmd>DapStepOver<cr>', opts)
 -- toggle breakpoint
-map('n', '<leader>db', '<cmd>DapToggleBreakpoint<cr>', opts)
+-- map('n', '<leader>db', '<cmd>DapToggleBreakpoint<cr>', opts)
 -- set breakpoint expr
-map('n', '<leader>dbe', "<cmd>lua require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: '))<cr>", opts)
+-- map('n', '<leader>dbe', "<cmd>lua require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: '))<cr>", opts)
 -- UI
-map('n', '<leader>du', "<cmd>lua require('dapui').toggle()<cr>", opts)
+-- map('n', '<leader>du', "<cmd>lua require('dapui').toggle()<cr>", opts)
 -- REPL
-map('n', '<leader>db', '<cmd>DapToggleRepl<cr>', opts)
+-- map('n', '<leader>db', '<cmd>DapToggleRepl<cr>', opts)
 -- end session
-map('n', '<leader>dx', '<cmd>DapTerminate<cr>', opts)
+-- map('n', '<leader>dx', '<cmd>DapTerminate<cr>', opts)
 
 
 -- Remove crutches in Insert Mode
@@ -134,5 +152,5 @@ map('v', '<Down>', '<Nop>', opts)
 map('v', '<Up>', '<Nop>', opts)
 
 -- Mighty motions
-map("v", "J", ":m '>+1<CR>gv=gv")
-map("v", "K", ":m '<-2<CR>gv=gv")
+map('v', 'J', ":m '>+1<CR>gv=gv")
+map('v', 'K', ":m '<-2<CR>gv=gv")

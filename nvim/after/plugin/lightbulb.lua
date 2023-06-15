@@ -1,4 +1,4 @@
-local utils = require('rhodee.util.cmd')
+local utils = require('user.util.cmd')
 local autocmd = utils.autocmd
 
 

@@ -2,6 +2,7 @@ local status, _ = pcall(require, 'nvim-treesitter')
 if (not status) then return end
 
 require('nvim-treesitter.configs').setup {
+  auto_install = false,
   ensure_installed = {
     'bash',
     'c',
@@ -12,7 +13,6 @@ require('nvim-treesitter.configs').setup {
     'go',
     'gomod',
     'graphql',
-    'help',
     'hcl',
     'html',
     'javascript',
@@ -54,7 +54,7 @@ require('nvim-treesitter.configs').setup {
   rainbow = {
     enable = true,
     extended_mode = true,
-    max_file_lines = 1500,
+    max_file_lines = nil,
   },
   separator = '-',
   sync_install = false,

@@ -1,33 +1,42 @@
 local lsp = require('lsp-zero')
 
+local status, mason = pcall(require, 'mason')
+if (not status) then return end
+
 local status, lsp_lines = pcall(require, 'lsp_lines')
 if (not status) then return end
 
-lsp_lines.setup({})
+-- remove redundant lines
 vim.diagnostic.config({ virtual_text = false })
 
-lsp.preset('recommended')
+mason.setup({})
+lsp_lines.setup({})
 
-lsp.ensure_installed({
-	'bashls',
-	'bufls',
-	'cmake',
-	'cssls',
-	'dockerls',
-	'gopls',
-	'graphql',
-	'html',
-	'jdtls',
-	'jsonls',
-	'pyright',
-	'rome',
-	'rust_analyzer',
-	'sqlls',
-	'tailwindcss',
-	'terraformls',
-	'tsserver',
-	'yamlls'
+require('mason-lspconfig').setup({
+    ensure_installed = {
+        'bashls',
+        'bufls',
+        'cmake',
+        'cssls',
+        'dockerls',
+        'docker_compose_language_service',
+        'gopls',
+        'html',
+        'jsonls',
+        'lua_ls',
+        'pyright',
+        'rome',
+        'rust_analyzer',
+        'sqlls',
+        'tailwindcss',
+        'terraformls',
+        'taplo',
+        'tsserver',
+        'yamlls',
+    }
 })
+
+lsp.preset('recommended')
 
 lsp.set_preferences({
   autotag = {
@@ -122,8 +131,3 @@ lsp.on_attach(function(client, bufnr)
 end)
 
 lsp.setup()
-
-vim.diagnostic.config({
-    virtual_text = true,
-})
-

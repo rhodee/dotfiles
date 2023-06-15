@@ -1,4 +1,4 @@
-local status, rust_tools = pcall(require, "rust-tools")
+local status, rust_tools = pcall(require, 'rust-tools')
 if not status then
     return
 end
@@ -15,24 +15,24 @@ rust_tools.setup({
 
     server = {
         settings = {
-        ["rust-analyzer"] = {
-            assist = {
-            importEnforceGranularity = true,
-            importPrefix = "crate"
-            },
-            cargo = {
-            allFeatures = true
-            },
-            checkOnSave = {
-            -- default: `cargo check`
-            command = "clippy"
-            },
+            ['rust-analyzer'] = {
+                assist = {
+                    importEnforceGranularity = true,
+                    importPrefix = "crate"
+                },
+                cargo = {
+                    allFeatures = true
+                },
+                checkOnSave = {
+                    -- default: `cargo check`
+                    command = "clippy"
+                },
             },
             inlayHints = {
-            lifetimeElisionHints = {
-                enable = true,
-                useParameterNames = true
-            },
+                lifetimeElisionHints = {
+                    enable = true,
+                    useParameterNames = true
+                },
             },
         }
     },
