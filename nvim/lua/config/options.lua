@@ -8,23 +8,22 @@
 ----------------------------------------------------------------------------
 -- Neovim API aliases--
 ----------------------------------------------------------------------------
-local sys = require('config.util.os')
-local utils = require('config.util.cmd')
-local o, wo, bo, fn = vim.o, vim.wo, vim.bo, vim.fn
+local sys = require("config.util.os")
+local utils = require("config.util.cmd")
+local o, wo, bo, fn, g = vim.o, vim.wo, vim.bo, vim.fn, vim.g
 local opt = utils.opt
-local buffer = {o, bo}
-local window = {o, wo}
+local buffer = { o, bo }
+local window = { o, wo }
 
-local ok, _ = pcall(require, 'local.settings')
+local ok, _ = pcall(require, "local.settings")
 if not ok then
-  -- not loaded
 end
 
 ----------------------------------------------------------------------------
 -- Load Common Configuration
 -- :options for full list.
 ----------------------------------------------------------------------------
-vim.g.mapleader = ','
+g.mapleader = ","
 
 opt("clipboard", "unnamedplus")
 opt("wrap", false, window)
@@ -102,17 +101,17 @@ opt("virtualedit", "onemore")
 ----------------------------------------------------------------------------
 opt("undofile", true)
 opt("undolevels", 10000)
-opt("swapfile",false)
+opt("swapfile", false)
 opt("backup", false)
 if sys.is_linux or sys.is_macos then
-    o.undodir = os.getenv('HOME') .. '/.vim/undo-dir'
+  o.undodir = fn.stdpath("data") .. "undo-dir"
 elseif sys.is_windows then
-    o.undodir = fn.stdpath('data') .. '\\undo-dir'
+  o.undodir = fn.stdpath("data") .. "\\undo-dir"
 end
 ----------------------------------------------------------------------------
 -- Autocompletion
 ----------------------------------------------------------------------------
-opt("completeopt", 'menuone,noselect')
+opt("completeopt", "menuone,noselect")
 opt("wildignorecase", true)
 opt("wildoptions", "pum")
 opt("pumblend", 15)
@@ -122,7 +121,7 @@ opt("pumwidth", 20)
 ---------------------------------------------------------------------------
 -- Spelling
 ---------------------------------------------------------------------------
-opt("spelloptions","camel")
+opt("spelloptions", "camel")
 opt("spellcapcheck", "") -- don't check for capital letters at start of sentence
 opt("fileformats", "unix,mac,dos")
 
@@ -180,6 +179,9 @@ opt("fileencoding", "utf-8")
 ------------------------------------------------------------------------------
 -- FOLDING
 ------------------------------------------------------------------------------
-opt('foldmethod', 'expr', wo)
-opt('foldexpr', 'nvim_treesitter#foldexpr()', wo)
-opt('foldlevel', '20')
+-- See plugins.ufo
+
+----------------------------------------------------------------------------
+-- Disable some extension providers
+g.loaded_perl_provider = 0
+----------------------------------------------------------------------------

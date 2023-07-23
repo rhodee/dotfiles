@@ -1,4 +1,4 @@
-local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   -- bootstrap lazy.nvim
   -- stylua: ignore
@@ -6,22 +6,36 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 
-require('lazy').setup({
+require("lazy").setup({
   spec = {
     -- add LazyVim and import its plugins
-    { 'LazyVim/LazyVim', import = 'lazyvim.plugins' },
-    -- import any extras modules here
-    { import = 'lazyvim.plugins.extras.lang.docker' },
-    { import = 'lazyvim.plugins.extras.lang.go' },
-    { import = 'lazyvim.plugins.extras.lang.json' },
-    { import = 'lazyvim.plugins.extras.lang.rust' },
-    { import = 'lazyvim.plugins.extras.lang.tailwind' },
-    { import = 'lazyvim.plugins.extras.lang.terraform' },
-    { import = 'lazyvim.plugins.extras.lang.typescript' },
-    { import = 'lazyvim.plugins.extras.test.core' },
-    { import = 'lazyvim.plugins.extras.dap.core' },
+    { "LazyVim/LazyVim", import = "lazyvim.plugins" },
+    -- core language specific extension modules
+    { import = "lazyvim.plugins.extras.lang.clangd" },
+    { import = "lazyvim.plugins.extras.lang.cmake" },
+    { import = "lazyvim.plugins.extras.lang.docker" },
+    { import = "lazyvim.plugins.extras.lang.go" },
+    { import = "lazyvim.plugins.extras.lang.java" },
+    { import = "lazyvim.plugins.extras.lang.json" },
+    { import = "lazyvim.plugins.extras.lang.python" },
+    -- { import = "lazyvim.plugins.extras.lang.ruby" },
+    { import = "lazyvim.plugins.extras.lang.rust" },
+    { import = "lazyvim.plugins.extras.lang.tailwind" },
+    { import = "lazyvim.plugins.extras.lang.terraform" },
+    { import = "lazyvim.plugins.extras.lang.typescript" },
+    { import = "lazyvim.plugins.extras.test.core" },
+    -- lazyvim dap core extension modules
+    { import = "lazyvim.plugins.extras.dap.core" },
+    -- debugger specific extension modules
+    { import = "lazyvim.plugins.extras.dap.nlua" },
+    -- lazyvim UI extension modules
+    { import = "lazyvim.plugins.extras.ui.edgy" },
+    -- { import = "lazyvim.plugins.extras.ui.mini-animate" },
     -- import/override with your plugins
-    { import = 'plugins' },
+    { import = "plugins" },
+    -- custom language specific extension modules
+    { import = "plugins.extras.lang.java" }, -- to be removed once it's upstream
+    { import = "plugins.extras.lang.node" },
   },
   defaults = {
     -- By default, only LazyVim plugins will be lazy-loaded. Your custom plugins will load during startup.
@@ -32,38 +46,38 @@ require('lazy').setup({
     version = false, -- always use the latest git commit
     -- version = '*', -- try installing the latest stable version for plugins that support semver
   },
-  install = { colorscheme = { 'nightfox', 'catppuccin' } },
+  install = { colorscheme = { "nightfox", "catppuccin" } },
   checker = { enabled = true }, -- automatically check for plugin updates
   performance = {
     rtp = {
       -- disable some rtp plugins
       disabled_plugins = {
-        '2html_plugin',
-        'getscript',
-        'getscriptPlugin',
-        'logipat',
-        'matchit',
-        'matchparen',
-        'netrw',
-        'netrwFileHandlers',
-        'netrwPlugin',
-        'netrwSettings',
-        'rrhelper',
-        'spellfile_plugin',
-        'tar',
-        'tarPlugin',
-        'vimball',
-        'vimballPlugin',
-        'zip',
-        'zipPlugin',
-        'gzip',
-        'tutor',
+        "2html_plugin",
+        "getscript",
+        "getscriptPlugin",
+        "logipat",
+        "matchit",
+        "matchparen",
+        "netrw",
+        "netrwFileHandlers",
+        "netrwPlugin",
+        "netrwSettings",
+        "rrhelper",
+        "spellfile_plugin",
+        "tar",
+        "tarPlugin",
+        "vimball",
+        "vimballPlugin",
+        "zip",
+        "zipPlugin",
+        "gzip",
+        "tutor",
 
         -- Defaults
-				'gzip',
-				'tarPlugin',
-				'tohtml',
-				'zipPlugin',
+        "gzip",
+        "tarPlugin",
+        "tohtml",
+        "zipPlugin",
       },
     },
   },
