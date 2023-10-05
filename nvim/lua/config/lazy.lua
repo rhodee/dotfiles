@@ -18,7 +18,7 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.lang.java" },
     { import = "lazyvim.plugins.extras.lang.json" },
     { import = "lazyvim.plugins.extras.lang.python" },
-    -- { import = "lazyvim.plugins.extras.lang.ruby" },
+    { import = "lazyvim.plugins.extras.lang.ruby" },
     { import = "lazyvim.plugins.extras.lang.rust" },
     { import = "lazyvim.plugins.extras.lang.tailwind" },
     { import = "lazyvim.plugins.extras.lang.terraform" },
@@ -34,8 +34,6 @@ require("lazy").setup({
     -- import/override with your plugins
     { import = "plugins" },
     -- custom language specific extension modules
-    { import = "plugins.extras.lang.java" }, -- to be removed once it's upstream
-    { import = "plugins.extras.lang.node" },
   },
   defaults = {
     -- By default, only LazyVim plugins will be lazy-loaded. Your custom plugins will load during startup.
