@@ -20,6 +20,5 @@ return {
       yaml = { "yamlfmt", "yamlfix" },
       ["*"] = { "codespell" },
     },
-    format_on_save = { lsp_fallback = true, timeout_ms = 300 },
   },
 }
