@@ -3,7 +3,6 @@
 # cp Brewfile ~/Brewfile
 # brew bundle
 
-
 # Install python, Go from DL sites, never from brew
 
 brew 'jq'
@@ -36,3 +35,4 @@ brew 'zoxide'
 brew 'git-interactive-rebase-tool'
 brew 'gnupg'
 brew 'git-delta'
+brew 'watchexec'
