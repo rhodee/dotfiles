@@ -1,4 +1,5 @@
 return {
+  {
     'utilyre/barbecue.nvim',
     name = 'barbecue',
     version = '*',
@@ -9,4 +10,7 @@ return {
     opts = {
       theme = vim.g.active_color_scheme,
     },
+
   }
+}
+

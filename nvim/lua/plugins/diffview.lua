@@ -1,6 +1,7 @@
 return {
-    {
-        "sindrets/diffview.nvim",
-        cmd = "DiffviewOpen",
-    },
+  {
+    "sindrets/diffview.nvim",
+    cmd = "DiffviewOpen",
+  },
 }
+
