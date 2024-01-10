@@ -3,9 +3,11 @@ return {
     "williamboman/mason.nvim",
     opts = {
       ensure_installed = {
+        "biome",
         "codelldb",
         "css-lsp",
         "delve",
+        "deno",
         "docker-compose-language-service",
         "dockerfile-language-server",
         "gofumpt",

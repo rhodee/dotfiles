@@ -40,6 +40,7 @@
   br = branch
   cp = cherry-pick
   merff = merge --ff-only
+  up = remote update --prune
   tag = tag -a
   aa = add --all
   au = add -u
@@ -58,14 +59,11 @@
   hist ="!git l --pretty=format:\"%h -- %s [%cd, %cn, %cr]\" --stat -42 --graph --date=short"
   lg ="!git l -C --stat --decorate"
   lgp ="!git l -C --stat -p --decorate"
-  rlg = reflog show
-  up = remote update --prune
-  shit = "!gitk --all $( git fsck --no-reflog | awk '/dangling commit/ {print $3}' )"
+  rl = reflog --format=reflog --date=format:'%Y-%m-%d %H:%m'
+  # rollback
   oops = reset --soft "HEAD^"
   unstage = reset HEAD
-  sup = submodule update
-  cr = "!f() { (git difftool $1 $2) }; f"
-  ign = ls-files -o -i --exclude-standard
+  shit = "!gitk --all $( git fsck --no-reflog | awk '/dangling commit/ {print $3}' )"
 [commit]
   template = ~/.gitmessage.txt
 [pager]
@@ -78,7 +76,7 @@
 [delta "interactive"]
   keep-plus-minus-markers = false
 [core]
-  editor = nvim
+  editor = vim
   excludesfile = ~/.gitignore_global
   quotepath = false
   # Do not consider trailing space change as a cause for merge
@@ -142,3 +140,12 @@
   side-by-side = true
   line-numbers = true
   features = villsau
+[pretty]
+    # for all format strings, see 'man git-log' or 'git help log' under 'PRETTY FORMATS'
+    # default format is git reflog --format='%C(auto)%h%d %gd: %gs'
+    # %h - abbreviated commit hash
+    # %d - ref names
+    # %gd - reflog selector, e.g., refs/stash@{1}
+    # %gs - reflog subject
+    # use --date=format:'%Y-%m-%d %H:%m' to change the reflog date format.
+    reflog = %C(auto)%h %gd%d %gs %C(240)%as%C(auto)

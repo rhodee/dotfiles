@@ -3,25 +3,28 @@
 # cp Brewfile ~/Brewfile
 # brew bundle
 
+
 # Install python, Go from DL sites, never from brew
 
-brew 'jq'
-brew 'neovim'
-brew 'ruby'
-brew 'openssl'
-brew 'openssh'
-brew 'starship'
+brew 'age'
 brew 'bottom'
-brew 'tmux'
+brew 'buf'
 brew 'fish'
 brew 'gitui'
-brew 'age'
+brew 'jq'
+brew 'neovim'
+brew 'openssh'
+brew 'openssl'
+brew 'ruby'
+brew 'starship'
+brew 'tmux'
 tap 'bufbuild/buf'
-brew 'buf'
 # Handy Utils
+brew 'atuin'
 brew 'bat'
 brew 'curl'
 brew 'exa'
+brew 'eza'
 brew 'fd'
 brew 'fzf'
 brew 'rg'
@@ -35,4 +38,3 @@ brew 'zoxide'
 brew 'git-interactive-rebase-tool'
 brew 'gnupg'
 brew 'git-delta'
-brew 'watchexec'
