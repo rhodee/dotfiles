@@ -4,7 +4,7 @@
 # brew bundle
 
 
-# Install python, Go from DL sites, never from brew
+# Install go, python, rust and volta (JS) manually
 
 brew 'age'
 brew 'bottom'
@@ -23,7 +23,6 @@ tap 'bufbuild/buf'
 brew 'atuin'
 brew 'bat'
 brew 'curl'
-brew 'exa'
 brew 'eza'
 brew 'fd'
 brew 'fzf'
