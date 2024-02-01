@@ -1,7 +1,11 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 
+let
+  inherit (pkgs) stdenv;
+  inherit (lib) mkIf;
+in
 {
-  home.packages = with pkgs; [
+  home.packages = with pkgs; ([
     age
     atuin
     bottom
@@ -33,23 +37,28 @@
     glow # markdown previewer in terminal
 
     btop  # replacement of htop/nmon
-    iotop # io monitoring
     iftop # network monitoring
 
     # system call monitoring
-    strace # system call monitoring
-    ltrace # library call monitoring
     lsof # list open files
 
     # system tools
-    sysstat
-    lm_sensors # for `sensors` command
-    ethtool
     pciutils # lspci
-    usbutils # lsusb
-  ];
+  ] ++ lib.optionals stdenv.isDarwin [
+      terminal-notifier
+      iterm2
+    ]
+    ++ lib.optionals stdenv.isLinux [
+      ethtool
+      iotop # io monitoring
+      lm_sensors # for `sensors` command
+      ltrace # library call monitoring
+      strace # system call monitoring
+      sysstat
+      usbutils # lsusb
+  ]);
 
-  gtk = {
+  gtk = (mkIf (stdenv.isLinux) {
     enable = true;
     theme = {
       name = "Catppuccin-Mocha-Pink";
@@ -59,7 +68,7 @@
         variant = "mocha";
       };
     };
-  };
+  });
 
   # Programs natively supported by home-manager.
   programs = {

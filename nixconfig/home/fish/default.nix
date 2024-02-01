@@ -21,7 +21,7 @@
   };
 
   home.file."${config.xdg.configHome}/fish/config-macos.fish" = {
-    source = ./config-osx.fish;
+    source = ./config-macos.fish;
     recursive = false;
   };
 
@@ -62,7 +62,7 @@ end
 
 switch (uname)
   case Darwin
-    source (dirname (status --current-filename))/config-osx.fish
+    source (dirname (status --current-filename))/config-macos.fish
   case Linux
     source (dirname (status --current-filename))/config-linux.fish
   case '*'
