@@ -28,46 +28,46 @@
   programs.fish = {
     enable = true;
     interactiveShellInit = ''
-set fish_greeting ""
-set -gx TERM xterm-256color
-set -gx VIMCONFIG $XDG_HOME/nvim
-set -gx VISUAL nvim
-set -gx EDITOR $VISUAL
+      set fish_greeting ""
+      set -gx TERM xterm-256color
+      set -gx VIMCONFIG $XDG_HOME/nvim
+      set -gx VISUAL nvim
+      set -gx EDITOR $VISUAL
 
-source $HOME/.config/fish/functions/*.fish
+      source $HOME/.config/fish/functions/*.fish
 
-ulimit -S -n 10000
+      ulimit -S -n 10000
 
-# managed by nix
-# zoxide init fish | source
+      # managed by nix
+      # zoxide init fish | source
 
-if test -e "$XDG_HOME/fish/extra.fish"
-  source $XDG_HOME/fish/extras/secret.fish
-end
+      if test -e "$XDG_HOME/fish/extra.fish"
+        source $XDG_HOME/fish/extras/secret.fish
+      end
 
-# Use atuin
-if status --is-interactive
-  set -gx ATUIN_NOBIND true
-  atuin init fish | source
+      # Use atuin
+      if status --is-interactive
+        set -gx ATUIN_NOBIND true
+        atuin init fish | source
 
-  # bind to ctrl-r in normal and insert mode
-  bind \cr _atuin_search
-  bind -M insert \cr _atuin_search
-end
+        # bind to ctrl-r in normal and insert mode
+        bind \cr _atuin_search
+        bind -M insert \cr _atuin_search
+      end
 
-if status --is-interactive
-  # Managed by nix
-  # starship init fish | source
-end
+      if status --is-interactive
+        # Managed by nix
+        # starship init fish | source
+      end
 
-switch (uname)
-  case Darwin
-    source (dirname (status --current-filename))/config-macos.fish
-  case Linux
-    source (dirname (status --current-filename))/config-linux.fish
-  case '*'
-    source (dirname (status --current-filename))/config-windows.fish
-end
+      switch (uname)
+        case Darwin
+          source (dirname (status --current-filename))/config-macos.fish
+        case Linux
+          source (dirname (status --current-filename))/config-linux.fish
+        case '*'
+          source (dirname (status --current-filename))/config-windows.fish
+      end
     '';
     plugins = [
 

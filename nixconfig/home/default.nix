@@ -11,7 +11,7 @@
   ];
 
   home.packages = with pkgs; [
-    (python3.withPackages (ppkgs:  with ppkgs; [
+    (python3.withPackages (ppkgs: with ppkgs; [
       pip
       cookiecutter
     ]))

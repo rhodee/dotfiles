@@ -22,11 +22,11 @@
 
   programs.git = {
     enable = true;
-	delta = { enable = true; };
+    delta = { enable = true; };
   };
 
   programs.gitui = {
-	enable = true;
+    enable = true;
   };
 
   home.packages = with pkgs; [

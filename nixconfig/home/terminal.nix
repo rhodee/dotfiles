@@ -36,7 +36,7 @@ in
     # productivity
     glow # markdown previewer in terminal
 
-    btop  # replacement of htop/nmon
+    btop # replacement of htop/nmon
     iftop # network monitoring
 
     # system call monitoring
@@ -45,17 +45,17 @@ in
     # system tools
     pciutils # lspci
   ] ++ lib.optionals stdenv.isDarwin [
-      terminal-notifier
-      iterm2
-    ]
-    ++ lib.optionals stdenv.isLinux [
-      ethtool
-      iotop # io monitoring
-      lm_sensors # for `sensors` command
-      ltrace # library call monitoring
-      strace # system call monitoring
-      sysstat
-      usbutils # lsusb
+    terminal-notifier
+    iterm2
+  ]
+  ++ lib.optionals stdenv.isLinux [
+    ethtool
+    iotop # io monitoring
+    lm_sensors # for `sensors` command
+    ltrace # library call monitoring
+    strace # system call monitoring
+    sysstat
+    usbutils # lsusb
   ]);
 
   gtk = (mkIf (stdenv.isLinux) {
@@ -72,10 +72,10 @@ in
 
   # Programs natively supported by home-manager.
   programs = {
-	direnv = {
-	  enable = true;
+    direnv = {
+      enable = true;
       nix-direnv.enable = true;
-	};
+    };
 
     fzf = {
       enable = true;
@@ -85,7 +85,7 @@ in
 
     jq.enable = true;
 
-  	starship = {
+    starship = {
       enable = true;
       enableFishIntegration = true;
       enableTransience = true;
@@ -118,14 +118,14 @@ in
         };
 
         cmd_duration = {
-            min_time = 10000;
-            format = "⏱  $duration ";
-            style = "yellow";
+          min_time = 10000;
+          format = "⏱  $duration ";
+          style = "yellow";
         };
 
         battery = {
           display = [
-            { threshold = 20; style  = "bold red"; discharging_symbol = "💀"; }
+            { threshold = 20; style = "bold red"; discharging_symbol = "💀"; }
             { threshold = 50; style = "bold yellow"; }
           ];
         };
@@ -136,11 +136,11 @@ in
           threshold = 80;
         };
       };
-  	};
+    };
 
-  	zoxide = {
+    zoxide = {
       enable = true;
       enableFishIntegration = true;
-  	};
+    };
   };
 }
