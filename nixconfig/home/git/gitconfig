@@ -1,5 +1,6 @@
 [user]
   name = rhodee
+  email = info@rhodee.us
 [help]
   autocorrect = 5
 [url "git@github.com:rhodee/"]
@@ -75,6 +76,8 @@
   diffFilter = delta --color-only --features=interactive
 [delta "interactive"]
   keep-plus-minus-markers = false
+[delta]
+   features = villsau
 [core]
   editor = vim
   excludesfile = ~/.gitignore_global
@@ -149,3 +152,4 @@
     # %gs - reflog subject
     # use --date=format:'%Y-%m-%d %H:%m' to change the reflog date format.
     reflog = %C(auto)%h %gd%d %gs %C(240)%as%C(auto)
+

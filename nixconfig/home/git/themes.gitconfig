@@ -1,3 +1,4 @@
+/
 # To use these themes, first include this file in your own gitconfig file:
 #
 # [include]
@@ -231,3 +232,4 @@
     plus-emph-style = syntax bold "#007800"
     plus-style = syntax "#004433"
     whitespace-error-style = "#280050"
+
