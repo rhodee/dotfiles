@@ -18,9 +18,11 @@
         inputs.nixos-flake.flakeModule
       ];
 
-      perSystem = { self', pkgs, home-manager, ... }:
+      perSystem = { self', lib, pkgs, home-manager, ... }:
         let
           itsme = "rhodee";
+          inherit (pkgs) stdenv;
+          inherit (lib) mkIf;
         in
         {
           legacyPackages.homeConfigurations.${itsme} =
