@@ -1,5 +1,6 @@
 [user]
   name = rhodee
+  email = info@rhodee.us
 [help]
   autocorrect = 5
 [url "git@github.com:rhodee/"]
