@@ -9,7 +9,6 @@
     };
     flake-parts.url = "github:hercules-ci/flake-parts";
     nixos-flake.url = "github:srid/nixos-flake";
-    nix-colors.url = "github:misterio77/nix-colors";
     systems.url = "github:nix-systems/default";
   };
 
