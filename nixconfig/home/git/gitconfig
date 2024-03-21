@@ -26,8 +26,6 @@
   added = yellow
   changed = green
   untracked = cyan
-[include]
-  path = $HOME/themes.gitconfig
 [alias]
   co = checkout
   ci = commit
@@ -52,6 +50,7 @@
   ss = stash save
   ssh = stash show -p
   diff = "!f() { 〈git diff --color-words --ignore-all-space $1..$2〉 }; f"
+  dft = difftool
   # find git tracked-files
   f = "!git ls-files | grep -i"
   get = grep --color=auto --break --ignore-case -Ii --untracked --before-context 1 --after-context 2 -e
@@ -68,16 +67,12 @@
 [commit]
   template = ~/.gitmessage.txt
 [pager]
-  diff = delta
-  log = delta
-  reflog = delta
-  show = delta
+  difftool = true
+  log = difftool
+  reflog = difftool
+  show = difftool
 [interactive]
   diffFilter = delta --color-only --features=interactive
-[delta "interactive"]
-  keep-plus-minus-markers = false
-[delta]
-   features = villsau
 [core]
   editor = vim
   excludesfile = ~/.gitignore_global
@@ -112,10 +107,11 @@
 [mergetool]
   prompt = true
 [diff]
-  mnemonicprefix = true
-  tool = vimdiff
+  tool = difftastic
 [difftool]
-  prompt = true
+  prompt = false
+[difftool "difftastic"]
+  cmd = difft "$LOCAL" "$REMOTE"
 [color "diff-highlight"]
   oldNormal = red bold
   oldHighlight = red bold 52
@@ -138,11 +134,6 @@
  defaultBranch = main
 [pull]
   ff = only
-[delta]
-  navigate = true
-  side-by-side = true
-  line-numbers = true
-  features = villsau
 [pretty]
     # for all format strings, see 'man git-log' or 'git help log' under 'PRETTY FORMATS'
     # default format is git reflog --format='%C(auto)%h%d %gd: %gs'

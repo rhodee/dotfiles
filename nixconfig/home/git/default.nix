@@ -10,11 +10,6 @@
     recursive = false;
   };
 
-  home.file."${config.home.homeDirectory}/themes.gitconfig" = {
-    source = ./themes.gitconfig;
-    recursive = false;
-  };
-
   home.file."${config.xdg.configHome}/gitui" = {
     source = ./gitui_themes;
     recursive = true;
@@ -22,7 +17,7 @@
 
   programs.git = {
     enable = true;
-    delta = { enable = true; };
+    difftastic = { enable = true; };
   };
 
   programs.gitui = {
@@ -33,6 +28,7 @@
     delta
     git-extras
     git-interactive-rebase-tool
+    difftastic
     gitui
     gnupg
     lazygit
