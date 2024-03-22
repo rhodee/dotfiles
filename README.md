@@ -15,3 +15,9 @@ Then run:
 cd $HOME/.config/nixconfig
 nix run
 ```
+
+To update the core configs:
+
+```sh
+nix run .#update
+```

@@ -20,9 +20,8 @@
     difftastic = { enable = true; };
   };
 
-  programs.gitui = {
-    enable = true;
-  };
+  programs.gitui.enable = true;
+  programs.lazygit.enable = true;
 
   home.packages = with pkgs; [
     delta

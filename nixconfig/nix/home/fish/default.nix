@@ -34,12 +34,15 @@
       set -gx VISUAL nvim
       set -gx EDITOR $VISUAL
 
+      # Make Nix and home-manager installed things available in PATH.
+      set PATH /run/current-system/sw/bin $PATH
+      set PATH /nix/var/nix/profiles/default/bin $PATH
+      set PATH /etc/profiles/per-user/$USER/bin $PATH
+      set PATH $HOME/.nix-profile/bin $PATH
+
       source $HOME/.config/fish/functions/*.fish
 
       ulimit -S -n 10000
-
-      # managed by nix
-      # zoxide init fish | source
 
       if test -e "$XDG_HOME/fish/extra.fish"
         source $XDG_HOME/fish/extras/secret.fish
@@ -79,7 +82,6 @@
   };
 
   home.packages = with pkgs; [
-    fish
     catppuccin
   ];
 }
