@@ -24,20 +24,20 @@
     nixvim.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs@{ self, ... }: inputs.flake-parts.lib.mkFlake { inherit inputs; } {
+  outputs = inputs@{ self, nixpkgs, ... }: inputs.flake-parts.lib.mkFlake { inherit inputs; } {
     systems = import inputs.systems;
     imports = [
       inputs.nixos-flake.flakeModule
     ];
 
+
     flake =
       let
         itsMe = "denisrhoden";
       in {
-        # Configurations for Linux machines
-        nixosConfigurations = {
-          rhodeenix = self.nixos-flake.lib.mkLinuxSystem {
-            services.nix-daemon.enable = true;
+        # Configurations for (non Nix OS) Linux machines
+        homeConfigurations = {
+          rhodeenix = self.nixos-flake.lib.mkHomeConfiguration {
             nixpkgs.hostPlatform = "x86_64-linux";
             imports = [
               self.nixosModules.common
@@ -65,6 +65,7 @@
           rhodeeBook = self.nixos-flake.lib.mkMacosSystem {
             services.nix-daemon.enable = true;
             nixpkgs.hostPlatform = "aarch64-darwin";
+            nixpkgs.config.allowUnfree = true;
             imports = [
               self.nixosModules.common
               self.nixosModules.darwin
@@ -94,8 +95,6 @@
         nixosModules = {
           # Common nixos/nix-darwin configuration shared between Linux and macOS.
           common = { pkgs, ... }: {
-            imports = [
-            ];
           };
 
           # Linux specific configuration
@@ -321,8 +320,9 @@
             };
 
             home.packages = with pkgs; [
-              terminal-notifier
               iterm2
+              tart
+              terminal-notifier
             ];
           };
         };
