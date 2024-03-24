@@ -30,35 +30,58 @@
       inputs.nixos-flake.flakeModule
     ];
 
+    # Configurations for (non-NixOS) Linux machines
+    perSystem = { pkgs, ... }:
+      let
+        # TODO: change username
+        uname = "rhodee";
+      in
+      {
+        legacyPackages.homeConfigurations.${uname} =
+          self.nixos-flake.lib.mkHomeConfiguration
+            pkgs
+            ({ pkgs, ... }: {
+              imports = [
+                self.nixosModules.common
+                self.homeModules.common
+                self.homeModules.linux
+              ];
+              home.stateVersion = "22.11";
+              home.username = "${uname}";
+              home.homeDirectory = "/home/${uname}";
+            });
+      };
+
 
     flake =
       let
-        itsMe = "denisrhoden";
+        # TODO: change username
+        itsMe = "rhodee";
       in {
-        # Configurations for (non Nix OS) Linux machines
-        homeConfigurations = {
-          rhodeenix = self.nixos-flake.lib.mkHomeConfiguration {
-            nixpkgs.hostPlatform = "x86_64-linux";
-            imports = [
-              self.nixosModules.common
-              self.nixosModules.linux
-              ({ pkgs, ... }: {
-                system.stateVersion = "23.05";
-              })
-              # Your home-manager configuration
-              self.nixosModules.home-manager
-              {
-                home-manager.users.${itsMe} = {
-                  imports = [
-                    self.homeModules.common
-                    self.homeModules.linux
-                  ];
-                  home.stateVersion = "22.11";
-                };
-              }
-            ];
-          };
-        };
+        # Configurations for (NixOS) Linux machines
+        # nixosConfigurations = {
+        #   rhodeenix = self.nixos-flake.lib.mkLinuxSystem {
+        #     nixpkgs.hostPlatform = "x86_64-linux";
+        #     imports = [
+        #       self.nixosModules.common
+        #       self.nixosModules.linux
+        #       ({ pkgs, ... }: {
+        #         system.stateVersion = "23.05";
+        #       })
+        #       # Your home-manager configuration
+        #       self.nixosModules.home-manager
+        #       {
+        #         home-manager.users.${itsMe} = {
+        #           imports = [
+        #             self.homeModules.common
+        #             self.homeModules.linux
+        #           ];
+        #           home.stateVersion = "22.11";
+        #         };
+        #       }
+        #     ];
+        #   };
+        # };
 
         # Configurations for macOS machines
         darwinConfigurations = {
@@ -97,7 +120,7 @@
           common = { pkgs, ... }: {
           };
 
-          # Linux specific configuration
+          # NixOS Linux specific configuration
           linux = { pkgs, ... }: {
             users.users.${itsMe}.isNormalUser = true;
             services.netdata.enable = true;
