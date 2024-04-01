@@ -200,7 +200,7 @@
 
                   cmd_duration = {
                     min_time = 10000;
-                    format = "⏱  $duration ";
+                    format = "⏱ $duration ";
                     style = "yellow";
                   };
 
@@ -290,8 +290,11 @@
               # system tools
               pciutils # lspci
 
+              # node tooling
+              pkgs.nodePackages.nodejs
+              pkgs.nodePackages.neovim
               # template tool
-              (pkgs.python3.withPackages (python-pkgs: [ python-pkgs.cookiecutter ]))
+              (pkgs.python3.withPackages (python-pkgs: [ python-pkgs.pip python-pkgs.cookiecutter ]))
             ];
           };
 
