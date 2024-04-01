@@ -240,13 +240,21 @@
                 enable = true;
                 enableFishIntegration = true;
               };
+
+              atuin = {
+                enable = true;
+                enableFishIntegration = true;
+              };
+
+              eza = {
+                enable = true;
+                enableFishIntegration = true;
+              };
             };
 
             home.packages = with pkgs; [
               age
-              atuin
               bottom
-              eza
               fd
               ripgrep
               tmux
@@ -281,6 +289,9 @@
 
               # system tools
               pciutils # lspci
+
+              # template tool
+              (pkgs.python3.withPackages (python-pkgs: [ python-pkgs.cookiecutter ]))
             ];
           };
 
@@ -305,6 +316,7 @@
               # on macOS, you probably don't need this
               bash = {
                 enable = false;
+                enableBashIntegration = true;
                 initExtra = ''
                   # Make Nix and home-manager installed things available in PATH.
                   export PATH=/run/current-system/sw/bin/:/nix/var/nix/profiles/default/bin:$HOME/.nix-profile/bin:/etc/profiles/per-user/$USER/bin:$PATH
