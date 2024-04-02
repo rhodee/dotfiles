@@ -261,6 +261,10 @@
               tree
               gnupg
 
+              # Code
+              chroma
+              bun
+
               # sql
               duckdb
 
@@ -274,6 +278,11 @@
               xz
               unzip
               p7zip
+
+              # Demo time
+              asciicam # Terminal webcam
+              asciinema-agg # Convert asciinema to .gif
+              asciinema # Terminal recorder
 
               # nix related
               #
@@ -339,6 +348,7 @@
               strace # system call monitoring
               sysstat
               usbutils # lsusb
+              wavemon # Terminal WiFi monitor
             ];
           };
 
