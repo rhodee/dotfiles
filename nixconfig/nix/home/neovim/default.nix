@@ -1,4 +1,4 @@
-{ flkae, config, lib, pkgs, ... }:
+{ flake, config, lib, pkgs, ... }:
 {
   home.file."${config.xdg.configHome}/nvim" = {
     source = ./config;
@@ -20,6 +20,7 @@
       conform-nvim
       diffview-nvim
       mason-nvim
+      mason-lspconfig-nvim
       neo-tree-nvim
       neotest
       neotest-go
@@ -28,11 +29,11 @@
       neotest-rust
       nvim-code-action-menu
       nvim-lspconfig
-      nvim-treesitter.withAllGrammars
       nvim-ufo
       nvim-window-picker
       plenary-nvim
       telescope-nvim
+      nvim-treesitter
       trouble-nvim
       undotree
       vim-just

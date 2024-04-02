@@ -3,7 +3,7 @@
 
   inputs = {
     # Principle inputs (updated by `nix run .#update`)
-    nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/*.tar.gz";
+    nixpkgs-unstable.url = "https://flakehub.com/f/NixOS/nixpkgs/*.tar.gz";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";

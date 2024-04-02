@@ -30,6 +30,5 @@
     difftastic
     gitui
     gnupg
-    lazygit
   ];
 }

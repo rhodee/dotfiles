@@ -4,8 +4,10 @@ return {
     opts = {
       ensure_installed = {
         "biome",
+        "buf-language-server",
         "codelldb",
         "css-lsp",
+        "cuelsp",
         "delve",
         "deno",
         "docker-compose-language-service",
@@ -24,10 +26,12 @@ return {
         "rust-analyzer",
         "shfmt",
         "sqlls",
+        "stylua",
         "staticcheck",
         "stylelint-lsp",
         "tailwindcss-language-server",
         "terraform-ls",
+        "tflint",
         "typescript-language-server",
         "yaml-language-server",
       },
