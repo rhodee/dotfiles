@@ -261,6 +261,9 @@
               tree
               gnupg
 
+              # sql
+              duckdb
+
               # fetch
               wget
               openssh
