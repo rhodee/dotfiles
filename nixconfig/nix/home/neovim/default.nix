@@ -7,8 +7,10 @@
 
   programs.neovim = {
     enable = true;
+
     viAlias = false;
     vimAlias = true;
+    vimdiffAlias = true;
 
     # Full list here,
     # https://github.com/NixOS/nixpkgs/blob/master/pkgs/applications/editors/vim/plugins/generated.nix
@@ -19,8 +21,8 @@
       comment-nvim
       conform-nvim
       diffview-nvim
-      mason-nvim
       mason-lspconfig-nvim
+      mason-nvim
       neo-tree-nvim
       neotest
       neotest-go
@@ -29,14 +31,16 @@
       neotest-rust
       nvim-code-action-menu
       nvim-lspconfig
+      (nvim-treesitter.withPlugins (_: pkgs.tree-sitter.allGrammars))
       nvim-ufo
       nvim-window-picker
       plenary-nvim
+      telescope-fzy-native-nvim
       telescope-nvim
-      nvim-treesitter
       trouble-nvim
       undotree
       vim-just
+      which-key-nvim
     ];
 
     withNodeJs = true;
