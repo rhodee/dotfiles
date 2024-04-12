@@ -5,6 +5,7 @@
     ./eza.nix
     ./fzf.nix
     ./jq.nix
+    ./pl.nix
     ./starship.nix
     ./zoxide.nix
   ];

@@ -3,16 +3,15 @@
 {
   home.packages = with pkgs; [
     age
-    bottom
     fd
     ripgrep
     tmux
     tree
     gnupg
+    gnumake
 
     # Code
     chroma
-    bun
 
     # sql
     duckdb
@@ -50,11 +49,5 @@
 
     # system tools
     pciutils # lspci
-
-    # node tooling
-    pkgs.nodePackages.nodejs
-    pkgs.nodePackages.neovim
-    # template tool
-    (pkgs.python3.withPackages (python-pkgs: [ python-pkgs.pip python-pkgs.cookiecutter ]))
   ];
 }

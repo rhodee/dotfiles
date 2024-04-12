@@ -5,6 +5,11 @@
     recursive = true;
   };
 
+  home.packages = with pkgs; [
+    pkgs.nodePackages.neovim
+    (pkgs.python3.withPackages (python-pkgs: [ python-pkgs.pynvim ]))
+  ];
+
   programs.neovim = {
     enable = true;
 
@@ -43,13 +48,8 @@
       which-key-nvim
     ];
 
-    withNodeJs = true;
-    withPython3 = true;
-    withRuby = false;
-
     # Add library code here for use in the Lua config from the
     # plugins list above.
     extraConfig = lib.fileContents ./config/init.lua;
   };
-
 }

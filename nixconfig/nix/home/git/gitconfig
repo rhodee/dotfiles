@@ -72,8 +72,6 @@
   log = difftool
   reflog = difftool
   show = difftool
-[interactive]
-  diffFilter = delta --color-only --features=interactive
 [core]
   editor = vim
   excludesfile = ~/.gitignore_global
@@ -82,7 +80,6 @@
   whitespace = -trailing-space,space-before-tab
   autocrlf = false
   legacyheaders = false
-  pager = vimdiff
 [receive]
   denyNonFastForwards = true
 [fetch]
@@ -105,15 +102,18 @@
   extendedRegexp = true
   lineNumber = true
 [branch]
- # always setup 'git pull' to rebase instead of merge
+  # always setup 'git pull' to rebase instead of merge
   autosetuprebase = always
   autosetupmerge = true
-[merge]
-  tool = vimdiff
-  conflictstyle = zdiff3
+[pull]
+  ff = only
+  rebase = only
 [rebase]
   autosquash = true
   autostash = true
+[merge]
+  tool = vimdiff
+  conflictstyle = zdiff3
 [mergetool]
   prompt = true
 [diff]
@@ -143,9 +143,6 @@
   program = gpg
 [init]
  defaultBranch = main
-[pull]
-  ff = only
-  rebase = only
 [pretty]
     # for all format strings, see 'man git-log' or 'git help log' under 'PRETTY FORMATS'
     # default format is git reflog --format='%C(auto)%h%d %gd: %gs'
