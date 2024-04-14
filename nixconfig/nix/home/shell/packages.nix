@@ -49,5 +49,8 @@
 
     # system tools
     pciutils # lspci
+
+    # orchestration
+    process-compose
   ];
 }
