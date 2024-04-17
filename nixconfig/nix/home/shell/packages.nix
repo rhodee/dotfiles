@@ -40,6 +40,7 @@
 
     # productivity
     glow # markdown previewer in terminal
+    adrgen # ADR generator
 
     btop # replacement of htop/nmon
     iftop # network monitoring
