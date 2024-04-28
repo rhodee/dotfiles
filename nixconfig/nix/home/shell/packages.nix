@@ -15,6 +15,7 @@
 
     # sql
     duckdb
+    dbeaver
 
     # fetch
     wget

@@ -24,11 +24,9 @@
   programs.lazygit.enable = true;
 
   home.packages = with pkgs; [
-    delta
     git-extras
     git-interactive-rebase-tool
     difftastic
-    gitui
     gnupg
   ];
 }

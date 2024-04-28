@@ -7,7 +7,7 @@
 
   home.packages = with pkgs; [
     pkgs.nodePackages.neovim
-    (pkgs.python3.withPackages (python-pkgs: [ python-pkgs.pynvim ]))
+    # (pkgs.python3.withPackages (python-pkgs: [ python-pkgs.pynvim ]))
   ];
 
   programs.neovim = {
@@ -45,6 +45,7 @@
       trouble-nvim
       undotree
       vim-just
+      scope-nvim
       which-key-nvim
     ];
 
