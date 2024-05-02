@@ -10,8 +10,8 @@
     recursive = false;
   };
 
-  home.file."${config.xdg.configHome}/gitui" = {
-    source = ./gitui_themes;
+  home.file."${config.xdg.configHome}/lazygit/themes" = {
+    source = ./lazygit/themes-mergable;
     recursive = true;
   };
 
@@ -20,8 +20,12 @@
     difftastic = { enable = true; };
   };
 
-  programs.gitui.enable = true;
-  programs.lazygit.enable = true;
+  programs.lazygit = {
+    enable = true;
+    settings = {
+      gui.nerdFontsVersion = 3;
+    };
+  };
 
   home.packages = with pkgs; [
     git-extras

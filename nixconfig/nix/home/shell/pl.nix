@@ -7,10 +7,9 @@
     # Go
     pkgs.go
     # node
-    pkgs.nodePackages.nodejs
-    pkgs.nodePackages.pnpm
+    pkgs.volta
     # pyhon
-    (pkgs.python3.withPackages (python-pkgs: [ python-pkgs.pip python-pkgs.cookiecutter ]))
+    (pkgs.python3.withPackages (python-pkgs: [ python-pkgs.pip python-pkgs.cookiecutter python-pkgs.pynvim ]))
     # rust
     pkgs.cargo
   ];

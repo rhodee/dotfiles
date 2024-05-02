@@ -11,12 +11,22 @@
       # A minimal left prompt
       format = "$character";
 
-      # move the rest of the prompt to the right
-      right_format = "$all";
-
+      right_format = "$cmd_duration$git_branch$git_status$directory";
 
       # Don't print a new line at the start of the prompt
       add_newline = false;
+
+      git_branch = {
+        format = "[$branch(:$remote_branch)]($style)";
+        style = "bold purple";
+      };
+
+      sudo = {
+        symbol = "#";
+        format = "[$symbol]($style) ";
+        style = "bold red";
+        disabled = false;
+      };
 
       character = {
         success_symbol = "[➜](bold green) ";
