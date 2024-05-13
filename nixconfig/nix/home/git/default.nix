@@ -10,6 +10,11 @@
     recursive = false;
   };
 
+  home.file."${config.xdg.configHome}/delta/themes" = {
+    source = ./delta/catppuccin.gitconfig;
+    recursive = false;
+  };
+
   home.file."${config.xdg.configHome}/lazygit/themes" = {
     source = ./lazygit/themes-mergable;
     recursive = true;
@@ -28,9 +33,10 @@
   };
 
   home.packages = with pkgs; [
+    delta
+    difftastic
     git-extras
     git-interactive-rebase-tool
-    difftastic
     gnupg
   ];
 }

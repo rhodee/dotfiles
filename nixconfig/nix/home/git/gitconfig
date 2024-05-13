@@ -68,10 +68,16 @@
   template = ~/.gitmessage.txt
   verbose = true
 [pager]
-  difftool = true
-  log = difftool
-  reflog = difftool
-  show = difftool
+  diff = delta
+  log = delta
+  reflog = delta
+  show = delta
+[interactive]
+  diffFilter = delta --color-only --features=interactive
+[delta]
+  features = catppuccin-macchiato
+[delta "interactive"]
+  keep-plus-minus-markers = false
 [core]
   editor = vim
   excludesfile = ~/.gitignore_global

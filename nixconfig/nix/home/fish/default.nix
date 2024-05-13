@@ -30,22 +30,24 @@
     interactiveShellInit = ''
       set fish_greeting ""
       set -gx TERM xterm-256color
-      set -gx VIMCONFIG $XDG_HOME/nvim
-      set -gx VISUAL nvim
-      set -gx EDITOR $VISUAL
+      set -gx VIMCONFIG $XDG_CONFIG_HOME/nvim
+      set -gx EDITOR nvim
+      set -gx VISUAL $EDITOR
+      set -gx VOLTA_HOME $HOME/.volta
 
       # Make Nix and home-manager installed things available in PATH.
       set PATH /run/current-system/sw/bin $PATH
       set PATH /nix/var/nix/profiles/default/bin $PATH
       set PATH /etc/profiles/per-user/$USER/bin $PATH
       set PATH $HOME/.nix-profile/bin $PATH
+      set PATH $HOME/.volta/bin $PATH
 
       source $HOME/.config/fish/functions/*.fish
 
       ulimit -S -n 10000
 
-      if test -e "$XDG_HOME/fish/extra.fish"
-        source $XDG_HOME/fish/extras/secret.fish
+      if test -e "$XDG_CONFIG_HOME/fish/extra.fish"
+        source $XDG_CONFIG_HOME/fish/extras/secret.fish
       end
 
       # Use atuin
