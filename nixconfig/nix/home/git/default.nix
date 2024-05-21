@@ -10,7 +10,7 @@
     recursive = false;
   };
 
-  home.file."${config.xdg.configHome}/delta/themes" = {
+  home.file."${config.xdg.configHome}/delta/themes/catppuccin.gitconfig" = {
     source = ./delta/catppuccin.gitconfig;
     recursive = false;
   };
@@ -30,6 +30,11 @@
     settings = {
       gui.nerdFontsVersion = 3;
     };
+  };
+
+  home.shellAliases = {
+    g = "git";
+    lg = "lazygit";
   };
 
   home.packages = with pkgs; [

@@ -7,6 +7,11 @@
     recursive = false;
   };
 
+  home.file."${config.xdg.configHome}/bat/themes" = {
+    source = ./themes;
+    recursive = true;
+  };
+
   programs.bat = {
     enable = true;
   };
