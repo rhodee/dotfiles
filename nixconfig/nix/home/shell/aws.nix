@@ -1,6 +1,8 @@
 { flake, config, lib, pkgs, ... }:
 {
-  programs.awscli = {
-    enable = true;
-  };
+  home.packages = with pkgs; [
+    aws-sam-cli
+    aws-vault
+    awscli2
+  ];
 }

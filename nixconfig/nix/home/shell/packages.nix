@@ -53,5 +53,7 @@
 
     # orchestration
     process-compose
+
+    act # Github Action testing locally
   ];
 }
