@@ -54,6 +54,13 @@
     # orchestration
     process-compose
 
-    act # Github Action testing locally
+    # Github Action testing locally
+    act
+
+    # tailscale
+    tailscale
+
+    # File manager
+    yazi
   ];
 }

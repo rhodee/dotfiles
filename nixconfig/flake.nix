@@ -173,11 +173,11 @@
               ./nix/home/fonts.nix
               ./nix/home/tmux
               ./nix/home/fish
+              ./nix/home/helix
               ./nix/home/bat
               ./nix/home/git
               ./nix/home/neovim
               ./nix/home/shell
-              ./nix/home/shell/packages.nix
             ];
 
             home.shellAliases = {

@@ -6,7 +6,13 @@
   };
 
   home.packages = with pkgs; [
-    pkgs.nodePackages.neovim
+    ast-grep
+    golines
+    luajitPackages.luarocks
+    nodePackages.neovim
+    yamlfix
+    yamlfmt
+    yamllint
     # (pkgs.python3.withPackages (python-pkgs: [ python-pkgs.pynvim ]))
   ];
 
@@ -17,9 +23,10 @@
     vimAlias = true;
     vimdiffAlias = true;
 
-    # Full list here,
+    # Full vim plugins list here,
     # https://github.com/NixOS/nixpkgs/blob/master/pkgs/applications/editors/vim/plugins/generated.nix
     plugins = with pkgs.vimPlugins; [
+      (nvim-treesitter.withPlugins (_: pkgs.tree-sitter.allGrammars))
       aerial-nvim
       barbecue-nvim
       catppuccin-vim
@@ -30,22 +37,20 @@
       mason-nvim
       neo-tree-nvim
       neotest
-      neotest-go
       neotest-plenary
       neotest-python
       neotest-rust
       nvim-code-action-menu
       nvim-lspconfig
-      (nvim-treesitter.withPlugins (_: pkgs.tree-sitter.allGrammars))
       nvim-ufo
       nvim-window-picker
       plenary-nvim
+      scope-nvim
       telescope-fzy-native-nvim
       telescope-nvim
       trouble-nvim
       undotree
       vim-just
-      scope-nvim
       which-key-nvim
     ];
 

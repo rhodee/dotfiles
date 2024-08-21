@@ -31,7 +31,7 @@
       set fish_greeting ""
       set -gx TERM xterm-256color
       set -gx VIMCONFIG $XDG_CONFIG_HOME/nvim
-      set -gx EDITOR nvim
+      set -gx EDITOR hx
       set -gx VISUAL $EDITOR
       set -gx VOLTA_HOME $HOME/.volta
 

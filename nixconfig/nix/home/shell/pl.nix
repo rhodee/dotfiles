@@ -6,6 +6,8 @@
     #
     # Go
     pkgs.go
+    # Lua
+    pkgs.lua
     # node
     pkgs.volta
     # pyhon
