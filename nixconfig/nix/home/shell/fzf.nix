@@ -3,6 +3,6 @@
   programs.fzf = {
     enable = true;
     enableFishIntegration = true;
-    defaultCommand = "rg --files --hidden --follow";
+    defaultCommand = "rg --files --follow --hidden --glob '!.git/'";
   };
 }

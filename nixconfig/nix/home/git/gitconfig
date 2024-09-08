@@ -36,7 +36,7 @@
   rem = remote -v
   rshow = remote show origin
   st = status --short --branch --ignore-submodules
-  br = branch
+  br = "!git branch | fzf | xargs git checkout"
   cp = cherry-pick
   merff = merge --ff-only
   up = remote update --prune

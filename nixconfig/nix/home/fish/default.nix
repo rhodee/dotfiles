@@ -31,7 +31,7 @@
       set fish_greeting ""
       set -gx TERM xterm-256color
       set -gx VIMCONFIG $XDG_CONFIG_HOME/nvim
-      set -gx EDITOR hx
+      set -gx EDITOR nvim
       set -gx VISUAL $EDITOR
       set -gx VOLTA_HOME $HOME/.volta
 
@@ -41,6 +41,7 @@
       set PATH /etc/profiles/per-user/$USER/bin $PATH
       set PATH $HOME/.nix-profile/bin $PATH
       set PATH $HOME/.volta/bin $PATH
+      set PATH $HOME/.cargo/bin $PATH
 
       source $HOME/.config/fish/functions/*.fish
 

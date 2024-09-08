@@ -9,8 +9,9 @@
     ./fzf.nix
     ./infra.nix
     ./jq.nix
-    ./pl.nix
     ./packages.nix
+    ./pl.nix
+    ./ripgrep.nix
     ./starship.nix
     ./zoxide.nix
   ];
