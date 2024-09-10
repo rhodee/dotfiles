@@ -36,7 +36,7 @@
   rem = remote -v
   rshow = remote show origin
   st = status --short --branch --ignore-submodules
-  br = "!git branch | fzf | xargs git checkout"
+  br = "branch -i"
   cp = cherry-pick
   merff = merge --ff-only
   up = remote update --prune
@@ -55,6 +55,7 @@
   f = "!git ls-files | grep -i"
   get = grep --color=auto --break --ignore-case -Ii --untracked --before-context 1 --after-context 2 -e
   # view logs
+  last = log -1 HEAD --stat
   l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
   hist ="!git l --pretty=format:\"%h -- %s [%cd, %cn, %cr]\" --stat -42 --graph --date=short"
   lg ="!git l -C --stat --decorate"
@@ -108,9 +109,9 @@
   extendedRegexp = true
   lineNumber = true
 [branch]
-  # always setup 'git pull' to rebase instead of merge
-  autosetuprebase = always
-  autosetupmerge = true
+  # When remote, rebase is set to true for tracked branches
+  # of remote-tracking branches.
+  autoSetupRebase = remote
 [pull]
   ff = only
   rebase = only

@@ -12,6 +12,7 @@
     kustomize
     linkerd
     mkcert
+    step-cli
     stern
     tilt
   ];

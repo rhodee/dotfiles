@@ -42,6 +42,7 @@
       set PATH $HOME/.nix-profile/bin $PATH
       set PATH $HOME/.volta/bin $PATH
       set PATH $HOME/.cargo/bin $PATH
+      set -gx PATH $PATH $HOME/.krew/bin
 
       source $HOME/.config/fish/functions/*.fish
 
