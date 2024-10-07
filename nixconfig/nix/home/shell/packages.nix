@@ -61,5 +61,7 @@
 
     # File manager
     yazi
+
+    devenv
   ];
 }

@@ -15,32 +15,25 @@
     recursive = false;
   };
 
-  home.file."${config.xdg.configHome}/lazygit/themes" = {
-    source = ./lazygit/themes-mergable;
+  home.file."${config.xdg.configHome}/gitui" = {
+    source = ./gitui/themes;
     recursive = true;
   };
 
-  programs.git = {
+  programs.gitui = {
     enable = true;
-    difftastic = { enable = true; };
-  };
-
-  programs.lazygit = {
-    enable = true;
-    settings = {
-      gui.nerdFontsVersion = 3;
-    };
   };
 
   home.shellAliases = {
     g = "git";
-    lg = "lazygit";
+    gu = "gitui -t catppuccin-macchiato.ron";
   };
 
   home.packages = with pkgs; [
     delta
     difftastic
     git-extras
+    gitFull
     git-interactive-rebase-tool
     gnupg
   ];

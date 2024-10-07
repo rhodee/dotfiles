@@ -9,11 +9,10 @@
     kind
     krew
     kubectx
+    kubefirst
     kustomize
     linkerd
-    mkcert
     step-cli
     stern
-    tilt
   ];
 }

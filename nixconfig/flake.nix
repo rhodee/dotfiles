@@ -14,7 +14,7 @@
     };
 
     flake-parts.url = "github:hercules-ci/flake-parts";
-    nixos-flake.url = "github:srid/nixos-flake";
+    nixos-unified.url = "github:srid/nixos-unified";
     systems.url = "github:nix-systems/default";
 
     # Software inputs
@@ -27,7 +27,7 @@
   outputs = inputs@{ self, nixpkgs, ... }: inputs.flake-parts.lib.mkFlake { inherit inputs; } {
     systems = import inputs.systems;
     imports = [
-      inputs.nixos-flake.flakeModule
+      inputs.nixos-unified.flakeModules.default
     ];
 
     # Configurations for (non-NixOS) Linux machines
@@ -61,26 +61,16 @@
       in {
         # Configurations for (NixOS) machines
         nixosConfigurations = {
-          # TODO: change workstation
-          rhodeenix = self.nixos-flake.lib.mkLinuxSystem {
+          rhodeenix = self.nixos-unified.lib.mkLinuxSystem
+          { home-manager = true; }
+          {
             nixpkgs.hostPlatform = "x86_64-linux";
             imports = [
               self.nixosModules.common
               self.nixosModules.linux
               ({ pkgs, ... }: {
-                system.stateVersion = "23.05";
+                system.stateVersion = "22.11";
               })
-              # Your home-manager configuration
-              self.nixosModules.home-manager
-              {
-                home-manager.users.${itsMe} = {
-                  imports = [
-                    self.homeModules.common
-                    self.homeModules.linux
-                  ];
-                  home.stateVersion = "22.11";
-                };
-              }
             ];
           };
         };
@@ -88,62 +78,55 @@
         # Configurations for macOS machines
         darwinConfigurations = {
           # TODO: change workstation
-          rhodeeBook = self.nixos-flake.lib.mkMacosSystem {
-            services.nix-daemon.enable = true;
-            nixpkgs.hostPlatform = "aarch64-darwin";
-            nixpkgs.config.allowUnfree = true;
-            imports = [
-              self.nixosModules.common
-              self.nixosModules.darwin
-              ({ pkgs, ... }: {
-                # Used for backwards compatibility, please read the changelog before changing.
-                # $ darwin-rebuild changelog
-                system.stateVersion = 4;
-              })
-              # Your home-manager configuration
-              self.darwinModules_.home-manager
-              {
-                home-manager.users.${itsMe} = {
-                  imports = [
-                    self.homeModules.common
-                    self.homeModules.darwin
-                  ];
-                  home.stateVersion = "22.11";
-                  home.username = "${itsMe}";
-                  home.homeDirectory = "/Users/${itsMe}";
-                };
-              }
-            ];
-          };
+          rhodeeBook = self.nixos-unified.lib.mkMacosSystem
+            { home-manager = true; }
+            {
+              nixpkgs.hostPlatform = "aarch64-darwin";
+              nixpkgs.config.allowUnfree = true;
+              services.nix-daemon.enable = true;
+              imports = [
+                ({ pkgs, ... }: {
+                  # Used for backwards compatibility, please read the changelog before changing.
+                  # $ darwin-rebuild changelog
+                  system.stateVersion = 4;
+                  users.users.${itsMe}.home = "/Users/${itsMe}";
+                })
+                {
+                  home-manager.users.${itsMe} = {
+                    imports = [
+                      self.homeModules.common
+                      self.homeModules.darwin
+                    ];
+                    home.stateVersion = "22.11";
+                  };
+                }
+              ];
+            };
 
-          # TODO: change workstation
-          rhodeeWork = self.nixos-flake.lib.mkMacosSystem {
-            services.nix-daemon.enable = true;
-            nixpkgs.hostPlatform = "aarch64-darwin";
-            nixpkgs.config.allowUnfree = true;
-            imports = [
-              self.nixosModules.common
-              self.nixosModules.darwin
-              ({ pkgs, ... }: {
-                # Used for backwards compatibility, please read the changelog before changing.
-                # $ darwin-rebuild changelog
-                system.stateVersion = 4;
-              })
-              # Your home-manager configuration
-              self.darwinModules_.home-manager
-              {
-                home-manager.users.${itsMe} = {
-                  imports = [
-                    self.homeModules.common
-                    self.homeModules.darwin
-                  ];
-                  home.stateVersion = "22.11";
-                  home.username = "${itsMe}";
-                  home.homeDirectory = "/Users/${itsMe}";
-                };
-              }
-            ];
-          };
+          rhodeeWork = self.nixos-unified.lib.mkMacosSystem
+            { home-manager = true; }
+            {
+              nixpkgs.hostPlatform = "aarch64-darwin";
+              nixpkgs.config.allowUnfree = true;
+              services.nix-daemon.enable = true;
+              imports = [
+                ({ pkgs, ... }: {
+                  # Used for backwards compatibility, please read the changelog before changing.
+                  # $ darwin-rebuild changelog
+                  system.stateVersion = 4;
+                  users.users.${itsMe}.home = "/Users/${itsMe}";
+                })
+                {
+                  home-manager.users.${itsMe} = {
+                    imports = [
+                      self.homeModules.common
+                      self.homeModules.darwin
+                    ];
+                    home.stateVersion = "22.11";
+                  };
+                }
+              ];
+            };
         };
 
         # All nixos/nix-darwin configurations are kept here.
