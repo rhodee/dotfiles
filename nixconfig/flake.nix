@@ -38,7 +38,7 @@
       in
       {
         legacyPackages.homeConfigurations.${uname} =
-          self.nixos-flake.lib.mkHomeConfiguration
+          self.nixos-unified.lib.mkHomeConfiguration
             pkgs
             ({ pkgs, ... }: {
               imports = [
@@ -48,7 +48,7 @@
               ];
               nixpkgs.config.allowUnfree = true;
               home.stateVersion = "22.11";
-              home.username = "${uname}";
+              home.username = uname;
               home.homeDirectory = "/home/${uname}";
             });
       };
@@ -59,22 +59,6 @@
         # TODO: change username
         itsMe = "rhodee";
       in {
-        # Configurations for (NixOS) machines
-        nixosConfigurations = {
-          rhodeenix = self.nixos-unified.lib.mkLinuxSystem
-          { home-manager = true; }
-          {
-            nixpkgs.hostPlatform = "x86_64-linux";
-            imports = [
-              self.nixosModules.common
-              self.nixosModules.linux
-              ({ pkgs, ... }: {
-                system.stateVersion = "22.11";
-              })
-            ];
-          };
-        };
-
         # Configurations for macOS machines
         darwinConfigurations = {
           # TODO: change workstation
