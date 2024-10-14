@@ -1,21 +1,21 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 {
-  home.file."${config.home.homeDirectory}/.gitconfig" = {
+  home.file."$HOME/.gitconfig" = {
     source = ./gitconfig;
     recursive = false;
   };
 
-  home.file."${config.home.homeDirectory}/.gitmessage.txt" = {
+  home.file."$HOME/.gitmessage.txt" = {
     source = ./gitmessage.txt;
     recursive = false;
   };
 
-  home.file."${config.xdg.configHome}/delta/themes/catppuccin.gitconfig" = {
+  home.file."$HOME/.config/delta/themes/catppuccin.gitconfig" = {
     source = ./delta/catppuccin.gitconfig;
     recursive = false;
   };
 
-  home.file."${config.xdg.configHome}/gitui" = {
+  home.file."$HOME/.config/gitui" = {
     source = ./gitui/themes;
     recursive = true;
   };
@@ -26,7 +26,7 @@
 
   home.shellAliases = {
     g = "git";
-    gu = "gitui -t catppuccin-macchiato.ron";
+    gitui = "gitui -t catppuccin-macchiato.ron";
   };
 
   home.packages = with pkgs; [

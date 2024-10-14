@@ -1,30 +1,40 @@
 # Install Development Environment
 
-## Checklist
+- [ ] Already installed? See [Rebuild Existing System](#rebuild-system)
 
-- [ ] New install? `curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install`
-- [ ] Already installed? `nix config check`
+## Install Nix
 
 ```sh
-mkdir $XDG_CONFIG_HOME/nix
-cp nix.conf $XDG_CONFIG_HOME/nix/
-cp -r nixconfig $XDG_CONFIG_HOME/
+curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | \
+  sh -s -- install --no-confirm --extra-conf "trusted-users = root $(whoami)"
 ```
 
-Then run:
+## Build Machine
+
+It is probably best to run this command:
 
 ```sh
-cd $XDG_CONFIG_HOME/nixconfig
-nix-build https://github.com/LnL7/nix-darwin/archive/master.tar.gz -A installer
-./result/bin/darwin-installer
-darwin-rebuild switch --flake ~/.config/nixconfig
-nix run .#activate[-home] # use the optional variant for non nixos linux
+nix --accept-flake-config run github:juspay/omnix -- init github:juspay/nixos-unified-template -o $HOME/.config/nixconfig
+```
+
+Answer the prompts and then you will have a working config. To make it more useful (to myself) copy the `modules`
+directory and wire it up in each configuration.
+
+If you are just moving configs between machines follow the steps below:
+
+```sh
+cp nix.conf $HOME/nix/nix.conf
+cp nixconfig $HOME/.config/nixconfig
+cd $HOME/.config/nixconfig
+
+# One-time activation
+nix --extra-experimental-features "nix-command flakes" run
 ```
 
 To update:
 
 ```sh
-nix run .#update && nix run .#activate[-home] # or nix flake update && nix run .#activate[-home]
+nix flake update && nix run
 ```
 
 To update nix:
@@ -33,10 +43,16 @@ To update nix:
 nix upgrade-nix --nix-store-paths-url https://install.determinate.systems/nix-upgrade/stable/universal
 ```
 
-## Troubleshooting
+## Rebuild System
 
-1. On a mac, you may need to download [iterm2](https://iterm2.com/) as the installed version does not appear in the Finder.
+```sh
+nix --extra-experimental-features "nix-command flakes" run nix-darwin#darwin-uninstaller
+curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- uninstall
 
-1. Some items may fail to appear available in the shell, simply restart the shell or even the device.
+sudo mv /etc/nix/nix.conf /etc/nix/nix.conf.before-nix-darwin
+sudo mv /etc/bashrc /etc/bashrc.before-nix-darwin
+sudo mv /etc/zshrc /etc/zshrc.before-nix-darwin
 
-1. Nix can't find your machine. Be sure the `username` and `configuration` are correct and rerun.
+rm $HOME/.local/state/nix/profiles/home-manager*
+rm $HOME/.local/state/home-manager/gcroots/current-home
+```
