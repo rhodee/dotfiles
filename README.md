@@ -34,7 +34,7 @@ nix --extra-experimental-features "nix-command flakes" run
 To update:
 
 ```sh
-nix flake update && nix run
+nix flake update && nix run [. $USER@ ] # add the ' .$USER@' on non-NixOS Linux
 ```
 
 To update nix:
