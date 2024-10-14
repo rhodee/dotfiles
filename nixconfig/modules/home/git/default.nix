@@ -1,21 +1,21 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
-  home.file."$HOME/.gitconfig" = {
+  home.file.".gitconfig" = {
     source = ./gitconfig;
     recursive = false;
   };
 
-  home.file."$HOME/.gitmessage.txt" = {
+  home.file.".gitmessage.txt" = {
     source = ./gitmessage.txt;
     recursive = false;
   };
 
-  home.file."$HOME/.config/delta/themes/catppuccin.gitconfig" = {
+  home.file."${config.xdg.configHome}/delta/themes/catppuccin.gitconfig" = {
     source = ./delta/catppuccin.gitconfig;
     recursive = false;
   };
 
-  home.file."$HOME/.config/gitui" = {
+  home.file."${config.xdg.configHome}/gitui" = {
     source = ./gitui/themes;
     recursive = true;
   };

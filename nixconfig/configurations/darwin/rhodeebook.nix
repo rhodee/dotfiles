@@ -12,7 +12,7 @@ in
   ];
 
   nixpkgs.hostPlatform = "aarch64-darwin";
-  networking.hostName = "rhodeeBook";
+  networking.hostName = "rhodeebook";
   nixpkgs.config.allowUnfree = true;
 
   # For home-manager to work.
