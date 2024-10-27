@@ -1,0 +1,5 @@
+{
+"base_keymap": "VSCode",
+"theme": "Catppuccin Mocha",
+"vim_mode": true
+}

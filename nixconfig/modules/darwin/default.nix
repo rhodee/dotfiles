@@ -7,6 +7,7 @@ let
   inherit (inputs) self;
 in
 {
+
   # Use TouchID for `sudo` authentication
   security.pam.enableSudoTouchIdAuth = true;
 

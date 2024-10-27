@@ -10,18 +10,9 @@
     recursive = false;
   };
 
-  home.file."${config.xdg.configHome}/delta/themes/catppuccin.gitconfig" = {
-    source = ./delta/catppuccin.gitconfig;
-    recursive = false;
-  };
-
-  home.file."${config.xdg.configHome}/gitui" = {
-    source = ./gitui/themes;
-    recursive = true;
-  };
-
   programs.gitui = {
     enable = true;
+    catppuccin.enable = true;
   };
 
   home.shellAliases = {
@@ -36,5 +27,6 @@
     gitFull
     git-interactive-rebase-tool
     gnupg
+    jujutsu
   ];
 }

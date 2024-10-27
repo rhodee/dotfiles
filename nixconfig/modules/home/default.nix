@@ -2,6 +2,7 @@
   home.stateVersion = "22.11";
   imports = [
     ./gc.nix
+    ./catppuccin.nix
     ./nix-index.nix
     ./fonts.nix
     ./all/bat
@@ -9,6 +10,7 @@
     ./all/tmux
     ./all/atuin.nix
     ./all/aws.nix
+    ./all/broot.nix
     ./all/container.nix
     ./all/core-langs.nix
     ./all/cue.nix

@@ -5,7 +5,6 @@
     age
     fd
     tmux
-    tree
     gnupg
     gnumake
 
@@ -68,4 +67,7 @@
     # work.
     less
   ];
+  home.shellAliases = {
+    tree = "broot";
+  };
 }

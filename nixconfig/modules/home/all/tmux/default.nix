@@ -15,6 +15,7 @@
 
   programs.tmux = {
     enable = true;
+    catppuccin.enable = true;
     terminal = "screen-256color";
     secureSocket = false;
     extraConfig = builtins.readFile ./tmux.conf;
