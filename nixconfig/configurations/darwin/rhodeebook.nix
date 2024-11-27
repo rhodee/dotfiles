@@ -8,6 +8,7 @@ let
 in
 {
   imports = [
+    inputs.mac-app-util.darwinModules.default
     self.darwinModules.default
   ];
 

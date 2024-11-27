@@ -12,7 +12,7 @@
     kubefirst
     kustomize
     linkerd
-    step-cli
+    # step-cli
     stern
   ];
 }

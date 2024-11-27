@@ -56,3 +56,7 @@ sudo mv /etc/zshrc /etc/zshrc.before-nix-darwin
 rm $HOME/.local/state/nix/profiles/home-manager*
 rm $HOME/.local/state/home-manager/gcroots/current-home
 ```
+
+```sh
+deno jupyter --install
+```

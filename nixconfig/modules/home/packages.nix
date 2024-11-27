@@ -13,6 +13,7 @@
 
     # sql
     duckdb
+    dbeaver-bin
 
     # fetch
     wget
@@ -24,6 +25,8 @@
     xz
     unzip
     p7zip
+
+    nixd
 
     # Demo time
     asciicam # Terminal webcam

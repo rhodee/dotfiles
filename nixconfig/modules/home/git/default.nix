@@ -23,10 +23,10 @@
   home.packages = with pkgs; [
     delta
     difftastic
+    git-absorb
     git-extras
-    gitFull
     git-interactive-rebase-tool
+    gitFull
     gnupg
-    jujutsu
   ];
 }

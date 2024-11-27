@@ -118,6 +118,8 @@
 [rebase]
   autosquash = true
   autostash = true
+  # 'stack' those PRs ;)
+  updateRefs = true
 [merge]
   tool = vimdiff
   conflictstyle = zdiff3
