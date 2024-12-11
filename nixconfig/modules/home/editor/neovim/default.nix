@@ -9,10 +9,12 @@
     ast-grep
     golines
     luajitPackages.luarocks
-    nodePackages.neovim
+    # TODO: Revert when this is functional again
+    # nodePackages.neovim
     yamlfix
     yamlfmt
     yamllint
+    # TODO: Revert when this is functional again
     # (pkgs.python3.withPackages (python-pkgs: [ python-pkgs.pynvim ]))
   ];
 
