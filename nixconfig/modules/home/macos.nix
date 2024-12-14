@@ -5,8 +5,9 @@
     ./all/zsh.nix
     ./all/iterm
     ./git
-    ./editor/neovim
+    # ./editor/neovim
     # Marked as broken do not use 27-11-2024
     # ./editor/zed
+    # ./editor/vscode
   ];
 }
