@@ -6,12 +6,12 @@ in
 {
   imports = [
     self.homeModules.default
-    self.homeModules.linux
   ];
 
   home.username = "rhodee";
   home.homeDirectory = lib.mkDefault "/${if pkgs.stdenv.isDarwin then "Users" else "home"}/rhodee";
   home.stateVersion = "22.11";
+  nixpkgs.config.allowUnfree = true;
 
   home.sessionVariables = {
     EDITOR = "code --wait --new-window";

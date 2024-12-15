@@ -80,7 +80,6 @@
 [delta "interactive"]
   keep-plus-minus-markers = false
 [core]
-  editor = vim
   excludesfile = ~/.gitignore_global
   quotepath = false
   # Do not consider trailing space change as a cause for merge
@@ -147,7 +146,7 @@
   smudge = git-lfs smudge -- %f
   process = git-lfs filter-process
 [sequence]
-    editor = interactive-rebase-tool
+  editor = interactive-rebase-tool
 [gpg]
   program = gpg
 [init]
