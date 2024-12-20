@@ -10,9 +10,10 @@
     recursive = false;
   };
 
+  catppuccin.gitui.enable = true;
+
   programs.gitui = {
     enable = true;
-    catppuccin.enable = true;
   };
 
   home.shellAliases = {
