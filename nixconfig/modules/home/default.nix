@@ -5,6 +5,7 @@
     ./catppuccin.nix
     ./nix-index.nix
     ./fonts.nix
+    ./git
     ./all/bat
     ./all/fish
     ./all/tmux

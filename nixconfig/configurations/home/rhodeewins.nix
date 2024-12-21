@@ -1,8 +1,7 @@
 # This is used on WSL2 environment
 # Be sure to set the shell to fish
 # chsh -s $(which fish)
-{ flake, ... }:
-
+{ flake, pkgs, lib, ... }:
 let
   inherit (flake) inputs;
   inherit (inputs) self;
@@ -10,22 +9,29 @@ in
 {
   imports = [
     self.homeModules.default
-    self.homeModules.linux
   ];
+
+  home.username = "rhodee";
+  home.homeDirectory = lib.mkDefault "/home/rhodee";
+  home.stateVersion = "22.11";
 
   nixpkgs.hostPlatform = "x86_64-linux";
   networking.hostName = "rhodeewins";
+  nixpkgs.config.allowUnfree = true;
+
+  home.sessionVariables = {
+    EDITOR = "code --wait --new-window";
+    VISUAL = "$EDITOR";
+  };
 
   # For home-manager to work.
   # https://github.com/nix-community/home-manager/issues/4026#issuecomment-1565487545
   users.users."rhodee".home = "/home/rhodee";
 
-  # Enable home-manager for "rhodee" user
-  home-manager.users."rhodee" = {
-    imports = [ (self + /configurations/home/rhodee.nix) ];
-  };
-
-  home-manager.sharedModules = [];
+  home-manager.sharedModules = [
+    self.homeModules.default
+    self.homeModules.linux
+  ];
 
   # Used for backwards compatibility, please read the changelog before changing.
   system.stateVersion = 4;
