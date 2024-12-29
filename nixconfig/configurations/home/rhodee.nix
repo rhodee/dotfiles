@@ -16,5 +16,6 @@ in
   home.sessionVariables = {
     EDITOR = "code --wait --new-window";
     VISUAL = "$EDITOR";
+    # XDG_CONFIG_HOME = "$HOME/.config"
   };
 }

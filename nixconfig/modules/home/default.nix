@@ -7,6 +7,7 @@
     ./fonts.nix
     ./git
     ./all/bat
+    ./all/ghostty
     ./all/fish
     ./all/tmux
     ./all/atuin.nix

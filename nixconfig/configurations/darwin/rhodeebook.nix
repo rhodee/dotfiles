@@ -9,6 +9,7 @@ in
 {
   imports = [
     inputs.mac-app-util.darwinModules.default
+    # inputs.ghostty.packages.aarch64-darwin.default
     self.darwinModules.default
   ];
 

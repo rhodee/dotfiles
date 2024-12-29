@@ -1,0 +1,16 @@
+background-opacity = .9
+
+clipboard-read = allow
+clipboard-trim-trailing-spaces = true
+clipboard-write = allow
+
+cursor-style = block
+cursor-style-blink = true
+
+font-family = "BlexMono Nerd Font Mono"
+
+# Set theme
+# theme = catppuccin-macchiato
+
+window-inherit-working-directory = true
+window-theme = auto

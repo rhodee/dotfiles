@@ -9,6 +9,7 @@ in
 {
   imports = [
     self.homeModules.default
+    # inputs.ghostty.packages.x86_64-linux.default
   ];
 
   home.username = "rhodee";
