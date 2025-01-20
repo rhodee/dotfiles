@@ -1,6 +1,5 @@
 { config, pkgs, ... }:
 {
-
   home.file."${config.xdg.configHome}/ghostty/themes" = {
     source = ./themes;
     recursive = true;

@@ -14,6 +14,7 @@
     ./all/aws.nix
     ./all/broot.nix
     ./all/container.nix
+    ./all/coreutils.nix
     ./all/core-langs.nix
     ./all/cue.nix
     ./all/direnv.nix
