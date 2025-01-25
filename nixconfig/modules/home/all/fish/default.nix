@@ -75,10 +75,13 @@
       end
     '';
     plugins = [
-      { name = "z"; src = pkgs.fishPlugins.z.src; }
-      { name = "fzf-fish"; src = pkgs.fishPlugins.fzf-fish.src; }
+      { name = "async-prompt"; src = pkgs.fishPlugins.async-prompt.src; }
+      { name = "autopair"; src = pkgs.fishPlugins.autopair.src; }
       { name = "bobthefish"; src = pkgs.fishPlugins.bobthefish.src; }
-      { name = "fzf"; src = pkgs.fishPlugins.fzf.src; }
+      { name = "forgit"; src = pkgs.fishPlugins.forgit.src; }
+      { name = "fzf-fish"; src = pkgs.fishPlugins.fzf-fish.src; }
+      { name = "puffer"; src = pkgs.fishPlugins.puffer.src; }
+      { name = "z"; src = pkgs.fishPlugins.z.src; }
     ];
   };
 
