@@ -14,7 +14,7 @@ in
 
   home.username = "rhodee";
   home.homeDirectory = lib.mkDefault "/home/rhodee";
-  home.stateVersion = "22.11";
+  home.stateVersion = "24.11";
 
   nixpkgs.hostPlatform = "x86_64-linux";
   networking.hostName = "rhodeewins";

@@ -1,6 +1,6 @@
 # Install Development Environment
 
-- [ ] Already installed? See [Rebuild Existing System](#rebuild-system)
+- [ ] Already have `nix` installed and need to refresh? See [Troubleshooting Guide](https://github.com/DeterminateSystems/nix-installer?tab=readme-ov-file#troubleshooting)
 
 ## Install Nix
 
@@ -11,39 +11,35 @@ curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix 
 
 ## Build Machine
 
-It is probably best to run this command:
-
 ```sh
 nix --accept-flake-config run github:juspay/omnix -- init github:juspay/nixos-unified-template -o $HOME/.config/nixconfig
 ```
 
-Answer the prompts and then you will have a working config. To make it more useful (to myself) copy the `modules`
-directory and wire it up in each configuration.
+Follow prompts then a working config is generated at `$HOME/.config/nixconfig`.
 
-If you are just moving configs between machines follow the steps below:
+If you cloned this repo you can run `nix run` on macOS or `nix run . <your user>` on a non nixOS (YMMV).
+
+Before you do that...Make sure to have the configs like this:
 
 ```sh
-cp nix.conf $HOME/nix/nix.conf
-cp nixconfig $HOME/.config/nixconfig
-cd $HOME/.config/nixconfig
-
-# One-time activation
-nix --extra-experimental-features "nix-command flakes" run
+cp nix.conf $XDG_CONFIG_HOME/nix/nix.conf
+cp nixconfig $XDG_CONFIG_HOME/nixconfig
+cd $XDG_CONFIG_HOME/nixconfig
 ```
 
-To update:
+To update nix -> <https://github.com/DeterminateSystems/nix-installer?tab=readme-ov-file#upgrading-nix>
+
+To update your flakes:
 
 ```sh
 nix flake update && nix run [. $USER@ ] # add the ' .$USER@' on non-NixOS Linux
 ```
 
-To update nix:
+## Troubleshooting
 
-```sh
-nix upgrade-nix --nix-store-paths-url https://install.determinate.systems/nix-upgrade/stable/universal
-```
+### Rebuild System
 
-## Rebuild System
+On a really, really bad system failure I ran these commands to get it working again.
 
 ```sh
 nix --extra-experimental-features "nix-command flakes" run nix-darwin#darwin-uninstaller
@@ -55,8 +51,4 @@ sudo mv /etc/zshrc /etc/zshrc.before-nix-darwin
 
 rm $HOME/.local/state/nix/profiles/home-manager*
 rm $HOME/.local/state/home-manager/gcroots/current-home
-```
-
-```sh
-deno jupyter --install
 ```
