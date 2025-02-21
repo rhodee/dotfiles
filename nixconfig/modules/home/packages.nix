@@ -29,6 +29,9 @@
     nixd
     zlib
 
+    # writing
+    typst
+
     # Demo time
     asciicam # Terminal webcam
     asciinema-agg # Convert asciinema to .gif

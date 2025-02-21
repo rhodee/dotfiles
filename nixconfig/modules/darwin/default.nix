@@ -16,8 +16,6 @@ in {
     ./system.nix
   ];
 
-  services.nix-daemon.enable = true;
-
   # Use TouchID for `sudo` authentication
   security.pam.enableSudoTouchIdAuth = true;
 

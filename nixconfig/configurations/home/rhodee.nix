@@ -11,7 +11,6 @@ in
   home.username = "rhodee";
   home.homeDirectory = lib.mkDefault "/${if pkgs.stdenv.isDarwin then "Users" else "home"}/rhodee";
   home.stateVersion = "24.11";
-  nixpkgs.config.allowUnfree = true;
 
   home.sessionVariables = {
     EDITOR = "code --wait --new-window";
