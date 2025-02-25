@@ -2,7 +2,7 @@
   name = rhodee
   email = info@rhodee.us
 [help]
-  autocorrect = 5
+  autocorrect = prompt
 [url "git@github.com:rhodee/"]
   insteadOf = "me:"
 [url "ssh://git@github.com/rhodee/"]
@@ -26,6 +26,8 @@
   added = yellow
   changed = green
   untracked = cyan
+[column]
+  ui = auto
 [alias]
   co = checkout
   ci = commit
@@ -101,6 +103,7 @@
   # Enable the recording of resolved conflicts
   # So identical hunks can be resolved automatically in future
   enabled = true
+  autoupdate = true
 [status]
   # Recursively through untracked directories to display all contents
   showUntrackedFiles = all
@@ -111,6 +114,9 @@
   # When remote, rebase is set to true for tracked branches
   # of remote-tracking branches.
   autoSetupRebase = remote
+  sort = -committerdate
+[tag]
+  sort = version:refname
 [pull]
   ff = only
   rebase = only
@@ -127,6 +133,9 @@
 [diff]
   tool = difftastic
   algorithm = histogram
+  colorMoved = plain
+  mnemonicPrefix = true
+  renames = true
 [difftool]
   prompt = false
 [difftool "difftastic"]
