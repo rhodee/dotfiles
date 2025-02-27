@@ -21,13 +21,16 @@
     gitui = "gitui -t catppuccin-macchiato.ron";
   };
 
+  programs.git = {
+    enable = true;
+  };
+
   home.packages = with pkgs; [
     delta
     difftastic
     git-absorb
     git-extras
     git-interactive-rebase-tool
-    gitFull
     gnupg
   ];
 }
