@@ -63,7 +63,9 @@
     act
 
     # tailscale
-    tailscale
+    # defer to the UI based
+    # version for each OS now
+    # tailscale
 
     # File manager
     yazi
