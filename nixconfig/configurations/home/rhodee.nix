@@ -13,7 +13,7 @@ in
   home.stateVersion = "24.11";
 
   home.sessionVariables = {
-    EDITOR = "code --wait --new-window";
+    EDITOR = "hx";
     VISUAL = "$EDITOR";
     XDG_CONFIG_HOME = "$HOME/.config";
   };

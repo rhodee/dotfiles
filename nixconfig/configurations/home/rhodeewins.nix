@@ -21,7 +21,7 @@ in
   nixpkgs.config.allowUnfree = true;
 
   home.sessionVariables = {
-    EDITOR = "code --wait --new-window";
+    EDITOR = "hx";
     VISUAL = "$EDITOR";
   };
 

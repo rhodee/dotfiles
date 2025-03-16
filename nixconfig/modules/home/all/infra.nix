@@ -5,6 +5,7 @@
     terraform-docs
     terraform-ls
     terraformer
-    terragrunt
+    # Marked as broken do not use 14-03-2025
+    # terragrunt
   ];
 }
