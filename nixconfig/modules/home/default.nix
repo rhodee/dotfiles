@@ -6,24 +6,23 @@
     ./nix-index.nix
     ./fonts.nix
     ./git
-    ./all/bat
-    ./all/ghostty
-    ./all/fish
-    ./all/tmux
     ./all/atuin.nix
     ./all/aws.nix
+    ./all/bat
     ./all/broot.nix
     ./all/container.nix
-    ./all/coreutils.nix
     ./all/core-langs.nix
+    ./all/coreutils.nix
     ./all/cue.nix
     ./all/direnv.nix
     ./all/eza.nix
+    ./all/fish
     ./all/fzf.nix
-    ./all/infra.nix
+    ./all/ghostty
     ./all/jq.nix
     ./all/ripgrep.nix
     ./all/starship.nix
+    ./all/tmux
     ./all/zoxide.nix
     ./packages.nix
   ];
