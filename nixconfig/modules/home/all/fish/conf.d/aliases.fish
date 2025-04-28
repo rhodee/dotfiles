@@ -29,7 +29,6 @@ alias python="python3"
 alias g="git"
 alias vim="nvim"
 alias cat="bat"
-alias top="btm"
 alias ungz="gunzip -k"
 alias ll="eza --long --git -a --sort=accessed -h -B"
 alias cp="cp -i"
@@ -37,11 +36,10 @@ alias mv="mv -i"
 alias rm="rm -i"
 alias gdoc="godoc -http=:6060; echo GoDoc exited on port 6060"
 alias sandbox="z $HOME/Development"
-alias grem="git remote -v"
 # File size
 alias fs="stat -f \"%z bytes\""
 
-alias brew_update="brew upgrade; brew cleanup; brew doctor"
+alias muxer="tmux attach-session -t rhodee || tmux new-session -s rhodee"
 
 #docker
 alias dc="docker-compose"

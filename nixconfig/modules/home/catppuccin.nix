@@ -1,7 +1,7 @@
 { flake, ... }:
 {
   imports = [
-    flake.inputs.catppuccin.homeManagerModules.catppuccin
+    flake.inputs.catppuccin.homeModules.catppuccin
   ];
 
   catppuccin.flavor = "frappe";

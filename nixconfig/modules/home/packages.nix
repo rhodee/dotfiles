@@ -4,9 +4,9 @@
   home.packages = with pkgs; [
     age
     fd
-    tmux
     gnupg
     gnumake
+    silver-searcher
 
     # Code
     chroma
@@ -59,16 +59,10 @@
     # orchestration
     process-compose
 
-    # Github Action testing locally
-    act
-
     # tailscale
     # defer to the UI based
     # version for each OS now
     # tailscale
-
-    # File manager
-    yazi
 
     # shell env manager
     devenv

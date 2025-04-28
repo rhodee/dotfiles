@@ -1,5 +1,7 @@
 background-opacity = .9
 
+working-directory = $HOME
+
 clipboard-read = allow
 clipboard-trim-trailing-spaces = true
 clipboard-write = allow
@@ -7,10 +9,27 @@ clipboard-write = allow
 cursor-style = block
 cursor-style-blink = true
 
+mouse-hide-while-typing = true
+
 font-family = "BlexMono Nerd Font Mono"
+font-size = 14
 
 # Set theme
-# theme = catppuccin-macchiato
+theme = catppuccin-macchiato
 
+# == Window Configuration ==
+window-theme = dark
 window-inherit-working-directory = true
 window-theme = auto
+window-padding-x = 10
+window-padding-y = 10
+
+# == Tmux Configuration ==
+shell-integration = fish
+
+# command = tmux attach-session -t rhodee || tmux new-session -s rhodee
+
+# Open a new window
+keybind = ctrl+shift+n=new_window
+
+bold-is-bright = true
