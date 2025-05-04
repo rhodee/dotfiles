@@ -9,7 +9,6 @@
     ./all/atuin.nix
     ./all/aws.nix
     ./all/bat
-    ./all/broot.nix
     ./all/container.nix
     ./all/core-langs.nix
     ./all/coreutils.nix

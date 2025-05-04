@@ -74,10 +74,11 @@
     # pager to work.
     less
 
+    tree
+
     # watch files sanely
     watchexec
   ];
   home.shellAliases = {
-    tree = "broot";
   };
 }
