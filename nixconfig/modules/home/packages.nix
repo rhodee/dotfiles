@@ -13,7 +13,6 @@
 
     # sql
     duckdb
-    dbeaver-bin
 
     # fetch
     wget
