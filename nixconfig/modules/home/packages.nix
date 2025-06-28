@@ -14,6 +14,9 @@
     # sql
     duckdb
 
+    # vpn - cli tool
+    tailscale
+
     # fetch
     wget
     openssh

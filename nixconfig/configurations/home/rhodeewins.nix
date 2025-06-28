@@ -36,4 +36,5 @@ in
 
   # Used for backwards compatibility, please read the changelog before changing.
   system.stateVersion = 5;
+  system.primaryUser = "rhodee";
 }
