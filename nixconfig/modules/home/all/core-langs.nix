@@ -14,6 +14,6 @@
     # pyhon
     (pkgs.python3.withPackages (python-pkgs: [ python-pkgs.pip python-pkgs.cookiecutter python-pkgs.pynvim ]))
     # rust
-    pkgs.cargo
+    pkgs.rustup
   ];
 }
