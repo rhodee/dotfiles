@@ -69,8 +69,13 @@
     # shell env manager
     devenv
 
+    # nix language server
+    nil
+    nixd
+
     # prompts
     # ollama
+    uv
 
     # On ubuntu, we need this less for `man home-configuration.nix`'s
     # pager to work.
