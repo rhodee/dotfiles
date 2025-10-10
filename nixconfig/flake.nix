@@ -2,6 +2,7 @@
   description = "Home manager configs";
   inputs = {
     nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1.0.tar.gz";
+    nixpkgs-stable.url = "https://flakehub.com/f/NixOS/nixpkgs/0.2405.*.tar.gz";
 
     catppuccin.url = "github:catppuccin/nix";
 

@@ -21,7 +21,7 @@ in
   nixpkgs.config.allowUnfree = true;
 
   home.sessionVariables = {
-    EDITOR = "hx";
+    EDITOR = "nvim";
     VISUAL = "$EDITOR";
   };
 

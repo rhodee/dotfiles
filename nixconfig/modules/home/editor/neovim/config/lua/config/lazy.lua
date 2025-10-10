@@ -51,7 +51,11 @@ require("lazy").setup({
     -- version = '*', -- try installing the latest stable version for plugins that support semver
   },
   install = { colorscheme = { "nightfox", "catppuccin" } },
-  checker = { enabled = true }, -- automatically check for plugin updates
+  checker = {
+    enabled = true,
+    notify = false,  -- Don't show notifications
+    frequency = 86400  -- Check once per day (in seconds)
+  },
   performance = {
     rtp = {
       -- force nix to see installed packages

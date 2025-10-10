@@ -13,7 +13,7 @@ in
   home.stateVersion = "25.11";
 
   home.sessionVariables = {
-    EDITOR = "hx";
+    EDITOR = "nvim";
     VISUAL = "$EDITOR";
     XDG_CONFIG_HOME = "$HOME/.config";
   };

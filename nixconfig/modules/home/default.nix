@@ -7,7 +7,6 @@
     ./fonts.nix
     ./git
     ./all/atuin.nix
-    ./all/aws.nix
     ./all/bat
     ./all/container.nix
     ./all/core-langs.nix
