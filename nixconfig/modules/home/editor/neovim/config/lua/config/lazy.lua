@@ -52,9 +52,7 @@ require("lazy").setup({
   },
   install = { colorscheme = { "nightfox", "catppuccin" } },
   checker = {
-    enabled = true,
-    notify = false,  -- Don't show notifications
-    frequency = 86400  -- Check once per day (in seconds)
+    enabled = false,  -- Disable update checker
   },
   performance = {
     rtp = {

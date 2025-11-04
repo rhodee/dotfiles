@@ -1,5 +1,7 @@
-{ pkgs, ... }:
-
+{ flake, pkgs, ... }:
+let
+  inherit (flake) inputs;
+in
 {
   home.packages = with pkgs; [
     age
@@ -7,6 +9,9 @@
     gnupg
     gnumake
     silver-searcher
+
+    # AI tools
+    inputs.nix-ai-tools.packages.${stdenv.hostPlatform.system}.crush
 
     # Code
     chroma

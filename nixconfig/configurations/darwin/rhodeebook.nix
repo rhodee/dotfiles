@@ -13,7 +13,9 @@ let
 in
 {
   imports = [
-    inputs.mac-app-util.darwinModules.default
+    # Temporarily disabled due to SBCL iterate library 404 error
+    # See: https://github.com/hraban/mac-app-util/issues/39
+    # inputs.mac-app-util.darwinModules.default
     # inputs.ghostty.packages.aarch64-darwin.default
     self.darwinModules.default
   ];

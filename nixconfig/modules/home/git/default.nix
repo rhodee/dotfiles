@@ -21,11 +21,13 @@
     gitui = "gitui -t catppuccin-macchiato.ron";
   };
 
+  programs.delta = {
+    enable = true;
+    enableGitIntegration = true;
+  };
+
   programs.git = {
     enable = true;
-    delta = {
-      enable = true;
-    };
   };
 
   home.packages = with pkgs; [
