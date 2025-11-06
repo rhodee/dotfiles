@@ -1,4 +1,7 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, flake, ... }:
+let
+  inherit (flake) inputs;
+in
 {
   home.file."${config.xdg.configHome}/nvim" = {
     source = ./config;
@@ -17,6 +20,7 @@
 
   programs.neovim = {
     enable = true;
+    package = inputs.neovim-nightly.packages.${pkgs.stdenv.hostPlatform.system}.default;
 
     viAlias = false;
     vimAlias = true;
@@ -55,6 +59,6 @@
 
     # Add library code here for use in the Lua config from the
     # plugins list above.
-    extraConfig = lib.fileContents ./config/init.lua;
+    extraLuaConfig = builtins.readFile ./config/init.lua;
   };
 }

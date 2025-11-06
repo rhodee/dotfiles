@@ -20,5 +20,8 @@ in {
   security.pam.services.sudo_local.touchIdAuth = true;
 
   # These users can add Nix caches.
-  nix.settings.trusted-users = [ "root" "rhodee" ];
+  nix.settings = {
+    trusted-users = [ "root" "rhodee" ];
+    require-sigs = true;  # Verify binary cache signatures for security
+  };
 }

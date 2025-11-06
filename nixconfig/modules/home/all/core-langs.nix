@@ -11,7 +11,7 @@
     lua
     # node
     volta
-    # pyhon
+    # python
     (python3.withPackages (python-pkgs: [ python-pkgs.pip python-pkgs.pynvim ]))
     # rust
     rustup
