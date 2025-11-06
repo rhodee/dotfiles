@@ -23,8 +23,8 @@
     };
 
     nix-darwin = {
-      url = "github:lnl7/nix-darwin/master";
-      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:nix-darwin/nix-darwin/master";
+      # inputs.nixpkgs.follows = "nixpkgs";
     };
 
     ghostty.url = "github:ghostty-org/ghostty";

@@ -5,15 +5,15 @@
     # Code
     #
     # Go
-    pkgs.go
+    go
+    gopls
     # Lua
-    pkgs.lua
+    lua
     # node
-    pkgs.volta
-    pkgs.deno
+    volta
     # pyhon
-    (pkgs.python3.withPackages (python-pkgs: [ python-pkgs.pip python-pkgs.cookiecutter python-pkgs.pynvim ]))
+    (python3.withPackages (python-pkgs: [ python-pkgs.pip python-pkgs.pynvim ]))
     # rust
-    pkgs.rustup
+    rustup
   ];
 }

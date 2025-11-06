@@ -78,8 +78,7 @@ in
     nil
     nixd
 
-    # prompts
-    # ollama
+    # python package manager
     uv
 
     # On ubuntu, we need this less for `man home-configuration.nix`'s
@@ -91,6 +90,7 @@ in
     # watch files sanely
     watchexec
   ];
+
   home.shellAliases = {
   };
 }

@@ -1,4 +1,4 @@
-{ flake, config, lib, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 {
   home.file."${config.xdg.configHome}/nvim" = {
     source = ./config;
@@ -9,13 +9,10 @@
     ast-grep
     golines
     luajitPackages.luarocks
-    # TODO: Revert when this is functional again
-    # nodePackages.neovim
+    nodePackages.neovim
     yamlfix
     yamlfmt
     yamllint
-    # TODO: Revert when this is functional again
-    # (pkgs.python3.withPackages (python-pkgs: [ python-pkgs.pynvim ]))
   ];
 
   programs.neovim = {

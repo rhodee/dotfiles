@@ -7,14 +7,10 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "disable_ai": true,
+  "confirm_quit": true,
+  "context_servers": {},
   "icon_theme": "Catppuccin Macchiato",
-  "agent": {
-    "default_model": {
-      "model": "deepseek-coder-v2:latest",
-      "provider": "ollama"
-    },
-    "version": "2"
-  },
   "base_keymap": "VSCode",
   "buffer_font_family": "BlexMono Nerd Font Mono",
   "buffer_font_features": {
@@ -25,7 +21,7 @@
   "features": {
     "edit_prediction_provider": "zed"
   },
-  "format_on_save": "on",
+  "format_on_save": "off",
   "formatter": "language_server",
   "inlay_hints": {
     "enabled": false
@@ -38,7 +34,7 @@
   "languages": {
     "TypeScript": {
       "code_actions_on_format": {
-        "format_on_save": true,
+        "format_on_save": false,
         "source.fixAll": true,
         "source.fixAll.eslint": true
       }
@@ -48,7 +44,7 @@
       "tab_size": 2,
       "hard_tabs": false,
       "formatter": "language_server",
-      "format_on_save": "on",
+      "format_on_save": "off",
       "language_servers": [
         "tsp-server",
         "..."
@@ -58,32 +54,22 @@
     }
   },
   "lsp": {
-    "tsp-server": {
-      "args": [
-        "--stdio"
-      ]
-    },
+    "tsp-server": {},
     "eslint": {
-      "autoFixOnFormat": true,
-      "autoFixOnFormatDelay": 200,
-      "autoFixOnSave": true,
-      "enabled": true,
       "initialization_options": {
         "checkOnSave": {
           "command": "eslint"
         }
-      },
-      "probe": [
-        "javascript",
-        "javascriptreact",
-        "typescript",
-        "typescriptreact"
-      ],
-      "validate": [
-        "javascript",
-        "typescript",
-        "javascriptreact"
-      ]
+      }
+    },
+    "protobuf-language-server": {
+      "binary": {
+        "path": "buf",
+        "arguments": [
+          "beta",
+          "lsp"
+        ]
+      }
     }
   },
   "project_panel": {

@@ -5,6 +5,11 @@
 let
   inherit (flake) inputs;
   inherit (inputs) self;
+  # Use gitui from stable nixpkgs (0.26.3) to avoid sha1-asm build issues in 0.27.0
+  pkgs-stable = import inputs.nixpkgs-stable {
+    system = "aarch64-darwin";
+    config.allowUnfree = true;
+  };
 in
 {
   imports = [
@@ -31,6 +36,8 @@ in
   home-manager.sharedModules = [
     self.homeModules.default
     self.homeModules.macos
+    # Override gitui to use stable version
+    { programs.gitui.package = pkgs-stable.gitui; }
   ];
 
   # Used for backwards compatibility, please read the changelog before changing.
