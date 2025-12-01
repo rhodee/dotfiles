@@ -51,10 +51,11 @@
     };
 
     # Pin devenv to get latest version (1.10+)
-    # devenv = {
-    #   url = "github:cachix/devenv";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
+    devenv = {
+      url = "github:cachix/devenv/v1.11.2";
+      # Don't follow nixpkgs - let devenv use its tested nixpkgs version
+      # This avoids ABI compatibility issues on macOS
+    };
 
     # Pin neovim to get latest stable (0.11.2+)
     neovim-nightly = {
