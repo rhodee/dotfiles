@@ -72,7 +72,8 @@ in
     # tailscale
 
     # shell env manager
-    inputs.devenv.packages.${stdenv.hostPlatform.system}.devenv
+    devenv
+    # inputs.devenv.packages.${stdenv.hostPlatform.system}.devenv
 
     # nix language server
     nil

@@ -2,7 +2,7 @@
   description = "Home manager configs";
   inputs = {
     nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1";
-    nixpkgs-stable.url = "https://flakehub.com/f/NixOS/nixpkgs/0.2405.*.tar.gz";
+    nixpkgs-stable.url = "https://flakehub.com/f/NixOS/nixpkgs/0.2505.*.tar.gz";
     nur = {
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -11,8 +11,9 @@
     catppuccin.url = "github:catppuccin/nix";
 
     home-manager = {
-      # url = "github:nix-community/home-manager/release-24.11";
-      url = "github:nix-community/home-manager";
+      # Unstable
+      #  url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -50,10 +51,10 @@
     };
 
     # Pin devenv to get latest version (1.10+)
-    devenv = {
-      url = "github:cachix/devenv";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # devenv = {
+    #   url = "github:cachix/devenv";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     # Pin neovim to get latest stable (0.11.2+)
     neovim-nightly = {
