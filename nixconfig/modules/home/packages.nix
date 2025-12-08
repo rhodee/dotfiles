@@ -40,7 +40,8 @@ in
     typst
 
     # Demo time
-    asciicam # Terminal webcam
+    # TODO: Unavailable on 25.11
+    # asciicam # Terminal webcam
     asciinema-agg # Convert asciinema to .gif
     asciinema # Terminal recorder
 

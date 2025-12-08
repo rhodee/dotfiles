@@ -1,8 +1,9 @@
 {
   description = "Home manager configs";
   inputs = {
-    nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1";
-    nixpkgs-stable.url = "https://flakehub.com/f/NixOS/nixpkgs/0.2505.*.tar.gz";
+    nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.2511.*";
+    nixpkgs-stable.url = "https://flakehub.com/f/NixOS/nixpkgs/0.2511.*.tar.gz";
+
     nur = {
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -24,8 +25,8 @@
     };
 
     nix-darwin = {
-      url = "github:nix-darwin/nix-darwin/master";
-      # inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:nix-darwin/nix-darwin/nix-darwin-25.11";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     ghostty.url = "github:ghostty-org/ghostty";

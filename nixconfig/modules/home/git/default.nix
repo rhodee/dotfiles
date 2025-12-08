@@ -5,15 +5,179 @@
     recursive = false;
   };
 
-  catppuccin.gitui.enable = true;
+  catppuccin.lazygit.enable = true;
 
-  programs.gitui = {
+  programs.lazygit = {
     enable = true;
+    enableFishIntegration = true;
+    settings = {
+      gui = {
+        # Catppuccin Mocha theme
+        theme = {
+          activeBorderColor = [ "#89b4fa" "bold" ];
+          inactiveBorderColor = [ "#6c7086" ];
+          optionsTextColor = [ "#89dceb" ];
+          selectedLineBgColor = [ "#45475a" ];
+          cherryPickedCommitBgColor = [ "#45475a" ];
+          cherryPickedCommitFgColor = [ "#89b4fa" ];
+          unstagedChangesColor = [ "#f38ba8" ];
+          defaultFgColor = [ "#cdd6f4" ];
+          searchingActiveBorderColor = [ "#f9e2af" "bold" ];
+        };
+
+        showListFooter = true;
+        showRandomTip = true;
+        showBranchCommitHash = true;
+        showBottomLine = false;
+        showCommandLog = false;
+        showFileTree = true;
+        showIcons = true;
+        nerdFontsVersion = "3";
+        commitLength = {
+          show = true;
+        };
+        mouseEvents = true;
+        skipDiscardChangeWarning = false;
+        skipStashWarning = false;
+        sidePanelWidth = 0.3333;
+        expandFocusedSidePanel = false;
+        mainPanelSplitMode = "flexible";
+        enlargedSideViewLocation = "left";
+        language = "auto";
+        timeFormat = "02 Jan 06";
+        shortTimeFormat = "3:04PM";
+        border = "rounded";
+        animateExplosion = true;
+        portraitMode = "auto";
+        filterMode = "fuzzy";
+      };
+
+      git = {
+        pagers = [
+          {
+            colorArg = "always";
+            pager = "delta --dark --paging=never --line-numbers";
+          }
+          {
+            externalDiffCommand = "difft --display=inline";
+          }
+        ];
+
+        commit = {
+          signOff = false;
+          autoWrapCommitMessage = true;
+          autoWrapWidth = 72;
+        };
+
+        merging = {
+          args = "--no-ff";
+          manualCommit = false;
+          squashMergeMessage = "Squash merge {{selectedRef}} into {{currentBranch}}";
+        };
+
+        log = {
+          order = "topo-order";
+          showGraph = "always";
+          showWholeGraph = false;
+        };
+
+        autoFetch = true;
+        autoRefresh = true;
+        fetchAll = true;
+        branchLogCmd = "git log --graph --color=always --abbrev-commit --decorate --date=relative --pretty=medium {{branchName}} --";
+        overrideGpg = false;
+        disableForcePushing = false;
+        commitPrefixes = { };
+        parseEmoji = true;
+        truncateCopiedCommitHashesTo = 12;
+
+        pull = {
+          mode = "rebase";
+        };
+
+        allBranchesLogCmds = [
+          "git log --graph --all --color=always --abbrev-commit --decorate --date=relative --pretty=medium"
+        ];
+      };
+
+      update = {
+        method = "prompt";
+        days = 7;
+      };
+
+      refresher = {
+        refreshInterval = 10;
+        fetchInterval = 60;
+      };
+
+      confirmOnQuit = false;
+      notARepository = "prompt";
+      promptToReturnFromSubprocess = true;
+
+      customCommands = [
+        {
+          key = "P";
+          context = "global";
+          description = "🚀 Push to origin (like git po)";
+          command = "git push origin {{.SelectedLocalBranch.Name}}";
+          loadingText = "Pushing to origin...";
+        }
+        {
+          key = "U";
+          context = "global";
+          description = "⬇️  Pull rebase from origin (like git pro)";
+          command = "git pull --rebase origin {{.SelectedLocalBranch.Name}}";
+          loadingText = "Pulling with rebase...";
+        }
+        {
+          key = "<c-f>";
+          context = "global";
+          description = "📥 Fetch origin (like git fo)";
+          command = "git fetch origin";
+          loadingText = "Fetching from origin...";
+        }
+        {
+          key = "R";
+          context = "localBranches";
+          description = "🔄 Remote update prune (like git up)";
+          command = "git remote update --prune";
+          loadingText = "Updating remotes...";
+        }
+        {
+          key = "H";
+          context = "commits";
+          description = "📜 View commit history (like git hist)";
+          command = ''git log --pretty=format:"%h -- %s [%cd, %cn, %cr]" --stat -42 --graph --date=short {{.SelectedLocalCommit.Sha}}'';
+          output = "terminal";
+        }
+        {
+          key = "<c-d>";
+          context = "commits";
+          description = "🔍 Difftastic view";
+          command = "git difftool {{.SelectedLocalCommit.Sha}}~1 {{.SelectedLocalCommit.Sha}}";
+          output = "terminal";
+        }
+        {
+          key = "O";
+          context = "commits";
+          description = "😬 Oops! (soft reset, like git oops)";
+          command = "git reset --soft HEAD^";
+        }
+      ];
+
+      os = {
+        editPreset = "nvim";
+        edit = "nvim {{filename}}";
+        editAtLine = "nvim +{{line}} {{filename}}";
+        editAtLineAndWait = "nvim +{{line}} {{filename}}";
+        open = "open {{filename}}";
+        openLink = "open {{link}}";
+      };
+    };
   };
 
   home.shellAliases = {
     g = "git";
-    gitui = "gitui -t catppuccin-macchiato.ron";
   };
 
   programs.delta = {
