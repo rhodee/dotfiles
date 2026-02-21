@@ -18,6 +18,7 @@
     ./all/fzf.nix
     ./all/ghostty
     ./all/jq.nix
+    ./all/k8s.nix
     ./all/ripgrep.nix
     ./all/starship.nix
     ./all/tmux

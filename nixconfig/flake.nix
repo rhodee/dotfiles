@@ -1,8 +1,8 @@
 {
   description = "Home manager configs";
   inputs = {
-    nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.2511.*";
-    nixpkgs-stable.url = "https://flakehub.com/f/NixOS/nixpkgs/0.2511.*.tar.gz";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.11";
 
     nur = {
       url = "github:nix-community/NUR";
