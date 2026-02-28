@@ -25,40 +25,5 @@ in
     viAlias = false;
     vimAlias = true;
     vimdiffAlias = true;
-
-    # Full vim plugins list here,
-    # https://github.com/NixOS/nixpkgs/blob/master/pkgs/applications/editors/vim/plugins/generated.nix
-    plugins = with pkgs.vimPlugins; [
-      (nvim-treesitter.withPlugins (_: pkgs.tree-sitter.allGrammars))
-      aerial-nvim
-      barbecue-nvim
-      catppuccin-vim
-      comment-nvim
-      conform-nvim
-      diffview-nvim
-      mason-lspconfig-nvim
-      mason-nvim
-      neo-tree-nvim
-      neotest
-      neotest-plenary
-      neotest-python
-      neotest-rust
-      nvim-code-action-menu
-      nvim-lspconfig
-      nvim-ufo
-      nvim-window-picker
-      plenary-nvim
-      scope-nvim
-      telescope-fzy-native-nvim
-      telescope-nvim
-      trouble-nvim
-      undotree
-      vim-just
-      which-key-nvim
-    ];
-
-    # Add library code here for use in the Lua config from the
-    # plugins list above.
-    extraLuaConfig = builtins.readFile ./config/init.lua;
   };
 }

@@ -56,8 +56,7 @@ require("lazy").setup({
   },
   performance = {
     rtp = {
-      -- force nix to see installed packages
-      reset_packpath = false,
+      reset_packpath = true,
       -- disable some rtp plugins
       disabled_plugins = {
         "2html_plugin",
