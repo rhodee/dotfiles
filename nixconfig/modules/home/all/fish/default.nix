@@ -32,6 +32,7 @@
       set -gx TERM xterm-256color
       set -gx VIMCONFIG $XDG_CONFIG_HOME/nvim
       set -gx VOLTA_HOME $HOME/.volta
+      set -gx GPG_TTY
 
       # Make Nix and home-manager installed things available in PATH.
       set PATH /run/current-system/sw/bin $PATH

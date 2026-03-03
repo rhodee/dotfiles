@@ -86,7 +86,7 @@
         fetchAll = true;
         branchLogCmd = "git log --graph --color=always --abbrev-commit --decorate --date=relative --pretty=medium {{branchName}} --";
         overrideGpg = false;
-        disableForcePushing = false;
+        disableForcePushing = true;
         commitPrefixes = { };
         parseEmoji = true;
         truncateCopiedCommitHashesTo = 12;
@@ -240,6 +240,9 @@
         oops = "reset --soft \"HEAD^\"";
         unstage = "reset HEAD";
         shit = "!gitk --all $( git fsck --no-reflog | awk '/dangling commit/ {print $3}' )";
+        # branch cleanup (solves the -D problem for squash/rebase-merged branches)
+        gone = "!git fetch -p && git for-each-ref --format '%(refname:short) %(upstream:track)' refs/heads | awk '$2 == \"[gone]\" {print $1}'";
+        cleanup = "!git gone | xargs git branch -D";
       };
 
       help.autocorrect = "prompt";
@@ -280,6 +283,7 @@
       commit = {
         template = "~/.gitmessage.txt";
         verbose = true;
+        gpgSign = true;
       };
 
       pager = {
@@ -300,11 +304,18 @@
         pager = "delta";
       };
 
-      receive.denyNonFastForwards = true;
+      transfer.fsckObjects = true;
+
+      receive = {
+        denyNonFastForwards = true;
+        fsckObjects = true;
+      };
 
       fetch = {
         prune = true;
         prunetags = true;
+        fsckObjects = true;
+        writeCommitGraph = true;
       };
 
       push = {
@@ -330,7 +341,11 @@
         sort = "-committerdate";
       };
 
-      tag.sort = "version:refname";
+      tag = {
+        sort = "version:refname";
+        gpgSign = true;
+        forceSignAnnotated = true;
+      };
 
       pull = {
         ff = "only";
@@ -343,7 +358,10 @@
         updateRefs = true;
       };
 
-      merge.conflictstyle = "zdiff3";
+      merge = {
+        conflictstyle = "zdiff3";
+        log = true;
+      };
       mergetool.prompt = true;
 
       diff = {
@@ -374,10 +392,41 @@
     };
   };
 
+  # GPG commit/tag signing
+  #
+  # Key must match user.name + user.email in programs.git.settings above.
+  # If they don't match, set user.signingKey = "<KEY_ID>" explicitly.
+  #
+  # Key management:
+  #   gpg --full-generate-key                         # create (RSA 4096, 1-2y expiry)
+  #   gpg --list-secret-keys --keyid-format=long      # list keys
+  #   gpg --edit-key <KEY_ID>  →  expire  →  save     # extend expiry
+  #   gpg --delete-secret-and-public-key "<uid>"       # delete key
+  #   gpgconf --kill gpg-agent                         # restart agent after changes
+  #
+  # Troubleshooting:
+  #   - "Permission denied" → chown -R $USER ~/.gnupg/private-keys-v1.d
+  #   - "No secret key"     → user.name in git must match key uid name
+  #   - Pinentry not found  → rebuild (home-manager switch), then kill agent
+  #
+  programs.gpg = {
+    enable = true;
+  };
+
+  # gpg-agent for macOS (services.gpg-agent is Linux-only in home-manager)
+  # cache-ttl is 8 hours (28800s) so you're not prompted every commit
+  home.file.".gnupg/gpg-agent.conf".text = ''
+    pinentry-program ${pkgs.pinentry_mac}/Applications/pinentry-mac.app/Contents/MacOS/pinentry-mac
+    default-cache-ttl 28800
+    max-cache-ttl 28800
+    enable-ssh-support
+  '';
+
   home.packages = with pkgs; [
     git-absorb
     git-extras
     git-interactive-rebase-tool
     gnupg
+    pinentry_mac
   ];
 }
