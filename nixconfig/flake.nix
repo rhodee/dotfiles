@@ -51,9 +51,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Pin devenv to get latest version (1.10+)
+    # Pin devenv to get latest version (2.0+)
     devenv = {
-      url = "github:cachix/devenv/v1.11.2";
+      url = "github:cachix/devenv/v2.0.5";
       # Don't follow nixpkgs - let devenv use its tested nixpkgs version
       # This avoids ABI compatibility issues on macOS
     };
