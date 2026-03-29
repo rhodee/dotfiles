@@ -58,7 +58,6 @@
       # This avoids ABI compatibility issues on macOS
     };
 
-    # Pin neovim to get latest stable (0.11.2+)
     neovim-nightly = {
       url = "github:nix-community/neovim-nightly-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
