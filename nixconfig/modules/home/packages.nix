@@ -10,9 +10,6 @@ in
     gnumake
     silver-searcher
 
-    # AI tools
-    inputs.nix-ai-tools.packages.${stdenv.hostPlatform.system}.crush
-
     # Code
     chroma
 

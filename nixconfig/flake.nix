@@ -46,12 +46,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix-ai-tools = {
-      url = "github:numtide/nix-ai-tools";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    # Pin devenv to get latest version (2.0+)
+    # Pin devenv
     devenv = {
       url = "github:cachix/devenv/v2.0.5";
       # Don't follow nixpkgs - let devenv use its tested nixpkgs version

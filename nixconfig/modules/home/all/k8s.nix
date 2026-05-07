@@ -4,6 +4,11 @@ let
 in
 {
   home.packages = with pkgs; [
+    k9s
+    kind
+    krew
+    kubectx
     kubie
+    kustomize
   ];
 }
