@@ -16,9 +16,6 @@ in
     # sql
     duckdb
 
-    # vpn - cli tool
-    tailscale
-
     # fetch
     wget
     openssh
@@ -37,8 +34,6 @@ in
     typst
 
     # Demo time
-    # TODO: Unavailable on 25.11
-    # asciicam # Terminal webcam
     asciinema-agg # Convert asciinema to .gif
     asciinema # Terminal recorder
 
@@ -63,11 +58,6 @@ in
 
     # orchestration
     process-compose
-
-    # tailscale
-    # defer to the UI based
-    # version for each OS now
-    # tailscale
 
     # shell env manager
     # devenv

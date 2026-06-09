@@ -1,8 +1,8 @@
 {
   description = "Home manager configs";
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-26.05";
 
     nur = {
       url = "github:nix-community/NUR";
@@ -14,7 +14,7 @@
     home-manager = {
       # Unstable
       #  url = "github:nix-community/home-manager";
-      url = "github:nix-community/home-manager/release-25.11";
+      url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -25,7 +25,7 @@
     };
 
     nix-darwin = {
-      url = "github:nix-darwin/nix-darwin/nix-darwin-25.11";
+      url = "github:nix-darwin/nix-darwin/nix-darwin-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -46,9 +46,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Pin devenv
     devenv = {
-      url = "github:cachix/devenv/v2.0.5";
+      url = "github:cachix/devenv";
       # Don't follow nixpkgs - let devenv use its tested nixpkgs version
       # This avoids ABI compatibility issues on macOS
     };

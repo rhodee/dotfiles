@@ -12,7 +12,7 @@ in
     ast-grep
     golines
     luajitPackages.luarocks
-    nodePackages.neovim
+    neovim-node-client
     yamlfix
     yamlfmt
     yamllint
@@ -25,5 +25,10 @@ in
     viAlias = false;
     vimAlias = true;
     vimdiffAlias = true;
+
+    # 26.05 flipped these defaults to false for stateVersion >= 26.05; keep the
+    # legacy providers (our stateVersion is still 25.11) and silence the warning.
+    withRuby = true;
+    withPython3 = true;
   };
 }

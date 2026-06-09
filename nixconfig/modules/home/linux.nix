@@ -1,8 +1,10 @@
+{ pkgs, ... }:
 {
   imports = [
     ./editor/neovim
-    # ./editor/vscode
-    # Marked as broken do not use 27-11-2024
-    # ./editor/zed
+  ];
+
+  home.packages = with pkgs; [
+    asciicam # Terminal webcam — Linux-only (meta.platforms)
   ];
 }
