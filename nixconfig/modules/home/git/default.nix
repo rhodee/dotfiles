@@ -248,8 +248,8 @@
       help.autocorrect = "prompt";
 
       url."git@github.com:rhodee/".insteadOf = "me:";
-      url."ssh://git@github.com/rhodee/".insteadOf = "https://github.com/rhodee/";
-      url."ssh://git@github.com/".insteadOf = "https://github.com/";
+      url."ssh://git@github.com/rhodee/".pushInsteadOf = "https://github.com/rhodee/";
+      url."ssh://git@github.com/".pushInsteadOf = "https://github.com/";
 
       color = {
         ui = "auto";
