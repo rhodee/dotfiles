@@ -9,7 +9,7 @@ in
   ];
 
   home.username = "rhodee";
-  home.homeDirectory = lib.mkDefault "/${if pkgs.stdenv.isDarwin then "Users" else "home"}/rhodee";
+  home.homeDirectory = lib.mkDefault "/${if pkgs.stdenv.hostPlatform.isDarwin then "Users" else "home"}/rhodee";
   home.stateVersion = "25.11";
 
   home.sessionVariables = {
