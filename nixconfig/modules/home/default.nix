@@ -17,6 +17,7 @@
     ./all/fish
     ./all/fzf.nix
     ./all/ghostty
+    ./all/hermes
     ./all/jq.nix
     ./all/k8s.nix
     ./all/ripgrep.nix

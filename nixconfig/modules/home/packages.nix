@@ -78,6 +78,9 @@ in
 
     # watch files sanely
     watchexec
+
+    # 1Password CLI (unfree; allowUnfree is set per host)
+    _1password-cli
   ];
 
   home.shellAliases = {

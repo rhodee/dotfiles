@@ -32,7 +32,10 @@
       set -gx TERM xterm-256color
       set -gx VIMCONFIG $XDG_CONFIG_HOME/nvim
       set -gx VOLTA_HOME $HOME/.volta
-      set -gx GPG_TTY
+      set -gx GPG_TTY (tty)
+      # gpg-agent is the SSH agent (enable-ssh-support in gpg-agent.conf)
+      set -gx SSH_AUTH_SOCK (gpgconf --list-dirs agent-ssh-socket)
+      gpg-connect-agent updatestartuptty /bye >/dev/null 2>&1
 
       # Make Nix and home-manager installed things available in PATH.
       set PATH /run/current-system/sw/bin $PATH
@@ -41,7 +44,7 @@
       set PATH $HOME/.nix-profile/bin $PATH
       set PATH $HOME/.volta/bin $PATH
       set PATH $HOME/.cargo/bin $PATH
-      set -gx PATH $PATH $HOME/.krew/bin
+      set PATH $HOME/.local/bin $PATH
 
       source $HOME/.config/fish/functions/*.fish
 
